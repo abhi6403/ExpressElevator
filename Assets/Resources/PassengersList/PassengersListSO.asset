@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0222e3fcdaf802849b6635ce24412f1d, type: 3}
+  m_Name: PassengersListSO
+  m_EditorClassIdentifier: 
+  passengers:
+  - {fileID: 3403692821886364132, guid: 8732b939c198fa1458fd82144b6431be, type: 3}
+  - {fileID: 500365648416880470, guid: 5c4f27292874a4b489b518d04e4b0f3a, type: 3}
+  - {fileID: 6414882407492522640, guid: 110855aba42c98a48bdb6e4567e34598, type: 3}
+  - {fileID: 520560073045663117, guid: 9d798722d5c3ad14ba913fb253a4a0bb, type: 3}
