@@ -9,7 +9,12 @@ namespace Elevator.Passenger
         
         [SerializeField] 
         private Animator _animator;
-        
+
+        public void OnMouseDown()
+        {
+            Destroy(gameObject);
+        }
+
         public void SetController(PassengerController passengerController)
         {
             _passengerController = passengerController;
