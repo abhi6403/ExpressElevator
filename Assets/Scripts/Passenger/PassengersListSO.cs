@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Elevator.Passenger
+namespace ExpressElevator.Passenger
 {
     [CreateAssetMenu(fileName = "PassengersListSO", menuName = "Scriptable Objects/PassengersListSO")]
     public class PassengersListSO : ScriptableObject

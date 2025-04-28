@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Elevator.Passenger
+namespace ExpressElevator.Passenger
 {
     public class PassengerView : MonoBehaviour
     {

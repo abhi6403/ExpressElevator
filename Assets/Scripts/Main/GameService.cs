@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Elevator.Passenger;
-using Elevator.Utilities;
+using ExpressElevator.Level;
+using ExpressElevator.Passenger;
+using ExpressElevator.Utilities;
 using UnityEngine;
 
-namespace Elevator.Main
+namespace ExpressElevator.Main
 {
     public class GameService : GenericMonoSingleton<GameService>
     {

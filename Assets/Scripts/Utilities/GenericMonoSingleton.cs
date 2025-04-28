@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Elevator.Utilities
+namespace ExpressElevator.Utilities
 {
     public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
     {
