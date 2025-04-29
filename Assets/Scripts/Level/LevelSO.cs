@@ -7,16 +7,17 @@ namespace ExpressElevator.Level
     [CreateAssetMenu(fileName = "LevelSO", menuName = "Scriptable Objects/LevelSO")]
     public class LevelSO : ScriptableObject
     {
-        public int _levelID;
-        public List<Floor> FloorPoints;
-
+        public List<Level> Levels;
+        
         [Serializable]
-        public class Floor
+        public class Level
         {
-            public Transform[] spawnPoints;
-            public Transform[] liftEntry;
-            public Transform[] exitPoints;
-            public Transform[] waitingArea;
+            public int _levelID;
+            public List<Transform> spawnPoints;
+            public List<Transform> liftEntry;
+            public List<Transform> exitPoints;
+            public List<Transform> waitingArea;
+            
         }
     }
 }
