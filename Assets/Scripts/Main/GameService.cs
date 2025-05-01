@@ -21,7 +21,7 @@ namespace ExpressElevator.Main
 
         private void Start()
         {
-            PassengerService = new PassengerService(_passengersListSO.passengers);
+            PassengerService = new PassengerService(_passengersListSO.passengers,_floorManager);
             LevelService = new LevelService(_levelSO,EventService,PassengerService);
             EventService = new EventService();
         }

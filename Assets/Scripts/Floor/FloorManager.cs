@@ -24,23 +24,14 @@ namespace ExpressElevator.Floor
             {
                 waitingPoints.Add(firstPosition + new Vector3(0.1f, 0) * positionSize * i);
             }
-
-            entrancePosition = waitingPoints[waitingPoints.Count - 1] + new Vector3(-5f, 0);
             
             passengerList = new List<PassengerView>();
-        }
-
-        private void Update()
-        {
-            
         }
 
         public void AddGuest(PassengerView passenger)
         {
             passengerList.Add(passenger);
             passenger.SetTagetPosition(waitingPoints[passengerList.IndexOf(passenger)]);
-          //passenger.MoveToEntrance(entrancePosition);
-          //passenger.MoveToFinal(waitingPoints[passengerList.IndexOf(passenger)]);
         }
     }
 }

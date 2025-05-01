@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8890235226617119386}
   - component: {fileID: 7840241271641475572}
   - component: {fileID: 500365648416880470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Men2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -147,7 +147,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.09353407, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +157,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.75, y: 2.75}
+  m_Size: {x: 0.31350765, y: 2.75}
   m_EdgeRadius: 0
 --- !u!50 &7840241271641475572
 Rigidbody2D:
@@ -199,5 +199,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6169201571360990331}
-  _targetPosition: {x: -4, y: 0, z: 0}
-  TargetPosition: {x: -4.3, y: -13.17, z: 0}

@@ -19,9 +19,7 @@ namespace ExpressElevator.Passenger
 
         private void Start()
         {
-            Debug.Log("PassengerView.Start");
-            _floorManager = FindObjectOfType<FloorManager>();
-            _floorManager.AddGuest(this);
+        
         }
 
         private void Update()
@@ -43,7 +41,12 @@ namespace ExpressElevator.Passenger
         {
             _animator.SetBool("Reached", value);
         }
-        
+
+        public void SetFloorManager(FloorManager floorManager)
+        {
+            _floorManager = floorManager;
+            _floorManager.AddGuest(this);
+        }
 
         public void MoveToEntrance(Vector3 entrancePosition)
         {
