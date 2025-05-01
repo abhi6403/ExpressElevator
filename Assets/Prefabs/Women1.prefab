@@ -185,7 +185,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6414882407492522640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,3 +199,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4271946872930199088}
+  _targetPosition: {x: -4, y: 0, z: 0}
+  TargetPosition: {x: -4.3, y: -13.17, z: 0}

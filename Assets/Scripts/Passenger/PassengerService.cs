@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ExpressElevator.Floor;
 using UnityEngine;
 
 namespace ExpressElevator.Passenger
@@ -7,11 +8,10 @@ namespace ExpressElevator.Passenger
     {
         private List<PassengerView> _passengersList;
         private PassengerController _passengerController;
-        
+
         public PassengerService(List<PassengerView> passengersList)
         {
             _passengersList = passengersList;
-            SpawnPassengers();
         }
 
         private PassengerView getRandomPassengers()
@@ -19,12 +19,9 @@ namespace ExpressElevator.Passenger
             return _passengersList[Random.Range(0, _passengersList.Count)];
         }
 
-        public void SpawnPassengers()
+        public void SpawnPassenger(Vector3 passengerTransform)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                _passengerController = new PassengerController(getRandomPassengers());
-            }
+                _passengerController = new PassengerController(getRandomPassengers(), passengerTransform);
         }
     }
 }

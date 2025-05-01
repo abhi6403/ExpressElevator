@@ -1,4 +1,6 @@
+using ExpressElevator.Floor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace ExpressElevator.Passenger
 {
@@ -7,12 +9,22 @@ namespace ExpressElevator.Passenger
         private PassengerView _passengerView;
         private PassengerModel _passengerModel;
         
-        public PassengerController(PassengerView passengerView)
+        private Vector3 _targetPosition;
+
+        public PassengerController(PassengerView passengerView,Vector3 passengerPosition)
         {
-            _passengerView = GameObject.Instantiate(passengerView);
             _passengerModel = new PassengerModel();
-            _passengerView.SetAnimatorValue(true);
-            Debug.Log("Getting Called");
+            _passengerView = GameObject.Instantiate(passengerView, passengerPosition, Quaternion.identity);
+            _passengerView.SetController(this);
+            _passengerModel.SetController(this);
+            _passengerView.SetAnimatorValue(false);
         }
+        
+        public void Update()
+        {
+            
+        }
+
+      
     }
 }

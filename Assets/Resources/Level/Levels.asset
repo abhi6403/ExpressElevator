@@ -14,40 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - _levelID: 1
-    FloorPoints:
-      spawnPoints:
-      - {fileID: 3895554550439874081, guid: 7f1ce16c6782e0b4bb055053ac8db7cc, type: 3}
-      - {fileID: 342311622421829609, guid: bf8f7ab75d7eb5c44834e647ed7e5c5a, type: 3}
-      - {fileID: 3148402085916752385, guid: ff9e52d7cb107bd48a85d5227994fb26, type: 3}
-      - {fileID: 2511627957143440639, guid: ffec763b85a6d624bb914b623c6e4c85, type: 3}
-      liftEntry:
-      - {fileID: 7509429165845263196, guid: ae86aaec550c66848ba264dfae512c7d, type: 3}
-      - {fileID: 7585286828619384205, guid: e816ec7a24ff66c4aaaecb1927b9e312, type: 3}
-      - {fileID: 2238835475352180016, guid: 328e519614c8bea4581dcf2918a1c0a0, type: 3}
-      - {fileID: 6925802572597738285, guid: a8d3680e479a9dd4eac3c7e2da030452, type: 3}
-      exitPoints:
-      - {fileID: 4333099962262580732, guid: f5fdfc1124a61ef44afd203eb258fc09, type: 3}
-      - {fileID: 5598008996657400336, guid: 7a10160e26e15bb40a50f4330e8bf799, type: 3}
-      - {fileID: 354476955046449082, guid: c408bfe47b7a1394eb2ff5839cfbcbed, type: 3}
-      - {fileID: 4333099962262580732, guid: f5fdfc1124a61ef44afd203eb258fc09, type: 3}
-      waitingArea:
-      - {fileID: 5427556370660147896, guid: ff76d6798ef6519429e67e97b4f5ad70, type: 3}
-      - {fileID: 1373854160037603062, guid: 5a16f0dbd2d54f84b97531b1d4baea71, type: 3}
-      - {fileID: 6530713977975372838, guid: 567bad45475fbab42afba93f3f9e1028, type: 3}
-      - {fileID: 2658562569923144039, guid: ece2d35cc73d3e04c84f2a43664b9786, type: 3}
-      - {fileID: 4387511614125451176, guid: b016ae45f9cb01d46bddfcd46713be34, type: 3}
-      - {fileID: 6050808784201613617, guid: cd55867507e540246869662a348c6b39, type: 3}
-      - {fileID: 2668933914617225882, guid: 319a116ccb003e3468b30fcef9a14b1d, type: 3}
-      - {fileID: 1663617950982136913, guid: dbe5db217829ffd41a0d754c0b5efcd5, type: 3}
-  - _levelID: 0
-    FloorPoints:
-      spawnPoints: []
-      liftEntry: []
-      exitPoints: []
-      waitingArea: []
-  - _levelID: 0
-    FloorPoints:
-      spawnPoints: []
-      liftEntry: []
-      exitPoints: []
-      waitingArea: []
+    _numberOfPassengers: 10
+    _numberOfPassengersPerFloor: 3
+    spawnPoints:
+    - {x: -9.6, y: -22.5, z: -0.036069196}
+    - {x: -15.32, y: -5.19, z: 0}
+    - {x: -15.32, y: 2.14, z: 0}
+    - {x: -15.32, y: 9.47, z: 0}
+    liftEntry: []
+    exitPoints: []
+    waitingArea:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}

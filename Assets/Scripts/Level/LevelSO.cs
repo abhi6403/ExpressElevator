@@ -13,10 +13,12 @@ namespace ExpressElevator.Level
         public class Level
         {
             public int _levelID;
-            public List<Transform> spawnPoints;
-            public List<Transform> liftEntry;
-            public List<Transform> exitPoints;
-            public List<Transform> waitingArea;
+            public int  _numberOfPassengers;
+            public int _numberOfPassengersPerFloor;
+            public List<Vector3> spawnPoints;
+            public List<Vector3> liftEntry;
+            public List<Vector3> exitPoints;
+            public List<Vector3> waitingArea;
             
         }
     }
