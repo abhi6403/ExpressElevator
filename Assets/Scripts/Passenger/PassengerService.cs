@@ -8,12 +8,10 @@ namespace ExpressElevator.Passenger
     {
         private List<PassengerView> _passengersList;
         private PassengerController _passengerController;
-        private FloorManager _floorManager;
 
-        public PassengerService(List<PassengerView> passengersList,FloorManager floorManager)
+        public PassengerService(List<PassengerView> passengersList)
         {
             _passengersList = passengersList;
-            _floorManager = floorManager;
         }
 
         private PassengerView getRandomPassengers()
@@ -23,7 +21,7 @@ namespace ExpressElevator.Passenger
 
         public void SpawnPassenger(Vector3 passengerTransform)
         {
-                _passengerController = new PassengerController(getRandomPassengers(), passengerTransform, _floorManager);
+                _passengerController = new PassengerController(getRandomPassengers(), passengerTransform);
         }
     }
 }

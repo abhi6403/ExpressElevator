@@ -17,13 +17,12 @@ namespace ExpressElevator.Main
         
         [SerializeField]private PassengersListSO _passengersListSO;
         [SerializeField]private LevelSO _levelSO;
-        [SerializeField]private FloorManager _floorManager;
 
-        private void Start()
+        protected override void Awake()
         {
-            PassengerService = new PassengerService(_passengersListSO.passengers,_floorManager);
-            LevelService = new LevelService(_levelSO,EventService,PassengerService);
             EventService = new EventService();
+            PassengerService = new PassengerService(_passengersListSO.passengers);
+            LevelService = new LevelService(_levelSO,EventService,PassengerService);
         }
     }
 }

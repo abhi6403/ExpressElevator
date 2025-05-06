@@ -14,12 +14,11 @@ namespace ExpressElevator.Passenger
         private float stopThreshold = 0.05f;
         private bool isMoving = false;
         
-        private FloorManager _floorManager;
         private Vector3 TargetPosition;
 
         private void Start()
         {
-        
+            
         }
 
         private void Update()
@@ -41,12 +40,7 @@ namespace ExpressElevator.Passenger
         {
             _animator.SetBool("Reached", value);
         }
-
-        public void SetFloorManager(FloorManager floorManager)
-        {
-            _floorManager = floorManager;
-            _floorManager.AddGuest(this);
-        }
+        
 
         public void MoveToEntrance(Vector3 entrancePosition)
         {

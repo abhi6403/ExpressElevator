@@ -16,7 +16,7 @@ namespace ExpressElevator.Floor
         
         [SerializeField] private Vector3 firstPosition;
 
-        private void Start()
+        private void Awake()
         {
             waitingPoints = new List<Vector3>();
 
@@ -31,7 +31,6 @@ namespace ExpressElevator.Floor
         public void AddGuest(PassengerView passenger)
         {
             passengerList.Add(passenger);
-            passenger.SetTagetPosition(waitingPoints[passengerList.IndexOf(passenger)]);
         }
     }
 }
