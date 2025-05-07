@@ -49,19 +49,19 @@ namespace ExpressElevator.Level
         {
             for (int i = 0; i < _currentLevel._numberOfPassengers; i++)
             {
-                //for (int j = 0; j < _currentLevel._numberOfPassengersPerFloor; j++)
-                //{
+                for (int j = 0; j < _currentLevel._numberOfPassengersPerFloor; j++)
+                {
                   _passengerService.SpawnPassenger(_currentLevel.spawnPoints[_currentFloorIndex]);
-                //}
+                }
 
-                /*if (_currentFloorIndex >= MAX_FLOORS)
+                if (_currentFloorIndex >= MAX_FLOORS)
                 {
                     break;
                 }
                 else
                 {
                     _currentFloorIndex++;
-                }*/
+                }
             }
         }
 

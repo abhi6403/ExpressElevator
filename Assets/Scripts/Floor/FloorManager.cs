@@ -31,20 +31,22 @@ namespace ExpressElevator.Floor
         }
         private void Start()
         {
-            waitingPoints = new List<Vector3>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                waitingPoints.Add(_firstPosition + new Vector3(0.1f, 0) * positionSize * i);
-            }
-            
             passengerList = new List<PassengerView>();
+            SetPoints();
         }
         public void AddGuest(PassengerView passenger)
         {
             passengerList.Add(passenger);
-            passenger.SetTargetPosition(waitingPoints[count]);
-            count++;
+            if (count <= 2)
+            {
+                passenger.SetTargetPosition(waitingPoints[count]);
+                count++;
+            }
+
+            if (count == 3)
+            {
+                count = 0;
+            }
         }
 
         public void SetPoints()
@@ -55,9 +57,9 @@ namespace ExpressElevator.Floor
                 for (int j = 0; j < _levelService.GetCurrentLevel()._numberOfPassengersPerFloor; j++)
                 {
                     waitingPoints.Add(_levelService.GetCurrentLevel().waitingArea[i] + new Vector3(0.1f, 0) * positionSize * j);
-                    Debug.Log(waitingPoints);
                 }
             }
         }
+        
     }
 }
