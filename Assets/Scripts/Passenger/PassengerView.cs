@@ -47,6 +47,7 @@ namespace ExpressElevator.Passenger
         public void SetTargetPosition(Vector3 targetPosition)
         {
             TargetPosition = targetPosition;
+            Debug.Log(targetPosition);
             isMoving = true;
         }
 

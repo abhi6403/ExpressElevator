@@ -37,16 +37,8 @@ namespace ExpressElevator.Floor
         public void AddGuest(PassengerView passenger)
         {
             passengerList.Add(passenger);
-            if (count <= 2)
-            {
-                passenger.SetTargetPosition(waitingPoints[count]);
-                count++;
-            }
-
-            if (count == 3)
-            {
-                count = 0;
-            }
+            passenger.SetTargetPosition(waitingPoints[count]);
+            count++;
         }
 
         public void SetPoints()
