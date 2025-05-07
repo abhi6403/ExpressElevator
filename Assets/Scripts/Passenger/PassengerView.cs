@@ -12,6 +12,7 @@ namespace ExpressElevator.Passenger
         private Animator _animator;
         
         private bool isMoving = false;
+        private float _stopThreshold = 0.5f;
         
         private Vector3 TargetPosition;
 
@@ -20,7 +21,7 @@ namespace ExpressElevator.Passenger
             if (isMoving)
             {
                 MoveToEntrance(TargetPosition);
-                if (Vector3.Distance(transform.position, TargetPosition) < 0.5f)
+                if (Vector3.Distance(transform.position, TargetPosition) < _stopThreshold)
                 {
                     isMoving = false;
                     SetAnimatorValue(true);

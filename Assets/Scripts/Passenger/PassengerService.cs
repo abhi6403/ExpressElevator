@@ -10,12 +10,15 @@ namespace ExpressElevator.Passenger
         private PassengerController _passengerController;
         private FloorManager _floorManager;
 
-        public PassengerService(List<PassengerView> passengersList,FloorManager floorManager)
+        public PassengerService(List<PassengerView> passengersList)
         {
             _passengersList = passengersList;
-            _floorManager = floorManager;
         }
 
+        public void InjectDependencies(FloorManager floorManager)
+        {
+            _floorManager = floorManager;
+        }
         private PassengerView getRandomPassengers()
         {
             return _passengersList[Random.Range(0, _passengersList.Count)];

@@ -22,11 +22,23 @@ namespace ExpressElevator.Main
 
         protected override void Awake()
         {
-            FloorManager = new FloorManager(_firstPosition);
-            EventService = new EventService();
-            PassengerService = new PassengerService(_passengersListSO.passengers,FloorManager);
-            LevelService = new LevelService(_levelSO,EventService,PassengerService);
+            InitializeServices();
+            InjectDependencies();
         }
-        
+
+        private void InitializeServices()
+        {
+            EventService = new EventService();
+            PassengerService = new PassengerService(_passengersListSO.passengers);
+            LevelService = new LevelService(_levelSO);
+            FloorManager = new FloorManager(_firstPosition);
+        }
+
+        private void InjectDependencies()
+        {
+            PassengerService.InjectDependencies(FloorManager);
+            FloorManager.InjectDependencies(LevelService);
+            LevelService.InjectDependecies(EventService,PassengerService);
+        }
     }
 }

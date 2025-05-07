@@ -18,15 +18,19 @@ namespace ExpressElevator.Level
         
         private int _currentFloorIndex = 0;
         private const int MAX_FLOORS = 3;
-        public LevelService(LevelSO levels, EventService eventService, PassengerService passengerService)
+        public LevelService(LevelSO levels)
         {
             _levels = levels;
-            _eventService = eventService;
-            _passengerService = passengerService;
             OpenLevel(1);
-            SpawnPassengers();
         }
 
+        public void InjectDependecies(EventService eventService, PassengerService passengerService)
+        {
+            _eventService = eventService;
+            _passengerService = passengerService;
+            SpawnPassengers();
+        }
+        
         private void subscribeToEvents()
         {
             _eventService.OnMapSelected.AddListener(OpenLevel);
@@ -59,6 +63,11 @@ namespace ExpressElevator.Level
                     _currentFloorIndex++;
                 }*/
             }
+        }
+
+        public LevelSO.Level GetCurrentLevel()
+        {
+            return _currentLevel;
         }
     }
 }
