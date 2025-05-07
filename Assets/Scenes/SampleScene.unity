@@ -1034,7 +1034,7 @@ Transform:
   m_GameObject: {fileID: 576779430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.4, y: -22.5, z: -0.036069196}
+  m_LocalPosition: {x: -4.2, y: -22.1, z: -0.036069196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6261,6 +6261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _passengersListSO: {fileID: 11400000, guid: 87e6b3852c77fea4f9c7e5d1ac1a58e0, type: 2}
   _levelSO: {fileID: 11400000, guid: b3b22cc972b9d6b4e806a2ef86fbf010, type: 2}
+  _firstPosition: {x: -4.2, y: -23, z: -0.036069196}
 --- !u!4 &922285213
 Transform:
   m_ObjectHideFlags: 0
@@ -6522,7 +6523,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1223253340}
   - component: {fileID: 1223253341}
-  - component: {fileID: 1223253342}
   m_Layer: 0
   m_Name: FloorManager
   m_TagString: Untagged
@@ -6591,21 +6591,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1223253342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223253339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d64e9b8ee407e340ad0370af022f933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitingPoints: []
-  passengerList: []
-  firstPosition: {x: -2.33, y: -22.5, z: -0.036069196}
 --- !u!1 &1234145604
 GameObject:
   m_ObjectHideFlags: 0

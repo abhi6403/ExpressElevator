@@ -14,15 +14,19 @@ namespace ExpressElevator.Main
         public PassengerService PassengerService { get; private set; }
         public LevelService LevelService { get; private set; }
         public EventService EventService { get; private set; }
+        public FloorManager FloorManager { get; private set; }
         
         [SerializeField]private PassengersListSO _passengersListSO;
         [SerializeField]private LevelSO _levelSO;
+        [SerializeField] private Vector3 _firstPosition;
 
         protected override void Awake()
         {
+            FloorManager = new FloorManager(_firstPosition);
             EventService = new EventService();
-            PassengerService = new PassengerService(_passengersListSO.passengers);
+            PassengerService = new PassengerService(_passengersListSO.passengers,FloorManager);
             LevelService = new LevelService(_levelSO,EventService,PassengerService);
         }
+        
     }
 }

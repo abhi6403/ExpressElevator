@@ -11,19 +11,21 @@ namespace ExpressElevator.Passenger
         [SerializeField] 
         private Animator _animator;
         
-        private float stopThreshold = 0.05f;
         private bool isMoving = false;
         
         private Vector3 TargetPosition;
 
-        private void Start()
-        {
-            
-        }
-
         private void Update()
         {
-           MoveToEntrance(TargetPosition);
+            if (isMoving)
+            {
+                MoveToEntrance(TargetPosition);
+                if (Vector3.Distance(transform.position, TargetPosition) < 0.5f)
+                {
+                    isMoving = false;
+                    SetAnimatorValue(true);
+                }
+            }
         }
 
         public void OnMouseDown()
@@ -40,21 +42,21 @@ namespace ExpressElevator.Passenger
         {
             _animator.SetBool("Reached", value);
         }
-        
+
+        public void SetTargetPosition(Vector3 targetPosition)
+        {
+            TargetPosition = targetPosition;
+            isMoving = true;
+        }
 
         public void MoveToEntrance(Vector3 entrancePosition)
         {
-            transform.position = Vector3.MoveTowards(transform.position, entrancePosition, Time.deltaTime * 2f );
+            transform.position = Vector3.MoveTowards(transform.position, TargetPosition, Time.deltaTime * 2f );
         }
 
         public void MoveToFinal(Vector3 finalPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 2f * 5);
-        }
-
-        public void SetTagetPosition(Vector3 position)
-        {
-            TargetPosition = position;
         }
     }
 }
