@@ -27,6 +27,7 @@ namespace ExpressElevator.Passenger
         public void SpawnPassenger(Vector3 passengerTransform)
         {
                 _passengerController = new PassengerController(getRandomPassengers(), passengerTransform,_floorManager);
+            
         }
     }
 }

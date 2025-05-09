@@ -18,6 +18,8 @@ namespace ExpressElevator.Level
         
         private int _currentFloorIndex = 0;
         private const int MAX_FLOORS = 3;
+        private float _spawnDistance = 1f;
+        
         public LevelService(LevelSO levels)
         {
             _levels = levels;
@@ -51,9 +53,12 @@ namespace ExpressElevator.Level
             {
                 for (int j = 0; j < _currentLevel._numberOfPassengersPerFloor; j++)
                 {
-                  _passengerService.SpawnPassenger(_currentLevel.spawnPoints[_currentFloorIndex]);
+                        _passengerService.SpawnPassenger(_currentLevel.spawnPoints[_currentFloorIndex] - new Vector3(_spawnDistance, 0f, 0f));
+                        _spawnDistance += 0.5f;
                 }
 
+                _spawnDistance = 1f;
+                
                 if (_currentFloorIndex >= MAX_FLOORS)
                 {
                     break;
