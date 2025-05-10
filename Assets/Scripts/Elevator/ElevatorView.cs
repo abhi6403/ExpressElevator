@@ -1,4 +1,5 @@
 using System;
+using ExpressElevator.Main;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -9,7 +10,7 @@ namespace ExpressElevator.Elevator
 {
     public class ElevatorView : MonoBehaviour
     {
-        private ElevtorController _elevtorController;
+        private ElevatorController _elevtorController;
         private ElevatorState _elevatorState;
         [SerializeField]
         private GameObject _openedDoor;
@@ -21,7 +22,7 @@ namespace ExpressElevator.Elevator
             SetElelevatorState(ElevatorState.CLOSE);
             _highLighter.SetActive(false);
         }
-        public void SetController(ElevtorController elevtorController)
+        public void SetController(ElevatorController elevtorController)
         {
             _elevtorController = elevtorController;
         }
@@ -44,10 +45,14 @@ namespace ExpressElevator.Elevator
         }
 
         private void OnMouseDown()
-        {
+        { 
             
         }
 
+        private Vector3 GetOpenedDoorPosition()
+        {
+            return _openedDoor.transform.position;
+        }
         private void OnMouseOver()
         {
             _highLighter.SetActive(true);

@@ -19,7 +19,7 @@ namespace ExpressElevator.Level
             public List<Vector3> liftEntry;
             public List<Vector3> exitPoints;
             public List<Vector3> waitingArea;
-            
+            public List<Vector3> LiftArea;
         }
     }
 }

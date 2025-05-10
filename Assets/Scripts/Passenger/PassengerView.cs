@@ -23,7 +23,7 @@ namespace ExpressElevator.Passenger
             _spriteRenderer = GetComponent<SpriteRenderer>();
             SetPassengerState(PassengerState.NOT_SELECTED);
         }
-
+        
         private void Update()
         {
             if (isMoving)

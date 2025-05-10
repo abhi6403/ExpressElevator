@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ExpressElevator.Elevator;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
 using ExpressElevator.Level;
@@ -15,8 +16,10 @@ namespace ExpressElevator.Main
         public LevelService LevelService { get; private set; }
         public EventService EventService { get; private set; }
         public FloorManager FloorManager { get; private set; }
+        public ElevatorService ElevatorService { get; private set; }
         
         [SerializeField]private PassengersListSO _passengersListSO;
+        [SerializeField]private ElevatorView _elevatorPrefab;
         [SerializeField]private LevelSO _levelSO;
         [SerializeField] private Vector3 _firstPosition;
 
@@ -32,13 +35,15 @@ namespace ExpressElevator.Main
             PassengerService = new PassengerService(_passengersListSO.passengers);
             LevelService = new LevelService(_levelSO);
             FloorManager = new FloorManager(_firstPosition);
+            ElevatorService = new ElevatorService(_elevatorPrefab);
         }
 
         private void InjectDependencies()
         {
-            PassengerService.InjectDependencies(FloorManager);
+            PassengerService.InjectDependencies(FloorManager,EventService);
             FloorManager.InjectDependencies(LevelService);
-            LevelService.InjectDependecies(EventService,PassengerService);
+            LevelService.InjectDependecies(EventService,PassengerService,ElevatorService);
+            ElevatorService.InjectDependencies(EventService);
         }
     }
 }

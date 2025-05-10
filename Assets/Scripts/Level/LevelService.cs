@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ExpressElevator.Elevator;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
 using ExpressElevator.Main;
@@ -11,6 +12,7 @@ namespace ExpressElevator.Level
     {
         private EventService _eventService;
         private PassengerService _passengerService;
+        private ElevatorService _elevatorService;
         private FloorManager _floorManager;
         
         private LevelSO _levels;
@@ -26,10 +28,12 @@ namespace ExpressElevator.Level
             OpenLevel(1);
         }
 
-        public void InjectDependecies(EventService eventService, PassengerService passengerService)
+        public void InjectDependecies(EventService eventService, PassengerService passengerService,ElevatorService elevatorService)
         {
             _eventService = eventService;
             _passengerService = passengerService;
+            _elevatorService = elevatorService;
+            CreateLevel();
             SpawnPassengers();
         }
         
@@ -70,6 +74,13 @@ namespace ExpressElevator.Level
             }
         }
 
+        public void CreateLevel()
+        {
+            for (int i = 0; i < _currentLevel.LiftArea.Count; i++)
+            {
+                _elevatorService.CreateElevator(_currentLevel.LiftArea[i]);
+            }
+        }
         public LevelSO.Level GetCurrentLevel()
         {
             return _currentLevel;
