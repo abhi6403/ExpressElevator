@@ -14,9 +14,12 @@ namespace ExpressElevator.Elevator
         [SerializeField]
         private GameObject _openedDoor;
 
+        [SerializeField] private GameObject _highLighter;
+
         private void Start()
         {
             SetElelevatorState(ElevatorState.CLOSE);
+            _highLighter.SetActive(false);
         }
         public void SetController(ElevtorController elevtorController)
         {
@@ -37,19 +40,22 @@ namespace ExpressElevator.Elevator
         private void SetElelevatorState(ElevatorState state)
         {
             _elevatorState = state;
+            UpdateState();
         }
 
         private void OnMouseDown()
         {
-            if (_elevatorState == ElevatorState.CLOSE)
-            {
-                _elevatorState = ElevatorState.OPEN;
-                UpdateState();
-            }else if (_elevatorState == ElevatorState.OPEN)
-            {
-                _elevatorState = ElevatorState.CLOSE;
-                UpdateState();
-            }
+            
+        }
+
+        private void OnMouseOver()
+        {
+            _highLighter.SetActive(true);
+        }
+
+        private void OnMouseExit()
+        {
+            _highLighter.SetActive(false);
         }
     }
 }
