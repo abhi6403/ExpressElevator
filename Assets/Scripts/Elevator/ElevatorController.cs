@@ -10,11 +10,14 @@ namespace ExpressElevator.Elevator
         private EventService _eventService;
         private LevelService _levelService;
         private ElevatorSide _elevatorSide;
-        public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide)
+        private int _floorNumber;
+        public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide,int floorNumber)
         {
             _eventService = eventService;
             _levelService = levelService;
             _elevatorSide = elevatorSide;
+            _floorNumber = floorNumber;
+            Debug.Log(floorNumber);
             _elevatorView = GameObject.Instantiate(elevatorView, position, Quaternion.identity);
             _elevatorView.SetController(this);
         }
