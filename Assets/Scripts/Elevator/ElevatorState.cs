@@ -7,4 +7,11 @@ namespace ExpressElevator.Elevator
         OPEN,
         CLOSE,
     }
+
+    public enum ElevatorSide
+    {
+        LEFT,
+        MIDDLE,
+        RIGHT,
+    }
 }

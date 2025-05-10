@@ -13,6 +13,7 @@ namespace ExpressElevator.Level
         private EventService _eventService;
         private PassengerService _passengerService;
         private ElevatorService _elevatorService;
+        private ElevatorSide _elevatorSide;
         private FloorManager _floorManager;
         
         private LevelSO _levels;
@@ -21,6 +22,7 @@ namespace ExpressElevator.Level
         private int _currentFloorIndex = 0;
         private const int MAX_FLOORS = 3;
         private float _spawnDistance = 1f;
+        private bool isFirstElevatorSpawned = false;
         
         public LevelService(LevelSO levels)
         {
@@ -78,8 +80,35 @@ namespace ExpressElevator.Level
         {
             for (int i = 0; i < _currentLevel.LiftArea.Count; i++)
             {
-                _elevatorService.CreateElevator(_currentLevel.LiftArea[i],_eventService);
+                _elevatorService.CreateElevator(_currentLevel.LiftArea[i],_eventService,this,SetElevator());
             }
+        }
+
+        private ElevatorSide getElevatorSide()
+        {
+            if ( _elevatorSide == ElevatorSide.RIGHT)
+            {
+                return _elevatorSide = ElevatorSide.LEFT;
+            }else if(_elevatorSide == ElevatorSide.LEFT)
+            {
+                return _elevatorSide = ElevatorSide.MIDDLE;
+            }else if (_elevatorSide == ElevatorSide.MIDDLE)
+            {
+               return _elevatorSide = ElevatorSide.RIGHT;
+            }
+
+            return _elevatorSide;
+        }
+
+        private ElevatorSide SetElevator()
+        {
+            if (!isFirstElevatorSpawned)
+            {
+                isFirstElevatorSpawned = true;
+                return _elevatorSide = ElevatorSide.LEFT;
+            }
+            _elevatorSide = getElevatorSide();
+            return _elevatorSide;
         }
         public LevelSO.Level GetCurrentLevel()
         {

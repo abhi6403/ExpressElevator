@@ -1,4 +1,5 @@
 using ExpressElevator.Event;
+using ExpressElevator.Level;
 using UnityEngine;
 
 namespace ExpressElevator.Elevator
@@ -6,7 +7,7 @@ namespace ExpressElevator.Elevator
     public class ElevatorService
     {
         private ElevatorController _elevtorController;
-        private EventService _eventService;
+        private LevelService _levelService;
         private ElevatorView _elevatorView;
 
         public ElevatorService(ElevatorView elevatorView)
@@ -14,13 +15,13 @@ namespace ExpressElevator.Elevator
             _elevatorView = elevatorView;
         }
 
-        public void InjectDependencies(EventService eventService)
+        public void InjectDependencies(LevelService levelService)
         {
-            _eventService = eventService;
+           _levelService = levelService;
         }
-        public void CreateElevator(Vector3 position,EventService eventService)
+        public void CreateElevator(Vector3 position,EventService eventService,LevelService levelService,ElevatorSide side)
         {
-            _elevtorController = new ElevatorController(_elevatorView,position,eventService);
+            _elevtorController = new ElevatorController(_elevatorView,position,eventService,levelService,side);
         }
     }
 }
