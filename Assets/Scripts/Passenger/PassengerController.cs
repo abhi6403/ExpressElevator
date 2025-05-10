@@ -33,7 +33,7 @@ namespace ExpressElevator.Passenger
         }
         private void AddListeners()
         {
-            _eventService.MoveToLift.AddListener(_passengerView.MoveToEntrance);
+            _eventService.MoveToLift.AddListener(_passengerView.SetTargetPosition);
         }
     }
 }

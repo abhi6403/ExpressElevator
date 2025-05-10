@@ -18,9 +18,9 @@ namespace ExpressElevator.Elevator
         {
             _eventService = eventService;
         }
-        public void CreateElevator(Vector3 position)
+        public void CreateElevator(Vector3 position,EventService eventService)
         {
-            _elevtorController = new ElevatorController(_elevatorView,position);
+            _elevtorController = new ElevatorController(_elevatorView,position,eventService);
         }
     }
 }

@@ -58,7 +58,7 @@ namespace ExpressElevator.Level
                 for (int j = 0; j < _currentLevel._numberOfPassengersPerFloor; j++)
                 {
                         _passengerService.SpawnPassenger(_currentLevel.spawnPoints[_currentFloorIndex] - new Vector3(_spawnDistance, 0f, 0f));
-                        _spawnDistance += 0.5f;
+                        _spawnDistance -= 0.5f;
                 }
 
                 _spawnDistance = 1f;
@@ -78,7 +78,7 @@ namespace ExpressElevator.Level
         {
             for (int i = 0; i < _currentLevel.LiftArea.Count; i++)
             {
-                _elevatorService.CreateElevator(_currentLevel.LiftArea[i]);
+                _elevatorService.CreateElevator(_currentLevel.LiftArea[i],_eventService);
             }
         }
         public LevelSO.Level GetCurrentLevel()

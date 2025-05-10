@@ -46,7 +46,7 @@ namespace ExpressElevator.Elevator
 
         private void OnMouseDown()
         { 
-            
+            _elevtorController.MoveToElevator();
         }
 
         private Vector3 GetOpenedDoorPosition()
@@ -61,6 +61,11 @@ namespace ExpressElevator.Elevator
         private void OnMouseExit()
         {
             _highLighter.SetActive(false);
+        }
+
+        public Vector3 GetEntryPosition()
+        {
+            return _openedDoor.transform.position;
         }
     }
 }
