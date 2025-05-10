@@ -7,6 +7,7 @@ namespace ExpressElevator.Passenger
     public class PassengerView : MonoBehaviour
     {
         private PassengerController _passengerController;
+        private PassengerState _passengerState;
         
         [SerializeField] 
         private Animator _animator;
@@ -15,6 +16,13 @@ namespace ExpressElevator.Passenger
         private float _stopThreshold = 0.5f;
         
         private Vector3 TargetPosition;
+        private SpriteRenderer _spriteRenderer;
+
+        private void Start()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            SetPassengerState(PassengerState.NOT_SELECTED);
+        }
 
         private void Update()
         {
@@ -31,7 +39,36 @@ namespace ExpressElevator.Passenger
 
         public void OnMouseDown()
         {
-            Destroy(gameObject);
+            if (_passengerState == PassengerState.NOT_SELECTED)
+            {
+                SetPassengerState(PassengerState.SELECTED);
+                CheckForSelected();
+            }else if (_passengerState == PassengerState.SELECTED)
+            {
+                SetPassengerState(PassengerState.NOT_SELECTED);
+                CheckForSelected();
+            }
+        }
+
+        private void CheckForSelected()
+        {
+            if (_passengerState == PassengerState.SELECTED)
+            {
+                _spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+            }else if (_passengerState == PassengerState.NOT_SELECTED)
+            {
+                _spriteRenderer.color = new Color(1, 1, 1, 1);
+            }
+        }
+
+        private void SetPassengerState(PassengerState passengerState)
+        {
+            _passengerState = passengerState;
+        }
+
+        public void OnMouseOver()
+        {
+            
         }
 
         public void SetController(PassengerController passengerController)
