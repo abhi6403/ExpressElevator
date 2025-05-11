@@ -19,7 +19,6 @@ namespace ExpressElevator.Elevator
 
         private void Start()
         {
-            SetElelevatorState(ElevatorState.CLOSE);
             _highLighter.SetActive(false);
         }
         public void SetController(ElevatorController elevtorController)
@@ -30,15 +29,15 @@ namespace ExpressElevator.Elevator
         {
             if (_elevatorState == ElevatorState.CLOSE)
             {
-                _openedDoor.SetActive(true);
+                _openedDoor.SetActive(false);
             }else
             if (_elevatorState == ElevatorState.OPEN)
             {
-                _openedDoor.SetActive(false);
+                _openedDoor.SetActive(true);
             }
         }
-
-        private void SetElelevatorState(ElevatorState state)
+        
+        public void SetElelevatorState(ElevatorState state)
         {
             _elevatorState = state;
             UpdateState();

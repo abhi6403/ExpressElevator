@@ -85,6 +85,7 @@ namespace ExpressElevator.Passenger
         {
             TargetPosition = targetPosition;
             isMoving = true;
+            SetAnimatorValue(false);
         }
 
         public void MoveToEntrance(Vector3 entrancePosition)

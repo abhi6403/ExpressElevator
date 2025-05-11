@@ -7,11 +7,7 @@
     <list default="true" id="a43c8a3e-425a-42d1-988a-4b09f5f544c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/EventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/EventController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/EventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/EventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level/LevelService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level/LevelService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,6 +127,7 @@
       <workItem from="1746872858527" duration="12216000" />
       <workItem from="1746929664985" duration="2095000" />
       <workItem from="1746932045797" duration="338000" />
+      <workItem from="1746934062465" duration="1207000" />
     </task>
     <servers />
   </component>

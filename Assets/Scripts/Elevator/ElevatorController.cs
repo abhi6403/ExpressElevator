@@ -20,6 +20,7 @@ namespace ExpressElevator.Elevator
             _floorNumber = floorNumber;
             _elevatorView = GameObject.Instantiate(elevatorView, position, Quaternion.identity);
             _elevatorView.SetController(this);
+            SetWorkingLift();
         }
 
         public void MoveToElevator()
@@ -27,9 +28,33 @@ namespace ExpressElevator.Elevator
             _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
         }
 
+        public void SetWorkingLift()
+        {
+            if (_levelService.GetCurrentLevel()._levelID == 1)
+            {
+                if (_elevatorSide == ElevatorSide.MIDDLE)
+                {
+                    _elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                }
+                else
+                {
+                    _elevatorView.SetElelevatorState(ElevatorState.CLOSE);
+                }
+            }
+        }
         public void SetCurrentFloor(int currentFloorNumber)
         {
             _currentFloornumber = currentFloorNumber;
+        }
+
+        public ElevatorSide GetElevatorSide()
+        {
+            return _elevatorSide;
+        }
+
+        public LevelService GetLevelService()
+        {
+            return _levelService;
         }
     }
 }
