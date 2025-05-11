@@ -1,4 +1,5 @@
 using System;
+using ExpressElevator.Elevator;
 using ExpressElevator.Floor;
 using UnityEngine;
 
@@ -95,9 +96,12 @@ namespace ExpressElevator.Passenger
 
         public void MoveInsideLift(Vector3 liftPosition, int floorNumber)
         {
-            if (_passengerController.GetPassengerFloor() == floorNumber)
+            if (_passengerState == PassengerState.SELECTED)
             {
-                SetTargetPosition(liftPosition);
+                if (_passengerController.GetPassengerFloor() == floorNumber)
+                {
+                    SetTargetPosition(liftPosition);
+                }
             }
         }
         public void MoveToFinal(Vector3 finalPosition)
