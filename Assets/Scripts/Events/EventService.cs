@@ -7,11 +7,14 @@ namespace ExpressElevator.Event
     {
         public EventController<int> OnMapSelected { get; private set; }
         public EventController<Vector3,int> MoveToLift { get; private set; }
+        
+        public EventController<int> ControlPannelClicked { get; private set; }
 
         public EventService()
         {
             OnMapSelected = new EventController<int>();
             MoveToLift = new EventController<Vector3,int>();
+            ControlPannelClicked = new EventController<int>();
         }
     }
 }

@@ -5,6 +5,7 @@ using ExpressElevator.Event;
 using ExpressElevator.Floor;
 using ExpressElevator.Level;
 using ExpressElevator.Passenger;
+using ExpressElevator.UI;
 using ExpressElevator.Utilities;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ namespace ExpressElevator.Main
         public EventService EventService { get; private set; }
         public FloorManager FloorManager { get; private set; }
         public ElevatorService ElevatorService { get; private set; }
+        
+        [SerializeField]private UIService _uiService;
+        public UIService UIService => _uiService;
         
         [SerializeField]private PassengersListSO _passengersListSO;
         [SerializeField]private ElevatorView _elevatorPrefab;
@@ -36,6 +40,7 @@ namespace ExpressElevator.Main
             LevelService = new LevelService(_levelSO);
             FloorManager = new FloorManager(_firstPosition);
             ElevatorService = new ElevatorService(_elevatorPrefab);
+            _uiService.UIStart();
         }
 
         private void InjectDependencies()
@@ -44,6 +49,7 @@ namespace ExpressElevator.Main
             FloorManager.InjectDependencies(LevelService);
             LevelService.InjectDependecies(EventService,PassengerService,ElevatorService);
             ElevatorService.InjectDependencies(LevelService);
+            _uiService.InjectDependencies(EventService);
         }
     }
 }
