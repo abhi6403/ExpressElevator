@@ -24,7 +24,7 @@ namespace ExpressElevator.Elevator
 
         public void MoveToElevator()
         {
-            _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[0]);
+            _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
         }
 
         public void SetCurrentFloor(int currentFloorNumber)

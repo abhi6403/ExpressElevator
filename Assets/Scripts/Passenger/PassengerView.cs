@@ -92,6 +92,13 @@ namespace ExpressElevator.Passenger
             transform.position = Vector3.MoveTowards(transform.position, TargetPosition, Time.deltaTime * 2f );
         }
 
+        public void MoveInsideLift(Vector3 liftPosition, int floorNumber)
+        {
+            if (_passengerController.GetPassengerFloor() == floorNumber)
+            {
+                SetTargetPosition(liftPosition);
+            }
+        }
         public void MoveToFinal(Vector3 finalPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 2f * 5);

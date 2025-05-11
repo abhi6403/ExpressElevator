@@ -13,8 +13,9 @@ namespace ExpressElevator.Passenger
         private EventService _eventService;
         private FloorManager _floorManager;
         private Vector3 _targetPosition;
+        private int _currentFloor;
 
-        public PassengerController(PassengerView passengerView,Vector3 passengerPosition,FloorManager floorManager,EventService eventService)
+        public PassengerController(PassengerView passengerView,Vector3 passengerPosition,FloorManager floorManager,EventService eventService,int currentFloor)
         {
             _passengerModel = new PassengerModel();
             _passengerView = GameObject.Instantiate(passengerView, passengerPosition, Quaternion.identity);
@@ -23,6 +24,7 @@ namespace ExpressElevator.Passenger
             _passengerView.SetAnimatorValue(false);
             _floorManager = floorManager;
             _eventService = eventService;
+            _currentFloor = currentFloor;
             AddPassenger();
             AddListeners();
         }
@@ -33,7 +35,12 @@ namespace ExpressElevator.Passenger
         }
         private void AddListeners()
         {
-            _eventService.MoveToLift.AddListener(_passengerView.SetTargetPosition);
+            _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
+        }
+
+        public int GetPassengerFloor()
+        {
+            return _currentFloor;
         }
     }
 }

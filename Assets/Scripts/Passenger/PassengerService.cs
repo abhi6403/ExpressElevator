@@ -27,10 +27,11 @@ namespace ExpressElevator.Passenger
             return _passengersList[Random.Range(0, _passengersList.Count)];
         }
 
-        public void SpawnPassenger(Vector3 passengerTransform)
+        public void SpawnPassenger(Vector3 passengerTransform,int currentFloor)
         {
-                _passengerController = new PassengerController(getRandomPassengers(), passengerTransform,_floorManager,_eventService);
-            
+            _passengerController = new PassengerController(getRandomPassengers(), passengerTransform, _floorManager,
+                _eventService, currentFloor);
+
         }
     }
 }
