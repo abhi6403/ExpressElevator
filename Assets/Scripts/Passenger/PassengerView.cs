@@ -43,11 +43,10 @@ namespace ExpressElevator.Passenger
             if (_passengerState == PassengerState.NOT_SELECTED)
             {
                 SetPassengerState(PassengerState.SELECTED);
-                CheckForSelected();
+                
             }else if (_passengerState == PassengerState.SELECTED)
             {
                 SetPassengerState(PassengerState.NOT_SELECTED);
-                CheckForSelected();
             }
         }
 
@@ -65,6 +64,7 @@ namespace ExpressElevator.Passenger
         private void SetPassengerState(PassengerState passengerState)
         {
             _passengerState = passengerState;
+            CheckForSelected();
         }
 
         public void OnMouseOver()
@@ -101,6 +101,7 @@ namespace ExpressElevator.Passenger
                 if (_passengerController.GetPassengerFloor() == floorNumber)
                 {
                     SetTargetPosition(liftPosition);
+                    SetPassengerState(PassengerState.NOT_SELECTED);
                 }
             }
         }
