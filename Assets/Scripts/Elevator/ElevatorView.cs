@@ -54,7 +54,15 @@ namespace ExpressElevator.Elevator
         }
         private void OnMouseOver()
         {
-            _highLighter.SetActive(true);
+            if (_elevatorState == ElevatorState.CLOSE)
+            {
+                _highLighter.SetActive(false);
+            }
+            else
+            {
+                _highLighter.SetActive(true);
+            }
+            
         }
 
         private void OnMouseExit()
