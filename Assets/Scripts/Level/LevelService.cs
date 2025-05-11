@@ -24,6 +24,7 @@ namespace ExpressElevator.Level
         private float _spawnDistance = 1f;
         private bool isFirstElevatorSpawned = false;
         private int _currentFloor = 1;
+        private int temp = 1;
         
         public LevelService(LevelSO levels)
         {
@@ -38,6 +39,7 @@ namespace ExpressElevator.Level
             _elevatorService = elevatorService;
             CreateLevel();
             SpawnPassengers();
+            elevatorService.SetCurrentFloor();
         }
         
         private void subscribeToEvents()
@@ -83,13 +85,14 @@ namespace ExpressElevator.Level
             {
                 _elevatorService.CreateElevator(_currentLevel.LiftArea[i],_eventService,this,SetElevator(),_currentFloor);
                 
-                if (_currentFloor >= MAX_FLOORS)
+                if (temp >= MAX_FLOORS)
                 {
-                    _currentFloor = 1;
+                    _currentFloor++;
+                    temp = 1;
                 }
                 else
                 {
-                    _currentFloor++;
+                    temp++;
                 }
             }
         }

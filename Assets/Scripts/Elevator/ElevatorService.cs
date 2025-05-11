@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ExpressElevator.Event;
 using ExpressElevator.Level;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace ExpressElevator.Elevator
         private ElevatorController _elevtorController;
         private LevelService _levelService;
         private ElevatorView _elevatorView;
+        private int currentFloor = 0;
+        private List<ElevatorController> elevatorControllers = new List<ElevatorController>();
 
         public ElevatorService(ElevatorView elevatorView)
         {
@@ -22,6 +25,15 @@ namespace ExpressElevator.Elevator
         public void CreateElevator(Vector3 position,EventService eventService,LevelService levelService,ElevatorSide side,int floorNumber)
         {
             _elevtorController = new ElevatorController(_elevatorView,position,eventService,levelService,side,floorNumber);
+            elevatorControllers.Add(_elevtorController);
+        }
+
+        public void SetCurrentFloor()
+        {
+            for (int i = 0; i < elevatorControllers.Count; i++)
+            {
+                elevatorControllers[i].SetCurrentFloor(currentFloor);
+            }
         }
     }
 }
