@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a43c8a3e-425a-42d1-988a-4b09f5f544c9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Elevator.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Elevator.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/EventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/EventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main/GameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main/GameService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ElevatorControlPannel/ElevatorControlPannelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ElevatorControlPannel/ElevatorControlPannelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +139,7 @@
       <workItem from="1746940641261" duration="625000" />
       <workItem from="1746942243898" duration="3111000" />
       <workItem from="1746959965511" duration="5442000" />
-      <workItem from="1746968803094" duration="4595000" />
+      <workItem from="1746968803094" duration="5273000" />
     </task>
     <servers />
   </component>

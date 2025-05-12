@@ -12,9 +12,8 @@ namespace ExpressElevator.Elevator
     {
         private ElevatorController _elevtorController;
         private ElevatorState _elevatorState;
-        [SerializeField]
-        private GameObject _openedDoor;
-
+        [SerializeField] private GameObject _openedDoor;
+        [SerializeField] private GameObject _notWorkingDoor;
         [SerializeField] private GameObject _highLighter;
 
         private void Start()
@@ -34,6 +33,10 @@ namespace ExpressElevator.Elevator
             if (_elevatorState == ElevatorState.OPEN)
             {
                 _openedDoor.SetActive(true);
+            }else if (_elevatorState == ElevatorState.NOTWORKING)
+            {
+                _openedDoor.SetActive(false);
+                _notWorkingDoor.SetActive(true);
             }
         }
         

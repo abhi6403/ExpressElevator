@@ -6,6 +6,7 @@ namespace ExpressElevator.Elevator
     {
         OPEN,
         CLOSE,
+        NOTWORKING,
     }
 
     public enum ElevatorSide

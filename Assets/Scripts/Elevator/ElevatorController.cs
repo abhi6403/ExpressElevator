@@ -55,7 +55,7 @@ namespace ExpressElevator.Elevator
                 }
                 else
                 {
-                    _elevatorView.SetElelevatorState(ElevatorState.CLOSE);
+                    _elevatorView.SetElelevatorState(ElevatorState.NOTWORKING);
                 }
             }
         }
