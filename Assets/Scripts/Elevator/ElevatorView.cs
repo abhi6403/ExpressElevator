@@ -47,8 +47,12 @@ namespace ExpressElevator.Elevator
         }
 
         private void OnMouseDown()
-        { 
-            _elevtorController.MoveToElevator();
+        {
+            if (_elevatorState == ElevatorState.OPEN)
+            {
+                _elevtorController.MoveToElevator();
+            }
+            _elevtorController.DeselectPassenger();
         }
 
         private Vector3 GetOpenedDoorPosition()

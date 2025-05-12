@@ -38,13 +38,12 @@ namespace ExpressElevator.Elevator
             {
                 _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
             }
-            else
-            {
-                _eventService.DeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
-            }
-            
         }
 
+        public void DeselectPassenger()
+        {
+            _eventService.DeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
+        }
         public void SetWorkingLift()
         {
             if (_levelService.GetCurrentLevel()._levelID == 1)

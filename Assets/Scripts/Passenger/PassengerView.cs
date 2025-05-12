@@ -103,6 +103,7 @@ namespace ExpressElevator.Passenger
                     SetTargetPosition(liftPosition);
                     _passengerController.AddPassengerToList();
                     SetPassengerState(PassengerState.NOT_SELECTED);
+                    SetPassengerState(PassengerState.BOARDED);
                 }
             }
         }
