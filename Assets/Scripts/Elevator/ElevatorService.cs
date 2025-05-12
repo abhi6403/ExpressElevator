@@ -25,7 +25,7 @@ namespace ExpressElevator.Elevator
 
         public void AddListener()
         {
-            _eventService.OnBoardingPassenger.AddListener(AddPassenger);
+            _eventService.OnMovingInPassenger.AddListener(AddPassenger);
         }
         public void InjectDependencies(LevelService levelService,EventService eventService)
         {

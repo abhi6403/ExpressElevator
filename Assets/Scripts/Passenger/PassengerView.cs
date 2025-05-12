@@ -38,6 +38,11 @@ namespace ExpressElevator.Passenger
             }
         }
 
+        public void AddListener()
+        {
+            
+        }
+
         public void OnMouseDown()
         {
             if (_passengerState == PassengerState.NOT_SELECTED)
@@ -59,6 +64,10 @@ namespace ExpressElevator.Passenger
             {
                 _spriteRenderer.color = new Color(1, 1, 1, 1);
             }
+          //else if (_passengerState == PassengerState.BOARDED)
+          //{
+          //    SetPassengerState(PassengerState.SELECTED);
+          //}
         }
 
         public void SetPassengerState(PassengerState passengerState)
@@ -67,6 +76,18 @@ namespace ExpressElevator.Passenger
             CheckForSelected();
         }
 
+        public void ChangeState()
+        {
+            Debug.Log(_passengerState);
+            if (_passengerState == PassengerState.MOVINGIN)
+            {
+                DisablePassenger();
+            }
+            else
+            {
+                _passengerState = PassengerState.NOT_SELECTED;
+            }
+        }
         public void OnMouseOver()
         {
             
@@ -103,9 +124,15 @@ namespace ExpressElevator.Passenger
                     SetTargetPosition(liftPosition);
                     _passengerController.AddPassengerToList();
                     SetPassengerState(PassengerState.NOT_SELECTED);
-                    SetPassengerState(PassengerState.BOARDED);
+                    SetPassengerState(PassengerState.MOVINGIN);
+                    Debug.Log(_passengerState);
                 }
             }
+        }
+
+        public void DisablePassenger()
+        {
+            gameObject.SetActive(false);
         }
         public void MoveToFinal(Vector3 finalPosition)
         {

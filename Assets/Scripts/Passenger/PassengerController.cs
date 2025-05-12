@@ -36,16 +36,21 @@ namespace ExpressElevator.Passenger
         private void AddListeners()
         {
             _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
-            _eventService.DeselectPassenger.AddListener(_passengerView.SetPassengerState);
+            _eventService.DeselectPassenger.AddListener(_passengerView.ChangeState);
         }
 
         public void AddPassengerToList()
         {
-            _eventService.OnBoardingPassenger.InvokeEvent(this);
+            _eventService.OnMovingInPassenger.InvokeEvent(this);
         }
         public int GetPassengerFloor()
         {
             return _currentFloor;
+        }
+
+        public EventService GetEventService()
+        {
+            return _eventService;
         }
     }
 }

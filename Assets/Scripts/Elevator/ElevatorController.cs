@@ -42,7 +42,7 @@ namespace ExpressElevator.Elevator
 
         public void DeselectPassenger()
         {
-            _eventService.DeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
+            //_eventService.OnDeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
         }
         public void SetWorkingLift()
         {
