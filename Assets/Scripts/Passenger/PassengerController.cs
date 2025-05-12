@@ -36,8 +36,13 @@ namespace ExpressElevator.Passenger
         private void AddListeners()
         {
             _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
+            _eventService.DeselectPassenger.AddListener(_passengerView.SetPassengerState);
         }
 
+        public void AddPassengerToList()
+        {
+            _eventService.OnBoardingPassenger.InvokeEvent(this);
+        }
         public int GetPassengerFloor()
         {
             return _currentFloor;

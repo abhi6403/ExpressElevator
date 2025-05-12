@@ -48,7 +48,7 @@ namespace ExpressElevator.Main
             PassengerService.InjectDependencies(FloorManager,EventService);
             FloorManager.InjectDependencies(LevelService);
             LevelService.InjectDependecies(EventService,PassengerService,ElevatorService);
-            ElevatorService.InjectDependencies(LevelService);
+            ElevatorService.InjectDependencies(LevelService,EventService);
             _uiService.InjectDependencies(EventService);
         }
     }

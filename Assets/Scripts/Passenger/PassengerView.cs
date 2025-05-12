@@ -61,7 +61,7 @@ namespace ExpressElevator.Passenger
             }
         }
 
-        private void SetPassengerState(PassengerState passengerState)
+        public void SetPassengerState(PassengerState passengerState)
         {
             _passengerState = passengerState;
             CheckForSelected();
@@ -101,6 +101,7 @@ namespace ExpressElevator.Passenger
                 if (_passengerController.GetPassengerFloor() == floorNumber)
                 {
                     SetTargetPosition(liftPosition);
+                    _passengerController.AddPassengerToList();
                     SetPassengerState(PassengerState.NOT_SELECTED);
                 }
             }

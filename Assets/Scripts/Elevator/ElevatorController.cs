@@ -1,5 +1,6 @@
 using ExpressElevator.Event;
 using ExpressElevator.Level;
+using ExpressElevator.Passenger;
 using UnityEngine;
 
 namespace ExpressElevator.Elevator
@@ -7,17 +8,19 @@ namespace ExpressElevator.Elevator
     public class ElevatorController
     {
         private ElevatorView _elevatorView;
+        private ElevatorService _elevatorService;
         private EventService _eventService;
         private LevelService _levelService;
         private ElevatorSide _elevatorSide;
         private int _floorNumber;
         private int _currentFloornumber;
-        public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide,int floorNumber)
+        public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide,int floorNumber,ElevatorService elevatorService)
         {
             _eventService = eventService;
             _levelService = levelService;
             _elevatorSide = elevatorSide;
             _floorNumber = floorNumber;
+            _elevatorService = elevatorService; 
             _elevatorView = GameObject.Instantiate(elevatorView, position, Quaternion.identity);
             _elevatorView.SetController(this);
             SetWorkingLift();
@@ -31,7 +34,15 @@ namespace ExpressElevator.Elevator
         }
         public void MoveToElevator()
         {
-            _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
+            if (_elevatorService.GetPassengerCount() < 5)
+            {
+                _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
+            }
+            else
+            {
+                _eventService.DeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
+            }
+            
         }
 
         public void SetWorkingLift()
