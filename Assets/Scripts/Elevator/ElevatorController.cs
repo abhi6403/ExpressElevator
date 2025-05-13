@@ -64,6 +64,7 @@ namespace ExpressElevator.Elevator
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
             {
                 _elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                _elevatorService.SetCurrentFloor(floorNumber);
             }
             else
             {

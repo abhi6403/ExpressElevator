@@ -13,7 +13,7 @@ namespace ExpressElevator.Passenger
         [SerializeField] 
         private Animator _animator;
         
-        private bool isMoving = false;
+        private bool _isMoving = false;
         private float _stopThreshold = 0.5f;
         
         private Vector3 TargetPosition;
@@ -27,12 +27,12 @@ namespace ExpressElevator.Passenger
         
         private void Update()
         {
-            if (isMoving)
+            if (_isMoving)
             {
                 MoveToEntrance(TargetPosition);
                 if (Vector3.Distance(transform.position, TargetPosition) < _stopThreshold)
                 {
-                    isMoving = false;
+                    _isMoving = false;
                     SetAnimatorValue(true);
                 }
             }
@@ -82,7 +82,10 @@ namespace ExpressElevator.Passenger
             if (_passengerState == PassengerState.MOVINGIN)
             {
                 DisablePassenger();
-                
+            }
+            else if(_passengerState!=PassengerState.MOVINGIN)
+            {
+                SetPassengerState(PassengerState.NOT_SELECTED);
             }
         }
         public void OnMouseOver()
@@ -103,7 +106,7 @@ namespace ExpressElevator.Passenger
         public void SetTargetPosition(Vector3 targetPosition)
         {
             TargetPosition = targetPosition;
-            isMoving = true;
+            _isMoving = true;
             SetAnimatorValue(false);
         }
 
@@ -135,7 +138,9 @@ namespace ExpressElevator.Passenger
         public void EnablePassenger()
         {
             gameObject.SetActive(true);
+            SetAnimatorValue(true);
         }
+
         public void MoveToFinal(Vector3 finalPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 2f * 5);

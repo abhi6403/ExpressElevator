@@ -15,6 +15,7 @@ namespace ExpressElevator.Elevator
         private ElevatorView _elevatorView;
         private EventService _eventService;
         private int currentFloor = 0;
+        private Vector3 currentFloorPosition;
         private List<ElevatorController> elevatorControllers = new List<ElevatorController>();
         private List<PassengerController> passengerControllers = new List<PassengerController>();
 
@@ -58,11 +59,22 @@ namespace ExpressElevator.Elevator
             for (int i = 0; i < passengerControllers.Count; i++)
             {
                 passengerControllers[i].ShowPassenger();
+                passengerControllers[i].SetCurrentFloor(currentFloor);
+                passengerControllers[i].SetCurrentFloorPosition(_levelService.GetCurrentLevel().liftEntry[currentFloor]);
             }
         }
         public int GetPassengerCount()
         {
             return passengerControllers.Count;
+        }
+
+        public void SetCurrentFloorPosition(Vector3 position)
+        {
+            currentFloorPosition = position;
+        }
+        public void SetCurrentFloor(int floorNumber)
+        {
+            currentFloor = floorNumber;
         }
     }
 }

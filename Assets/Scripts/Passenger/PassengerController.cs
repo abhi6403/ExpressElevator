@@ -48,6 +48,10 @@ namespace ExpressElevator.Passenger
             return _currentFloor;
         }
 
+        public void SetCurrentFloor(int floor)
+        {
+            _currentFloor = floor;
+        }
         public void ShowPassenger()
         {
             _passengerView.EnablePassenger();
@@ -55,6 +59,11 @@ namespace ExpressElevator.Passenger
         public EventService GetEventService()
         {
             return _eventService;
+        }
+
+        public void SetCurrentFloorPosition(Vector3 position)
+        {
+            _passengerView.transform.position = position;
         }
     }
 }
