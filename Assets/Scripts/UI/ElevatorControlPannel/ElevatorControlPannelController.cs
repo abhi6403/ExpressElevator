@@ -48,6 +48,7 @@ namespace ExpressElevator.UI
         public void SetPassengerState()
         {
             _eventService.DeselectPassenger.InvokeEvent();
+            _eventService.OnControlPannelClicked.InvokeEvent();
         }
     }
 }

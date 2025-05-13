@@ -26,6 +26,7 @@ namespace ExpressElevator.Elevator
         public void AddListener()
         {
             _eventService.OnMovingInPassenger.AddListener(AddPassenger);
+            _eventService.OnControlPannelClicked.AddListener(ShowPassenger);
         }
         public void InjectDependencies(LevelService levelService,EventService eventService)
         {
@@ -52,6 +53,13 @@ namespace ExpressElevator.Elevator
                 passengerControllers.Add(passenger);
         }
 
+        public void ShowPassenger()
+        {
+            for (int i = 0; i < passengerControllers.Count; i++)
+            {
+                passengerControllers[i].ShowPassenger();
+            }
+        }
         public int GetPassengerCount()
         {
             return passengerControllers.Count;

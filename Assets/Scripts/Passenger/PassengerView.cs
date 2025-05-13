@@ -82,10 +82,7 @@ namespace ExpressElevator.Passenger
             if (_passengerState == PassengerState.MOVINGIN)
             {
                 DisablePassenger();
-            }
-            else
-            {
-                _passengerState = PassengerState.NOT_SELECTED;
+                
             }
         }
         public void OnMouseOver()
@@ -133,6 +130,11 @@ namespace ExpressElevator.Passenger
         public void DisablePassenger()
         {
             gameObject.SetActive(false);
+        }
+
+        public void EnablePassenger()
+        {
+            gameObject.SetActive(true);
         }
         public void MoveToFinal(Vector3 finalPosition)
         {

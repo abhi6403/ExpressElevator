@@ -48,6 +48,10 @@ namespace ExpressElevator.Passenger
             return _currentFloor;
         }
 
+        public void ShowPassenger()
+        {
+            _passengerView.EnablePassenger();
+        }
         public EventService GetEventService()
         {
             return _eventService;
