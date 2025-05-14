@@ -16,7 +16,7 @@ namespace ExpressElevator.Passenger
 
         public void OnStateEnter()
         {
-
+            Owner._passengerView.GetSpriteRenderer().color = new Color(1, 1, 1, 0.5f);
         }
 
         public void Update()
@@ -26,7 +26,7 @@ namespace ExpressElevator.Passenger
 
         public void OnStateExit()
         {
-
+            
         }
     }
 }

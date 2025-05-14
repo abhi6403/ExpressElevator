@@ -8,11 +8,13 @@ namespace ExpressElevator.Passenger
     {
         protected PassengerController _owner;
         protected IState _currentState;
-        protected Dictionary<PassengerState, IState> _states;
+        protected Dictionary<PassengerState, IState> _states = new Dictionary<PassengerState, IState>();
         
         public PassengerStateMachine(PassengerController controller) 
         {
             _owner = controller;
+            CreateStates();
+            SetOwner();
         }
 
         public void Update() => _currentState?.Update();
@@ -35,8 +37,6 @@ namespace ExpressElevator.Passenger
         
         private void CreateStates()
         {
-            //_states = new Dictionary<PassengerState, IState>();
-            
             _states.Add(PassengerState.SELECTED,new SelectedState(this));
             _states.Add(PassengerState.NOT_SELECTED,new NotSelectedState(this));
             _states.Add(PassengerState.MOVINGIN,new MovedInState(this));

@@ -22,7 +22,7 @@ namespace ExpressElevator.Passenger
         private void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            SetPassengerState(PassengerState.NOT_SELECTED);
+            _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
         }
         
         private void Update()
@@ -36,6 +36,8 @@ namespace ExpressElevator.Passenger
                     SetAnimatorValue(true);
                 }
             }
+            
+            _passengerController.Update();
         }
 
         public void AddListener()
@@ -47,33 +49,20 @@ namespace ExpressElevator.Passenger
         {
             if (_passengerState == PassengerState.NOT_SELECTED)
             {
-                SetPassengerState(PassengerState.SELECTED);
+                _passengerController.SetStateMachineState(PassengerState.SELECTED);
+                _passengerState = PassengerState.SELECTED;
                 
             }else if (_passengerState == PassengerState.SELECTED)
             {
-                SetPassengerState(PassengerState.NOT_SELECTED);
+                _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
+                _passengerState = PassengerState.NOT_SELECTED;
             }
         }
-
-        private void CheckForSelected()
-        {
-            if (_passengerState == PassengerState.SELECTED)
-            {
-                _spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-            }else if (_passengerState == PassengerState.NOT_SELECTED)
-            {
-                _spriteRenderer.color = new Color(1, 1, 1, 1);
-            }
-          //else if (_passengerState == PassengerState.BOARDED)
-          //{
-          //    SetPassengerState(PassengerState.SELECTED);
-          //}
-        }
+        
 
         public void SetPassengerState(PassengerState passengerState)
         {
             _passengerState = passengerState;
-            CheckForSelected();
         }
 
         public void ChangeState()
@@ -144,6 +133,11 @@ namespace ExpressElevator.Passenger
         public void MoveToFinal(Vector3 finalPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 2f * 5);
+        }
+
+        public SpriteRenderer GetSpriteRenderer()
+        {
+            return _spriteRenderer;
         }
     }
 }
