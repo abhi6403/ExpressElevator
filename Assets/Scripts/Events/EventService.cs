@@ -12,8 +12,6 @@ namespace ExpressElevator.Event
         public EventController<int> ControlPannelClicked { get; private set; }
         public EventController OnControlPannelClicked { get; private set; }
         public EventController<PassengerController> OnMovingInPassenger { get; private set; }
-        
-        public EventController DeselectPassenger { get; private set; }
         public EventController<PassengerState> OnDeselectPassenger { get; private set; }
         
         public EventService()
@@ -22,7 +20,6 @@ namespace ExpressElevator.Event
             MoveToLift = new EventController<Vector3,int>();
             ControlPannelClicked = new EventController<int>();
             OnMovingInPassenger = new EventController<PassengerController>();
-            DeselectPassenger = new EventController();
             OnDeselectPassenger = new EventController<PassengerState>();
             OnControlPannelClicked = new EventController();
         }

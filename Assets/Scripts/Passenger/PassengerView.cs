@@ -23,6 +23,7 @@ namespace ExpressElevator.Passenger
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
+            _passengerState = PassengerState.NOT_SELECTED;
         }
         
         private void Update()
@@ -58,29 +59,6 @@ namespace ExpressElevator.Passenger
                 _passengerState = PassengerState.NOT_SELECTED;
             }
         }
-        
-
-        public void SetPassengerState(PassengerState passengerState)
-        {
-            _passengerState = passengerState;
-        }
-
-        public void ChangeState()
-        {
-            Debug.Log(_passengerState);
-            if (_passengerState == PassengerState.MOVINGIN)
-            {
-                DisablePassenger();
-            }
-            else if(_passengerState!=PassengerState.MOVINGIN)
-            {
-                SetPassengerState(PassengerState.NOT_SELECTED);
-            }
-        }
-        public void OnMouseOver()
-        {
-            
-        }
 
         public void SetController(PassengerController passengerController)
         {
@@ -112,9 +90,8 @@ namespace ExpressElevator.Passenger
                 {
                     SetTargetPosition(liftPosition);
                     _passengerController.AddPassengerToList();
-                    SetPassengerState(PassengerState.NOT_SELECTED);
-                    SetPassengerState(PassengerState.MOVINGIN);
-                    Debug.Log(_passengerState);
+                    _passengerController.SetStateMachineState(PassengerState.MOVINGIN);
+                    _passengerState = PassengerState.MOVINGIN;
                 }
             }
         }
