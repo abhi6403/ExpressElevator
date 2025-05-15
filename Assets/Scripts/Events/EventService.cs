@@ -1,3 +1,4 @@
+using ExpressElevator.Command;
 using ExpressElevator.Passenger;
 using ExpressElevator.Utilities;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace ExpressElevator.Event
 {
     public class EventService 
     {
+        public EventController UndoClicked { get; private set; }
         public EventController<int> OnMapSelected { get; private set; }
         public EventController<Vector3,int> MoveToLift { get; private set; }
         
@@ -14,6 +16,8 @@ namespace ExpressElevator.Event
         public EventController<PassengerController> OnMovingInPassenger { get; private set; }
         public EventController<PassengerController> OnPassengerReached { get; private set; }
         public EventController<PassengerState> OnDeselectPassenger { get; private set; }
+        
+        public EventController<PassengerController, ICommand> AddPassenger { get; private set; }
         
         public EventService()
         {
@@ -24,6 +28,8 @@ namespace ExpressElevator.Event
             OnDeselectPassenger = new EventController<PassengerState>();
             OnControlPannelClicked = new EventController();
             OnPassengerReached = new EventController<PassengerController>();
+            AddPassenger = new EventController<PassengerController, ICommand>();
+            UndoClicked = new EventController();
         }
     }
 }

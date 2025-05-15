@@ -1,3 +1,4 @@
+using ExpressElevator.Command;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
 using ExpressElevator.Level;
@@ -15,6 +16,7 @@ namespace ExpressElevator.Passenger
         private FloorManager _floorManager;
         private LevelService _levelService;
         private PassengerStateMachine _passengerStateMachine;
+        private ICommand _addPassengerCommand;
         private Vector3 _targetPosition;
         private int _currentFloor;
         private int _targetFloor;
@@ -34,6 +36,7 @@ namespace ExpressElevator.Passenger
             _currentFloor = currentFloor;
             _targetFloor = targetFloor;
             _targetPosition = passengerPosition;
+            _addPassengerCommand = new BoardedPassenger();
             AddPassenger();
             AddListeners();
         }
@@ -79,11 +82,12 @@ namespace ExpressElevator.Passenger
         private void AddListeners()
         {
             _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
+            
         }
-
+        
         public void AddPassengerToList()
         {
-            _eventService.OnMovingInPassenger.InvokeEvent(this);
+            _eventService.AddPassenger.InvokeEvent(this,_addPassengerCommand);
         }
         public int GetPassengerFloor()
         {
