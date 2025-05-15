@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43c8a3e-425a-42d1-988a-4b09f5f544c9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/EventService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/EventService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="a43c8a3e-425a-42d1-988a-4b09f5f544c9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +135,7 @@
       <workItem from="1747119405013" duration="1157000" />
       <workItem from="1747122613183" duration="11621000" />
       <workItem from="1747218421887" duration="12240000" />
-      <workItem from="1747271678406" duration="17280000" />
+      <workItem from="1747271678406" duration="17585000" />
     </task>
     <servers />
   </component>
