@@ -16,14 +16,21 @@ namespace ExpressElevator.Passenger
         public void OnStateEnter()
         {
             Owner._passengerView.GetSpriteRenderer().color = new Color(1, 1, 1, 1);
+            Owner.MoveStraightToLift();
         }
 
         public void Update()
         {
             if (Owner.GetPassengerFloor() == Owner.GetTargetFloor())
             {
+                Debug.Log("Getting In");
                 Owner.SetStateMachineState(PassengerState.REACHED);
                 Owner._passengerView._passengerState = PassengerState.REACHED;
+            }
+            
+            if (Owner._passengerView._isMoving == false)
+            {
+                Owner.MoveInsideLift();
             }
         }
 

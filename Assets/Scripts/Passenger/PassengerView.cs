@@ -14,10 +14,10 @@ namespace ExpressElevator.Passenger
         [SerializeField] 
         private Animator _animator;
         
-        public bool _isMoving {get; private set;}
+        public bool _isMoving {get; set;}
         private float _stopThreshold = 0.5f;
         
-        private Vector3 TargetPosition;
+        public Vector3 TargetPosition {get; private set;}
         private SpriteRenderer _spriteRenderer;
 
         private void Start()
@@ -40,11 +40,6 @@ namespace ExpressElevator.Passenger
             }
             
             _passengerController.Update();
-        }
-
-        public void AddListener()
-        {
-            
         }
 
         public void OnMouseDown()
@@ -74,7 +69,6 @@ namespace ExpressElevator.Passenger
         public void SetTargetPosition(Vector3 targetPosition)
         {
             TargetPosition = targetPosition;
-            //Debug.Log(targetPosition);
             _isMoving = true;
             SetAnimatorValue(false);
         }
@@ -90,7 +84,7 @@ namespace ExpressElevator.Passenger
             {
                 if (_passengerController.GetPassengerFloor() == floorNumber)
                 {
-                    SetTargetPosition(liftPosition);
+                    _passengerController.SetTargetPosition(liftPosition);
                     _passengerController.AddPassengerToList();
                     _passengerController.SetStateMachineState(PassengerState.MOVINGIN);
                     _passengerState = PassengerState.MOVINGIN;

@@ -9,6 +9,7 @@ namespace ExpressElevator.Passenger
         public PassengerController Owner { get; set; }
         private PassengerStateMachine _passengerStateMachine;
         private bool _isMoving = false;
+        private float _stopThreshold = 0.5f;
 
         public ReachedState(PassengerStateMachine passengerStateMachine)
         {
@@ -25,6 +26,11 @@ namespace ExpressElevator.Passenger
             if (Owner._passengerView._isMoving == false)
             {
               Owner.MoveToExit();
+            }
+            
+            if (Vector3.Distance(Owner._passengerView.transform.position, Owner._passengerView.TargetPosition) < _stopThreshold)
+            {
+                Owner._passengerView.gameObject.SetActive(false);
             }
         }
 

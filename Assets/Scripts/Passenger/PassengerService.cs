@@ -13,8 +13,8 @@ namespace ExpressElevator.Passenger
         private FloorManager _floorManager;
         private EventService _eventService;
         private LevelService _levelService;
-        private int _maxFloors = 0;
-        private int _minFloors = 3;
+        private int _maxFloors = 4;
+        private int _minFloors = 0;
         private int _targetFloor;
 
         public PassengerService(List<PassengerView> passengersList)
@@ -47,8 +47,7 @@ namespace ExpressElevator.Passenger
                 _targetFloor = Random.Range(_minFloors, _maxFloors);
             } 
             while (_targetFloor == currentFloor);
-
-            Debug.Log(_targetFloor);
+            
             return _targetFloor;
         }
     }

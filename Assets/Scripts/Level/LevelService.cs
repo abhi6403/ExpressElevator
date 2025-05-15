@@ -72,10 +72,8 @@ namespace ExpressElevator.Level
                 {
                     break;
                 }
-                else
-                {
-                    _currentFloorIndex++;
-                }
+                
+                _currentFloorIndex++;
             }
         }
 

@@ -18,6 +18,7 @@ namespace ExpressElevator.Passenger
         private Vector3 _targetPosition;
         private int _currentFloor;
         private int _targetFloor;
+        private bool _entered = false;
 
         public PassengerController(PassengerView passengerView,Vector3 passengerPosition,FloorManager floorManager,EventService eventService,int currentFloor,int targetFloor,LevelService levelService)
         {
@@ -50,12 +51,25 @@ namespace ExpressElevator.Passenger
 
         public void MoveStraightToLift()
         {
-            _passengerView.SetTargetPosition(new Vector3(3.98f,_levelService.GetCurrentLevel().exitPoints[_targetFloor].y,0));
+            _passengerView.SetTargetPosition(new Vector3(3.98f,_levelService.GetCurrentLevel().exitPoints[_currentFloor].y,0));
         }
 
+        public void MoveInsideLift()
+        {
+            if (Vector3.Distance(_passengerView.transform.position, _targetPosition) > 0.2f && _entered == false)
+            {
+                _passengerView.SetTargetPosition(_targetPosition);
+                _entered = true;
+            }
+        }
         public void MoveToExit()
         {
             _passengerView.SetTargetPosition(_levelService.GetCurrentLevel().exitPoints[_targetFloor]);
+        }
+
+        public void SetTargetPosition(Vector3 targetPosition)
+        {
+            _targetPosition = targetPosition;
         }
         private void AddPassenger()
         {
