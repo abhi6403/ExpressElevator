@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      NotWorkingElevator1_0: -8571014081492271848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
