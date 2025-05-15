@@ -29,23 +29,10 @@ namespace ExpressElevator.Elevator
         {
             _elevtorController = elevtorController;
         }
-        private void UpdateState()
-        {
-            if (_elevatorState == ElevatorState.CLOSE)
-            {
-                _openedDoor.SetActive(false);
-            }else
-            if (_elevatorState == ElevatorState.NOTWORKING)
-            {
-                _openedDoor.SetActive(false);
-                _notWorkingDoor.SetActive(true);
-            }
-        }
         
         public void SetElelevatorState(ElevatorState state)
         {
             _elevatorState = state;
-            UpdateState();
         }
 
         private void OnMouseDown()
@@ -70,11 +57,11 @@ namespace ExpressElevator.Elevator
             {
                 _highLighter.SetActive(true);
             }
-            
         }
 
-        public void OpenDoorEnable() => _openedDoor.SetActive(true);
-        public void OpenDoorDisable() => _openedDoor.SetActive(false);
+        public void EnableOpenDoor() => _openedDoor.SetActive(true);
+        public void DisableOpenDoor() => _openedDoor.SetActive(false);
+        public void EnableNotWorkingDoor() => _notWorkingDoor.SetActive(true);
         
         private void OnMouseExit()
         {

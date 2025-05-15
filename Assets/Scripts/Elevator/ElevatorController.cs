@@ -57,12 +57,11 @@ namespace ExpressElevator.Elevator
             {
                 if (_elevatorSide == ElevatorSide.MIDDLE)
                 {
-                    //_elevatorView.SetElelevatorState(ElevatorState.OPEN);
                     SetStateMachineState(ElevatorState.OPEN);
                 }
                 else
                 {
-                    _elevatorView.SetElelevatorState(ElevatorState.NOTWORKING);
+                    SetStateMachineState(ElevatorState.NOTWORKING);
                 }
             }
         }
@@ -72,12 +71,11 @@ namespace ExpressElevator.Elevator
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
             {
                 SetStateMachineState(ElevatorState.OPEN);
-                //_elevatorView.SetElelevatorState(ElevatorState.OPEN);
                 _elevatorService.SetCurrentFloor(floorNumber);
             }
             else
             {
-                _elevatorView.SetElelevatorState(ElevatorState.CLOSE);
+                SetStateMachineState(ElevatorState.CLOSE);
             }
         }
         public void SetCurrentFloor(int currentFloorNumber)

@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/ElevatorView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/States/ClosedStateElevator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/States/ClosedStateElevator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/States/NotWorkingStateElevator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/States/NotWorkingStateElevator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elevator/States/OpenStateElevator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elevator/States/OpenStateElevator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +142,7 @@
       <workItem from="1747119405013" duration="1157000" />
       <workItem from="1747122613183" duration="11621000" />
       <workItem from="1747218421887" duration="12240000" />
-      <workItem from="1747271678406" duration="15258000" />
+      <workItem from="1747271678406" duration="15927000" />
     </task>
     <servers />
   </component>

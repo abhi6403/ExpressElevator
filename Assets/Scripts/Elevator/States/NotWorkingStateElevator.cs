@@ -14,7 +14,8 @@ namespace ExpressElevator.Elevator
 
         public void OnStateEnter()
         {
-            
+            Owner._elevatorView.EnableNotWorkingDoor();
+            Owner._elevatorView.SetElelevatorState(ElevatorState.NOTWORKING);
         }
 
         public void Update()
