@@ -7,7 +7,7 @@ namespace ExpressElevator.Elevator
 {
     public class ElevatorController
     {
-        private ElevatorView _elevatorView;
+        public ElevatorView _elevatorView { get; private set; } 
         private ElevatorService _elevatorService;
         private ElevatorStateMachine _elevatorStateMachine;
         private EventService _eventService;
@@ -57,7 +57,8 @@ namespace ExpressElevator.Elevator
             {
                 if (_elevatorSide == ElevatorSide.MIDDLE)
                 {
-                    _elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                    //_elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                    SetStateMachineState(ElevatorState.OPEN);
                 }
                 else
                 {
@@ -70,7 +71,8 @@ namespace ExpressElevator.Elevator
         {
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
             {
-                _elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                SetStateMachineState(ElevatorState.OPEN);
+                //_elevatorView.SetElelevatorState(ElevatorState.OPEN);
                 _elevatorService.SetCurrentFloor(floorNumber);
             }
             else

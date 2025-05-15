@@ -14,7 +14,8 @@ namespace ExpressElevator.Elevator
 
         public void OnStateEnter()
         {
-            
+            Owner._elevatorView.OpenDoorEnable();
+            Owner._elevatorView.SetElelevatorState(ElevatorState.OPEN);
         }
 
         public void Update()
@@ -24,7 +25,7 @@ namespace ExpressElevator.Elevator
 
         public void OnStateExit()
         {
-            
+            Owner._elevatorView.OpenDoorDisable();
         }
     }
 }

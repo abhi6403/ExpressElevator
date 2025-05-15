@@ -35,10 +35,7 @@ namespace ExpressElevator.Elevator
             {
                 _openedDoor.SetActive(false);
             }else
-            if (_elevatorState == ElevatorState.OPEN)
-            {
-                _openedDoor.SetActive(true);
-            }else if (_elevatorState == ElevatorState.NOTWORKING)
+            if (_elevatorState == ElevatorState.NOTWORKING)
             {
                 _openedDoor.SetActive(false);
                 _notWorkingDoor.SetActive(true);
@@ -76,6 +73,9 @@ namespace ExpressElevator.Elevator
             
         }
 
+        public void OpenDoorEnable() => _openedDoor.SetActive(true);
+        public void OpenDoorDisable() => _openedDoor.SetActive(false);
+        
         private void OnMouseExit()
         {
             _highLighter.SetActive(false);
