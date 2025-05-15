@@ -8,21 +8,23 @@ namespace ExpressElevator.Passenger
     public class PassengerView : MonoBehaviour
     {
         private PassengerController _passengerController;
-        private PassengerState _passengerState;
+        public PassengerState _passengerState;
+        
         
         [SerializeField] 
         private Animator _animator;
         
-        private bool _isMoving = false;
+        public bool _isMoving {get; set;}
         private float _stopThreshold = 0.5f;
         
-        private Vector3 TargetPosition;
+        public Vector3 TargetPosition {get; private set;}
         private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            SetPassengerState(PassengerState.NOT_SELECTED);
+            _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
+            _passengerState = PassengerState.NOT_SELECTED;
         }
         
         private void Update()
@@ -36,61 +38,22 @@ namespace ExpressElevator.Passenger
                     SetAnimatorValue(true);
                 }
             }
-        }
-
-        public void AddListener()
-        {
             
+            _passengerController.Update();
         }
 
         public void OnMouseDown()
         {
             if (_passengerState == PassengerState.NOT_SELECTED)
             {
-                SetPassengerState(PassengerState.SELECTED);
+                _passengerController.SetStateMachineState(PassengerState.SELECTED);
+                _passengerState = PassengerState.SELECTED;
                 
             }else if (_passengerState == PassengerState.SELECTED)
             {
-                SetPassengerState(PassengerState.NOT_SELECTED);
+                _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
+                _passengerState = PassengerState.NOT_SELECTED;
             }
-        }
-
-        private void CheckForSelected()
-        {
-            if (_passengerState == PassengerState.SELECTED)
-            {
-                _spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-            }else if (_passengerState == PassengerState.NOT_SELECTED)
-            {
-                _spriteRenderer.color = new Color(1, 1, 1, 1);
-            }
-          //else if (_passengerState == PassengerState.BOARDED)
-          //{
-          //    SetPassengerState(PassengerState.SELECTED);
-          //}
-        }
-
-        public void SetPassengerState(PassengerState passengerState)
-        {
-            _passengerState = passengerState;
-            CheckForSelected();
-        }
-
-        public void ChangeState()
-        {
-            Debug.Log(_passengerState);
-            if (_passengerState == PassengerState.MOVINGIN)
-            {
-                DisablePassenger();
-            }
-            else if(_passengerState!=PassengerState.MOVINGIN)
-            {
-                SetPassengerState(PassengerState.NOT_SELECTED);
-            }
-        }
-        public void OnMouseOver()
-        {
-            
         }
 
         public void SetController(PassengerController passengerController)
@@ -121,11 +84,10 @@ namespace ExpressElevator.Passenger
             {
                 if (_passengerController.GetPassengerFloor() == floorNumber)
                 {
-                    SetTargetPosition(liftPosition);
+                    _passengerController.SetTargetPosition(liftPosition);
                     _passengerController.AddPassengerToList();
-                    SetPassengerState(PassengerState.NOT_SELECTED);
-                    SetPassengerState(PassengerState.MOVINGIN);
-                    Debug.Log(_passengerState);
+                    _passengerController.SetStateMachineState(PassengerState.MOVINGIN);
+                    _passengerState = PassengerState.MOVINGIN;
                 }
             }
         }
@@ -144,6 +106,11 @@ namespace ExpressElevator.Passenger
         public void MoveToFinal(Vector3 finalPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 2f * 5);
+        }
+
+        public SpriteRenderer GetSpriteRenderer()
+        {
+            return _spriteRenderer;
         }
     }
 }

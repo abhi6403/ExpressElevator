@@ -18,32 +18,21 @@ namespace ExpressElevator.Elevator
 
         private void Start()
         {
-            _highLighter.SetActive(false);
+            DisableHighLighter();
+        }
+
+        private void Update()
+        {
+            _elevtorController.Update();
         }
         public void SetController(ElevatorController elevtorController)
         {
             _elevtorController = elevtorController;
         }
-        private void UpdateState()
-        {
-            if (_elevatorState == ElevatorState.CLOSE)
-            {
-                _openedDoor.SetActive(false);
-            }else
-            if (_elevatorState == ElevatorState.OPEN)
-            {
-                _openedDoor.SetActive(true);
-            }else if (_elevatorState == ElevatorState.NOTWORKING)
-            {
-                _openedDoor.SetActive(false);
-                _notWorkingDoor.SetActive(true);
-            }
-        }
         
         public void SetElelevatorState(ElevatorState state)
         {
             _elevatorState = state;
-            UpdateState();
         }
 
         private void OnMouseDown()
@@ -52,7 +41,6 @@ namespace ExpressElevator.Elevator
             {
                 _elevtorController.MoveToElevator();
             }
-            _elevtorController.DeselectPassenger();
         }
 
         private Vector3 GetOpenedDoorPosition()
@@ -63,15 +51,20 @@ namespace ExpressElevator.Elevator
         {
             if (_elevatorState == ElevatorState.CLOSE)
             {
-                _highLighter.SetActive(false);
+                DisableHighLighter();
             }
             else
             {
-                _highLighter.SetActive(true);
+                EnableHighLighter();
             }
-            
         }
 
+        public void EnableOpenDoor() => _openedDoor.SetActive(true);
+        public void DisableOpenDoor() => _openedDoor.SetActive(false);
+        public void EnableNotWorkingDoor() => _notWorkingDoor.SetActive(true);
+        public void EnableHighLighter() => _highLighter.SetActive(true);
+        public void DisableHighLighter() => _highLighter.SetActive(false);
+        
         private void OnMouseExit()
         {
             _highLighter.SetActive(false);

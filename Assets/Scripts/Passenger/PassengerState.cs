@@ -6,7 +6,7 @@ namespace ExpressElevator.Passenger
     {
         SELECTED,
         NOT_SELECTED,
-        BOARDED,
+        REACHED,
         MOVINGIN,
     }
 }

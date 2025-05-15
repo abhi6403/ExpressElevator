@@ -7,8 +7,9 @@ namespace ExpressElevator.Elevator
 {
     public class ElevatorController
     {
-        private ElevatorView _elevatorView;
+        public ElevatorView _elevatorView { get; private set; } 
         private ElevatorService _elevatorService;
+        private ElevatorStateMachine _elevatorStateMachine;
         private EventService _eventService;
         private LevelService _levelService;
         private ElevatorSide _elevatorSide;
@@ -21,6 +22,7 @@ namespace ExpressElevator.Elevator
             _elevatorSide = elevatorSide;
             _floorNumber = floorNumber;
             _elevatorService = elevatorService; 
+            CreateElevatorStateMachine();
             _elevatorView = GameObject.Instantiate(elevatorView, position, Quaternion.identity);
             _elevatorView.SetController(this);
             SetWorkingLift();
@@ -28,9 +30,19 @@ namespace ExpressElevator.Elevator
             AddListeners();
         }
 
+        public void Update()
+        {
+            _elevatorStateMachine.Update();
+        }
+        private void CreateElevatorStateMachine() => _elevatorStateMachine = new ElevatorStateMachine(this);
         public void AddListeners()
         {
             _eventService.ControlPannelClicked.AddListener(SetCurrentFloorLiftToOpen);
+        }
+
+        public void SetStateMachineState(ElevatorState elevatorState)
+        {
+            _elevatorStateMachine.ChangeState(elevatorState);
         }
         public void MoveToElevator()
         {
@@ -39,22 +51,17 @@ namespace ExpressElevator.Elevator
                 _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
             }
         }
-
-        public void DeselectPassenger()
-        {
-            //_eventService.OnDeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
-        }
         public void SetWorkingLift()
         {
             if (_levelService.GetCurrentLevel()._levelID == 1)
             {
                 if (_elevatorSide == ElevatorSide.MIDDLE)
                 {
-                    _elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                    SetStateMachineState(ElevatorState.OPEN);
                 }
                 else
                 {
-                    _elevatorView.SetElelevatorState(ElevatorState.NOTWORKING);
+                    SetStateMachineState(ElevatorState.NOTWORKING);
                 }
             }
         }
@@ -63,12 +70,12 @@ namespace ExpressElevator.Elevator
         {
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
             {
-                _elevatorView.SetElelevatorState(ElevatorState.OPEN);
+                SetStateMachineState(ElevatorState.OPEN);
                 _elevatorService.SetCurrentFloor(floorNumber);
             }
             else
             {
-                _elevatorView.SetElelevatorState(ElevatorState.CLOSE);
+                SetStateMachineState(ElevatorState.CLOSE);
             }
         }
         public void SetCurrentFloor(int currentFloorNumber)

@@ -52,6 +52,5 @@ namespace ExpressElevator.Floor
                 }
             }
         }
-        
     }
 }
