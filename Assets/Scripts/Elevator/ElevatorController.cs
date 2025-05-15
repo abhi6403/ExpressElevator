@@ -39,11 +39,6 @@ namespace ExpressElevator.Elevator
                 _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
             }
         }
-
-        public void DeselectPassenger()
-        {
-            //_eventService.OnDeselectPassenger.InvokeEvent(PassengerState.NOT_SELECTED);
-        }
         public void SetWorkingLift()
         {
             if (_levelService.GetCurrentLevel()._levelID == 1)

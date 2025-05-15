@@ -8,12 +8,13 @@ namespace ExpressElevator.Passenger
     public class PassengerView : MonoBehaviour
     {
         private PassengerController _passengerController;
-        private PassengerState _passengerState;
+        public PassengerState _passengerState;
+        
         
         [SerializeField] 
         private Animator _animator;
         
-        private bool _isMoving = false;
+        public bool _isMoving {get; private set;}
         private float _stopThreshold = 0.5f;
         
         private Vector3 TargetPosition;
@@ -73,6 +74,7 @@ namespace ExpressElevator.Passenger
         public void SetTargetPosition(Vector3 targetPosition)
         {
             TargetPosition = targetPosition;
+            //Debug.Log(targetPosition);
             _isMoving = true;
             SetAnimatorValue(false);
         }

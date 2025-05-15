@@ -20,7 +20,11 @@ namespace ExpressElevator.Passenger
 
         public void Update()
         {
-
+            if (Owner.GetPassengerFloor() == Owner.GetTargetFloor())
+            {
+                Owner.SetStateMachineState(PassengerState.REACHED);
+                Owner._passengerView._passengerState = PassengerState.REACHED;
+            }
         }
 
         public void OnStateExit()

@@ -40,7 +40,7 @@ namespace ExpressElevator.Passenger
             _states.Add(PassengerState.SELECTED,new SelectedState(this));
             _states.Add(PassengerState.NOT_SELECTED,new NotSelectedState(this));
             _states.Add(PassengerState.MOVINGIN,new MovedInState(this));
-            _states.Add(PassengerState.BOARDED,new BoardedState(this));
+            _states.Add(PassengerState.REACHED,new ReachedState(this));
         }
     }
 }

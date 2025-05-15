@@ -52,7 +52,6 @@ namespace ExpressElevator.Elevator
             {
                 _elevtorController.MoveToElevator();
             }
-            _elevtorController.DeselectPassenger();
         }
 
         private Vector3 GetOpenedDoorPosition()

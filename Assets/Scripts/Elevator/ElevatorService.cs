@@ -58,9 +58,13 @@ namespace ExpressElevator.Elevator
         {
             for (int i = 0; i < passengerControllers.Count; i++)
             {
-                passengerControllers[i].ShowPassenger();
-                passengerControllers[i].SetCurrentFloor(currentFloor);
-                passengerControllers[i].SetCurrentFloorPosition(_levelService.GetCurrentLevel().liftEntry[currentFloor]);
+                if (passengerControllers[i]._passengerView._passengerState == PassengerState.MOVINGIN)
+                {
+                    passengerControllers[i].ShowPassenger();
+                    passengerControllers[i].SetCurrentFloor(currentFloor);
+                    passengerControllers[i].SetCurrentFloorPosition(_levelService.GetCurrentLevel().liftEntry[currentFloor]);
+                }
+                
             }
         }
         public int GetPassengerCount()
