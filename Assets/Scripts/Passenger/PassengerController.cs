@@ -65,6 +65,7 @@ namespace ExpressElevator.Passenger
         public void MoveToExit()
         {
             _passengerView.SetTargetPosition(_levelService.GetCurrentLevel().exitPoints[_targetFloor]);
+            _eventService.OnPassengerReached.InvokeEvent(this);
         }
 
         public void SetTargetPosition(Vector3 targetPosition)

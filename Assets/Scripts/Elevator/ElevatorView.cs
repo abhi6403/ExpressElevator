@@ -18,7 +18,7 @@ namespace ExpressElevator.Elevator
 
         private void Start()
         {
-            _highLighter.SetActive(false);
+            DisableHighLighter();
         }
 
         private void Update()
@@ -51,17 +51,19 @@ namespace ExpressElevator.Elevator
         {
             if (_elevatorState == ElevatorState.CLOSE)
             {
-                _highLighter.SetActive(false);
+                DisableHighLighter();
             }
             else
             {
-                _highLighter.SetActive(true);
+                EnableHighLighter();
             }
         }
 
         public void EnableOpenDoor() => _openedDoor.SetActive(true);
         public void DisableOpenDoor() => _openedDoor.SetActive(false);
         public void EnableNotWorkingDoor() => _notWorkingDoor.SetActive(true);
+        public void EnableHighLighter() => _highLighter.SetActive(true);
+        public void DisableHighLighter() => _highLighter.SetActive(false);
         
         private void OnMouseExit()
         {
