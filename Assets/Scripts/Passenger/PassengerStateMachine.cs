@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace ExpressElevator.Passenger
 {
-    public class PassengerStateMachine : GenericStateMachine<PassengerController>
+    public class PassengerStateMachine 
     {
         protected PassengerController _owner;
-        protected IStatePassenger CurrentStatePassenger;
+        protected IStatePassenger _currentStatePassenger;
         protected Dictionary<PassengerState, IStatePassenger> _states = new Dictionary<PassengerState, IStatePassenger>();
         
         public PassengerStateMachine(PassengerController controller) 
@@ -17,7 +17,7 @@ namespace ExpressElevator.Passenger
             SetOwner();
         }
 
-        public void Update() => CurrentStatePassenger?.Update();
+        public void Update() => _currentStatePassenger?.Update();
         
         public void ChangeState(PassengerState newState) => ChangeState(_states[newState]);
 
@@ -30,9 +30,9 @@ namespace ExpressElevator.Passenger
         }
         protected void ChangeState(IStatePassenger statePassenger)
         {
-            CurrentStatePassenger?.OnStateExit();
-            CurrentStatePassenger = statePassenger;
-            CurrentStatePassenger?.OnStateEnter();
+            _currentStatePassenger?.OnStateExit();
+            _currentStatePassenger = statePassenger;
+            _currentStatePassenger?.OnStateEnter();
         }
         
         private void CreateStates()

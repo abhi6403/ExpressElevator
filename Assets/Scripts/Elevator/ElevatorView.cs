@@ -20,6 +20,11 @@ namespace ExpressElevator.Elevator
         {
             _highLighter.SetActive(false);
         }
+
+        private void Update()
+        {
+            _elevtorController.Update();
+        }
         public void SetController(ElevatorController elevtorController)
         {
             _elevtorController = elevtorController;

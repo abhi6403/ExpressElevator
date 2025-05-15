@@ -9,6 +9,7 @@ namespace ExpressElevator.Elevator
     {
         private ElevatorView _elevatorView;
         private ElevatorService _elevatorService;
+        private ElevatorStateMachine _elevatorStateMachine;
         private EventService _eventService;
         private LevelService _levelService;
         private ElevatorSide _elevatorSide;
@@ -21,6 +22,7 @@ namespace ExpressElevator.Elevator
             _elevatorSide = elevatorSide;
             _floorNumber = floorNumber;
             _elevatorService = elevatorService; 
+            CreateElevatorStateMachine();
             _elevatorView = GameObject.Instantiate(elevatorView, position, Quaternion.identity);
             _elevatorView.SetController(this);
             SetWorkingLift();
@@ -28,9 +30,19 @@ namespace ExpressElevator.Elevator
             AddListeners();
         }
 
+        public void Update()
+        {
+            _elevatorStateMachine.Update();
+        }
+        private void CreateElevatorStateMachine() => _elevatorStateMachine = new ElevatorStateMachine(this);
         public void AddListeners()
         {
             _eventService.ControlPannelClicked.AddListener(SetCurrentFloorLiftToOpen);
+        }
+
+        public void SetStateMachineState(ElevatorState elevatorState)
+        {
+            _elevatorStateMachine.ChangeState(elevatorState);
         }
         public void MoveToElevator()
         {
