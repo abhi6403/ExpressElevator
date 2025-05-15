@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a43c8a3e-425a-42d1-988a-4b09f5f544c9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ExpressElevator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Level/Level1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Level/Level1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Floor/FloorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Floor/FloorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level/LevelService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level/LevelService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/PassengerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/States/MovedInState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/States/MovedInState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Passenger/States/ReachedState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Passenger/States/ReachedState.cs" afterDir="false" />
-    </list>
+    <list default="true" id="a43c8a3e-425a-42d1-988a-4b09f5f544c9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +135,7 @@
       <workItem from="1747119405013" duration="1157000" />
       <workItem from="1747122613183" duration="11621000" />
       <workItem from="1747218421887" duration="12240000" />
-      <workItem from="1747271678406" duration="9529000" />
+      <workItem from="1747271678406" duration="10381000" />
     </task>
     <servers />
   </component>

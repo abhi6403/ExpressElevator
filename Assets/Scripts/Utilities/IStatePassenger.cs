@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ExpressElevator.StateMachine
 {
-    public interface IState
+    public interface IStatePassenger
     {
         public PassengerController Owner { get; set; }
         public void OnStateEnter();

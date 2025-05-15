@@ -1,36 +1,36 @@
 using ExpressElevator.StateMachine;
+using UnityEditor;
 using UnityEngine;
 
 namespace ExpressElevator.Passenger
 {
-    public class MovedInState : IState
+    public class ReachedStatePassenger : IStatePassenger
     {
         public PassengerController Owner { get; set; }
         private PassengerStateMachine _passengerStateMachine;
+        private bool _isMoving = false;
+        private float _stopThreshold = 0.5f;
 
-        public MovedInState(PassengerStateMachine passengerStateMachine)
+        public ReachedStatePassenger(PassengerStateMachine passengerStateMachine)
         {
             _passengerStateMachine = passengerStateMachine;
         }
 
         public void OnStateEnter()
         {
-            Owner._passengerView.GetSpriteRenderer().color = new Color(1, 1, 1, 1);
             Owner.MoveStraightToLift();
         }
 
         public void Update()
         {
-            if (Owner.GetPassengerFloor() == Owner.GetTargetFloor())
-            {
-                Debug.Log("Getting In");
-                Owner.SetStateMachineState(PassengerState.REACHED);
-                Owner._passengerView._passengerState = PassengerState.REACHED;
-            }
-            
             if (Owner._passengerView._isMoving == false)
             {
-                Owner.MoveInsideLift();
+              Owner.MoveToExit();
+            }
+            
+            if (Vector3.Distance(Owner._passengerView.transform.position, Owner._passengerView.TargetPosition) < _stopThreshold)
+            {
+                Owner._passengerView.gameObject.SetActive(false);
             }
         }
 

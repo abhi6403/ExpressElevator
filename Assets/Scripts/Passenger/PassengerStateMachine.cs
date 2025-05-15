@@ -7,8 +7,8 @@ namespace ExpressElevator.Passenger
     public class PassengerStateMachine : GenericStateMachine<PassengerController>
     {
         protected PassengerController _owner;
-        protected IState _currentState;
-        protected Dictionary<PassengerState, IState> _states = new Dictionary<PassengerState, IState>();
+        protected IStatePassenger CurrentStatePassenger;
+        protected Dictionary<PassengerState, IStatePassenger> _states = new Dictionary<PassengerState, IStatePassenger>();
         
         public PassengerStateMachine(PassengerController controller) 
         {
@@ -17,30 +17,30 @@ namespace ExpressElevator.Passenger
             SetOwner();
         }
 
-        public void Update() => _currentState?.Update();
+        public void Update() => CurrentStatePassenger?.Update();
         
         public void ChangeState(PassengerState newState) => ChangeState(_states[newState]);
 
         protected void SetOwner()
         {
-            foreach (IState state in _states.Values)
+            foreach (IStatePassenger state in _states.Values)
             {
                 state.Owner = _owner;
             }
         }
-        protected void ChangeState(IState state)
+        protected void ChangeState(IStatePassenger statePassenger)
         {
-            _currentState?.OnStateExit();
-            _currentState = state;
-            _currentState?.OnStateEnter();
+            CurrentStatePassenger?.OnStateExit();
+            CurrentStatePassenger = statePassenger;
+            CurrentStatePassenger?.OnStateEnter();
         }
         
         private void CreateStates()
         {
-            _states.Add(PassengerState.SELECTED,new SelectedState(this));
-            _states.Add(PassengerState.NOT_SELECTED,new NotSelectedState(this));
-            _states.Add(PassengerState.MOVINGIN,new MovedInState(this));
-            _states.Add(PassengerState.REACHED,new ReachedState(this));
+            _states.Add(PassengerState.SELECTED,new SelectedStatePassenger(this));
+            _states.Add(PassengerState.NOT_SELECTED,new NotSelectedStatePassenger(this));
+            _states.Add(PassengerState.MOVINGIN,new MovedInStatePassenger(this));
+            _states.Add(PassengerState.REACHED,new ReachedStatePassenger(this));
         }
     }
 }
