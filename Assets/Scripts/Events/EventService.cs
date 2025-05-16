@@ -8,6 +8,8 @@ namespace ExpressElevator.Event
     public class EventService 
     {
         public EventController UndoClicked { get; private set; }
+        public EventController<PassengerController> Reset { get; private set; }
+        public EventController<PassengerController> Undo { get; private set; }
         public EventController<int> OnMapSelected { get; private set; }
         public EventController<Vector3,int> MoveToLift { get; private set; }
         
@@ -30,6 +32,8 @@ namespace ExpressElevator.Event
             OnPassengerReached = new EventController<PassengerController>();
             AddPassenger = new EventController<PassengerController, ICommand>();
             UndoClicked = new EventController();
+            Undo = new EventController<PassengerController>();
+            Reset = new EventController<PassengerController>();
         }
     }
 }

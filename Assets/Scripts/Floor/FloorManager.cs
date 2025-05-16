@@ -38,6 +38,7 @@ namespace ExpressElevator.Floor
         {
             passengerList.Add(passenger);
             passenger.SetTargetPosition(waitingPoints[count]);
+            passenger._passengerController.SetQueuePosition(waitingPoints[count]);
             count++;
         }
 

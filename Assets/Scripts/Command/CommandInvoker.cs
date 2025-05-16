@@ -20,6 +20,7 @@ namespace ExpressElevator.Command
         private void Events()
         {
             _eventService.AddPassenger.AddListener(PrcessCommands);
+            _eventService.Undo.AddListener(Undo);
         }
 
         private void PrcessCommands(PassengerController passengerController, ICommand command)

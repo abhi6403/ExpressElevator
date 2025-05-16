@@ -12,6 +12,7 @@ namespace ExpressElevator.UI
        [SerializeField] private Button _firstButton;
        [SerializeField] private Button _secondButton;
        [SerializeField] private Button _thirdButton;
+       [SerializeField] private Button _undoButton;
 
 
        private void Start() => SubscribeButtonClicks();
@@ -22,6 +23,7 @@ namespace ExpressElevator.UI
            _firstButton.onClick.AddListener(_controller.OnFirstFloorClicked);
            _secondButton.onClick.AddListener(_controller.OnSecondFloorClicked);
            _thirdButton.onClick.AddListener(_controller.OnThirdFloorClicked);
+           _undoButton.onClick.AddListener(_controller.OnUndoClicked);
        }
 
        public void SetController(ElevatorControlPannelController controller)
