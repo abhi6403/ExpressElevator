@@ -12,6 +12,7 @@ namespace ExpressElevator.Elevator
     {
         private ElevatorController _elevtorController;
         private ElevatorState _elevatorState;
+        
         [SerializeField] private GameObject _openedDoor;
         [SerializeField] private GameObject _notWorkingDoor;
         [SerializeField] private GameObject _highLighter;
@@ -25,16 +26,7 @@ namespace ExpressElevator.Elevator
         {
             _elevtorController.Update();
         }
-        public void SetController(ElevatorController elevtorController)
-        {
-            _elevtorController = elevtorController;
-        }
         
-        public void SetElelevatorState(ElevatorState state)
-        {
-            _elevatorState = state;
-        }
-
         private void OnMouseDown()
         {
             if (_elevatorState == ElevatorState.OPEN)
@@ -42,15 +34,7 @@ namespace ExpressElevator.Elevator
                 _elevtorController.MoveToElevator();
             }
         }
-
-        public void WaitTime(int floorNumber)
-        {
-            StartCoroutine(_elevtorController.WaitForArrival(floorNumber));
-        }
-        private Vector3 GetOpenedDoorPosition()
-        {
-            return _openedDoor.transform.position;
-        }
+        
         private void OnMouseOver()
         {
             if (_elevatorState == ElevatorState.CLOSE)
@@ -62,21 +46,31 @@ namespace ExpressElevator.Elevator
                 EnableHighLighter();
             }
         }
+        
+        public void WaitTime(int floorNumber)
+        {
+            StartCoroutine(_elevtorController.WaitForArrival(floorNumber));
+        }
+        
+        private void OnMouseExit()
+        {
+            _highLighter.SetActive(false);
+        }
+        
+        public void SetController(ElevatorController elevtorController)
+        {
+            _elevtorController = elevtorController;
+        }
+        
+        public void SetElelevatorState(ElevatorState state)
+        {
+            _elevatorState = state;
+        }
 
         public void EnableOpenDoor() => _openedDoor.SetActive(true);
         public void DisableOpenDoor() => _openedDoor.SetActive(false);
         public void EnableNotWorkingDoor() => _notWorkingDoor.SetActive(true);
         public void EnableHighLighter() => _highLighter.SetActive(true);
         public void DisableHighLighter() => _highLighter.SetActive(false);
-        
-        private void OnMouseExit()
-        {
-            _highLighter.SetActive(false);
-        }
-
-        public Vector3 GetEntryPosition()
-        {
-            return _openedDoor.transform.position;
-        }
     }
 }

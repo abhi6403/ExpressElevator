@@ -11,9 +11,11 @@ namespace ExpressElevator.Elevator
         public ElevatorView _elevatorView { get; private set; } 
         private ElevatorService _elevatorService;
         private ElevatorStateMachine _elevatorStateMachine;
+        
         private EventService _eventService;
         private LevelService _levelService;
         private ElevatorSide _elevatorSide;
+        
         private int _floorNumber;
         private int _currentFloornumber;
         private float _floorTravelTime = 1.5f;
@@ -22,38 +24,33 @@ namespace ExpressElevator.Elevator
         {
             _eventService = eventService;
             _levelService = levelService;
+            _elevatorService = elevatorService; 
+            
             _elevatorSide = elevatorSide;
             _floorNumber = floorNumber;
-            _elevatorService = elevatorService; 
-            CreateElevatorStateMachine();
+            
             _elevatorView = GameObject.Instantiate(elevatorView, position, Quaternion.identity);
             _elevatorView.SetController(this);
+            
+            CreateElevatorStateMachine();
             SetWorkingLift();
-            SetCurrentFloorLiftToOpen(_currentFloornumber);
             AddListeners();
+            
+            SetCurrentFloorLiftToOpen(_currentFloornumber);
         }
-
-        public void Update()
-        {
-            _elevatorStateMachine.Update();
-        }
-        private void CreateElevatorStateMachine() => _elevatorStateMachine = new ElevatorStateMachine(this);
+        
         public void AddListeners()
         {
             _eventService.ControlPannelClicked.AddListener(SetCurrentFloorLiftToOpen);
         }
 
-        public void SetStateMachineState(ElevatorState elevatorState)
+        private void CreateElevatorStateMachine() => _elevatorStateMachine = new ElevatorStateMachine(this);
+        
+        public void Update()
         {
-            _elevatorStateMachine.ChangeState(elevatorState);
+            _elevatorStateMachine.Update();
         }
-        public void MoveToElevator()
-        {
-            if (_elevatorService.GetPassengerCount() < 5)
-            {
-                _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
-            }
-        }
+
         public void SetWorkingLift()
         {
             if (_levelService.GetCurrentLevel()._levelID == 1)
@@ -68,7 +65,15 @@ namespace ExpressElevator.Elevator
                 }
             }
         }
-
+        
+        public void MoveToElevator()
+        {
+            if (_elevatorService.GetPassengerCount() < 5)
+            {
+                _eventService.MoveToLift.InvokeEvent(_levelService.GetCurrentLevel().liftEntry[_floorNumber],_floorNumber);
+            }
+        }
+        
         public void SetCurrentFloorLiftToOpen(int floorNumber)
         {
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
@@ -80,7 +85,7 @@ namespace ExpressElevator.Elevator
                 SetStateMachineState(ElevatorState.CLOSE);
             }
         }
-
+        
         public IEnumerator WaitForArrival(int floorNumber)
         {
             _elevatorService.HidePassenger();
@@ -90,25 +95,22 @@ namespace ExpressElevator.Elevator
             SetStateMachineState(ElevatorState.OPEN);
             _eventService.OnControlPannelClicked.InvokeEvent();
         }
+        
         private float GetElevatorWaitTime(int targetFloorNumber)
         {
             int distance = Mathf.Abs(_elevatorService.GetCurrentFloor() - targetFloorNumber);
             float waitTime = distance * _floorTravelTime;
             return waitTime;
         }
+
+        public void SetStateMachineState(ElevatorState elevatorState)
+        {
+            _elevatorStateMachine.ChangeState(elevatorState);
+        }
+
         public void SetCurrentFloor(int currentFloorNumber)
         {
             _currentFloornumber = currentFloorNumber;
-        }
-        
-        public ElevatorSide GetElevatorSide()
-        {
-            return _elevatorSide;
-        }
-
-        public LevelService GetLevelService()
-        {
-            return _levelService;
         }
     }
 }

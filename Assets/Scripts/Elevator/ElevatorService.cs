@@ -14,28 +14,32 @@ namespace ExpressElevator.Elevator
         private LevelService _levelService;
         private ElevatorView _elevatorView;
         private EventService _eventService;
-        private int currentFloor = 0;
-        private Vector3 currentFloorPosition;
+        
         private List<ElevatorController> elevatorControllers = new List<ElevatorController>();
         private List<PassengerController> passengerControllers = new List<PassengerController>();
-
+        
+        private int currentFloor = 0;
+        private Vector3 currentFloorPosition;
+        
         public ElevatorService(ElevatorView elevatorView)
         {
             _elevatorView = elevatorView;
         }
-
+        
+        public void InjectDependencies(LevelService levelService,EventService eventService)
+        {
+            _levelService = levelService;
+            _eventService = eventService;
+            AddListener();
+        }
+        
         public void AddListener()
         {
             _eventService.OnMovingInPassenger.AddListener(AddPassenger);
             _eventService.OnControlPannelClicked.AddListener(ShowPassenger);
             _eventService.OnPassengerReached.AddListener(RemovePassenger);
         }
-        public void InjectDependencies(LevelService levelService,EventService eventService)
-        {
-           _levelService = levelService;
-           _eventService = eventService;
-           AddListener();
-        }
+        
         public void CreateElevator(Vector3 position,EventService eventService,LevelService levelService,ElevatorSide side,int floorNumber)
         {
             _elevtorController = new ElevatorController(_elevatorView,position,eventService,levelService,side,floorNumber,this);
@@ -59,6 +63,7 @@ namespace ExpressElevator.Elevator
         {
             passengerControllers.Remove(passenger);
         }
+        
         public void ShowPassenger()
         {
             for (int i = 0; i < passengerControllers.Count; i++)
@@ -87,11 +92,7 @@ namespace ExpressElevator.Elevator
         {
             return passengerControllers.Count;
         }
-
-        public void SetCurrentFloorPosition(Vector3 position)
-        {
-            currentFloorPosition = position;
-        }
+        
         public void SetCurrentFloor(int floorNumber)
         {
             currentFloor = floorNumber;
