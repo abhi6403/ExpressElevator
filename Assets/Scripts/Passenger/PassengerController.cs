@@ -11,10 +11,12 @@ namespace ExpressElevator.Passenger
     {
         public  PassengerView _passengerView { get; private set; }
         private PassengerModel _passengerModel;
+        
         private EventService _eventService;
         private FloorManager _floorManager;
         private LevelService _levelService;
         private PassengerStateMachine _passengerStateMachine;
+        
         private Vector3 _targetPosition;
         private bool _entered = false;
 
@@ -24,33 +26,36 @@ namespace ExpressElevator.Passenger
             _passengerView = GameObject.Instantiate(passengerView, spawnPosition, Quaternion.identity);
             _passengerView.SetController(this);
             _passengerModel.SetController(this);
-            CreatePassengerStateMachine();
+            
             _passengerView.SetAnimatorValue(false);
+            
             _levelService = levelService;
             _floorManager = floorManager;
             _eventService = eventService;
-           //_currentFloor = currentFloor;
-           //_targetFloor = targetFloor;
+            
+            CreatePassengerStateMachine();
             AddPassenger();
             AddListeners();
         }
 
+        private void AddListeners()
+        {
+            _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
+        }
         public void Update()
         {
             _passengerStateMachine.Update();
         }
         private void CreatePassengerStateMachine() => _passengerStateMachine = new PassengerStateMachine(this);
 
-        public void SetStateMachineState(PassengerState newState)
+        public void AddPassengerToList()
         {
-            _passengerStateMachine.ChangeState(newState);
+            _eventService.OnMovingInPassenger.InvokeEvent(this);
         }
-
         public void MoveStraightToLift()
         {
             _passengerView.SetTargetPosition(new Vector3(3.98f,_levelService.GetCurrentLevel().exitPoints[_passengerModel._currentFloor].y,0));
         }
-
         public void MoveInsideLift()
         {
             if (Vector3.Distance(_passengerView.transform.position, _targetPosition) > 0.2f && _entered == false)
@@ -64,47 +69,42 @@ namespace ExpressElevator.Passenger
             _passengerView.SetTargetPosition(_levelService.GetCurrentLevel().exitPoints[_passengerModel._targetFloor]);
             _eventService.OnPassengerReached.InvokeEvent(this);
         }
-
-        public void SetTargetPosition(Vector3 targetPosition)
-        {
-            _targetPosition = targetPosition;
-        }
+        
         private void AddPassenger()
         {
             _floorManager.AddGuest(_passengerView);
         }
-        private void AddListeners()
+        
+        public void ShowPassenger()
         {
-            _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
+            _passengerView.EnablePassenger();
         }
-
-        public void AddPassengerToList()
+        
+        public void SetStateMachineState(PassengerState newState)
         {
-            _eventService.OnMovingInPassenger.InvokeEvent(this);
+            _passengerStateMachine.ChangeState(newState);
         }
-        public int GetPassengerFloor()
+        
+        public void SetTargetPosition(Vector3 targetPosition)
         {
-            return _passengerModel._currentFloor;
+            _targetPosition = targetPosition;
+        }
+        
+        public void SetCurrentFloorPosition(Vector3 position)
+        {
+            _passengerView.transform.position = position;
         }
 
         public void SetCurrentFloor(int floor)
         {
             _passengerModel.SetCurrentFloor(floor);
         }
-        public void ShowPassenger()
+        
+        public int GetPassengerFloor()
         {
-            _passengerView.EnablePassenger();
+            return _passengerModel._currentFloor;
         }
-        public EventService GetEventService()
-        {
-            return _eventService;
-        }
-
-        public void SetCurrentFloorPosition(Vector3 position)
-        {
-            _passengerView.transform.position = position;
-        }
-
+        
         public int GetTargetFloor()
         {
             return _passengerModel._targetFloor;
