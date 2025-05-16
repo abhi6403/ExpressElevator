@@ -1,3 +1,4 @@
+using ExpressElevator.Floor;
 using UnityEngine;
 
 namespace ExpressElevator.Passenger
@@ -5,12 +6,24 @@ namespace ExpressElevator.Passenger
     public class PassengerModel
     {
         private PassengerController _passengerController;
-        public int _currentFloor { get; set; }
-        public int _destinationFloor { get; set; }
+        public int _currentFloor { get; private set; }
+        public int _targetFloor { get; }
 
+        public Vector3 _passengerPosition;
+
+        public PassengerModel(int currentFloor,int targetFloor)
+        {
+            _currentFloor = currentFloor;
+            _targetFloor = targetFloor;
+        }
         public void SetController(PassengerController passengerController)
         {
             _passengerController = passengerController;
+        }
+
+        public void SetCurrentFloor(int currentFloor)
+        {
+            _currentFloor = currentFloor;
         }
     }
 }

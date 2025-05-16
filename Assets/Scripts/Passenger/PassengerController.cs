@@ -16,14 +16,12 @@ namespace ExpressElevator.Passenger
         private LevelService _levelService;
         private PassengerStateMachine _passengerStateMachine;
         private Vector3 _targetPosition;
-        private int _currentFloor;
-        private int _targetFloor;
         private bool _entered = false;
 
-        public PassengerController(PassengerView passengerView,Vector3 passengerPosition,FloorManager floorManager,EventService eventService,int currentFloor,int targetFloor,LevelService levelService)
+        public PassengerController(PassengerView passengerView,PassengerModel passengerModel,Vector3 spawnPosition,FloorManager floorManager,EventService eventService,LevelService levelService)
         {
-            _passengerModel = new PassengerModel();
-            _passengerView = GameObject.Instantiate(passengerView, passengerPosition, Quaternion.identity);
+            _passengerModel = passengerModel;
+            _passengerView = GameObject.Instantiate(passengerView, spawnPosition, Quaternion.identity);
             _passengerView.SetController(this);
             _passengerModel.SetController(this);
             CreatePassengerStateMachine();
@@ -31,9 +29,8 @@ namespace ExpressElevator.Passenger
             _levelService = levelService;
             _floorManager = floorManager;
             _eventService = eventService;
-            _currentFloor = currentFloor;
-            _targetFloor = targetFloor;
-            _targetPosition = passengerPosition;
+           //_currentFloor = currentFloor;
+           //_targetFloor = targetFloor;
             AddPassenger();
             AddListeners();
         }
@@ -51,7 +48,7 @@ namespace ExpressElevator.Passenger
 
         public void MoveStraightToLift()
         {
-            _passengerView.SetTargetPosition(new Vector3(3.98f,_levelService.GetCurrentLevel().exitPoints[_currentFloor].y,0));
+            _passengerView.SetTargetPosition(new Vector3(3.98f,_levelService.GetCurrentLevel().exitPoints[_passengerModel._currentFloor].y,0));
         }
 
         public void MoveInsideLift()
@@ -64,7 +61,7 @@ namespace ExpressElevator.Passenger
         }
         public void MoveToExit()
         {
-            _passengerView.SetTargetPosition(_levelService.GetCurrentLevel().exitPoints[_targetFloor]);
+            _passengerView.SetTargetPosition(_levelService.GetCurrentLevel().exitPoints[_passengerModel._targetFloor]);
             _eventService.OnPassengerReached.InvokeEvent(this);
         }
 
@@ -87,12 +84,12 @@ namespace ExpressElevator.Passenger
         }
         public int GetPassengerFloor()
         {
-            return _currentFloor;
+            return _passengerModel._currentFloor;
         }
 
         public void SetCurrentFloor(int floor)
         {
-            _currentFloor = floor;
+            _passengerModel.SetCurrentFloor(floor);
         }
         public void ShowPassenger()
         {
@@ -110,7 +107,7 @@ namespace ExpressElevator.Passenger
 
         public int GetTargetFloor()
         {
-            return _targetFloor;
+            return _passengerModel._targetFloor;
         }
     }
 }
