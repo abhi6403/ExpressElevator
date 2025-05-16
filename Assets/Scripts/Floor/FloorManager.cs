@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using ExpressElevator.Level;
 using ExpressElevator.Passenger;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace ExpressElevator.Floor
 {
@@ -14,26 +11,28 @@ namespace ExpressElevator.Floor
         
         public List<Vector3> waitingPoints;
         public List<PassengerView> passengerList; 
-        private float positionSize = 8f;
         
-        private Vector3 _firstPosition;
+        private float positionSize = 8f;
         private int count = 0;
+        private Vector3 _firstPosition;
 
         public FloorManager(Vector3 firstPosition)
         {
             _firstPosition = firstPosition;
         }
 
-        public void InjectDependencies(LevelService levelService)
-        {
-            _levelService = levelService;
-            Start();
-        }
         private void Start()
         {
             passengerList = new List<PassengerView>();
             SetPoints();
         }
+        
+        public void InjectDependencies(LevelService levelService)
+        {
+            _levelService = levelService;
+            Start();
+        }
+        
         public void AddGuest(PassengerView passenger)
         {
             passengerList.Add(passenger);
