@@ -72,6 +72,17 @@ namespace ExpressElevator.Elevator
                 
             }
         }
+
+        public void HidePassenger()
+        {
+            for (int i = 0; i < passengerControllers.Count; i++)
+            {
+                if (passengerControllers[i]._passengerView._passengerState == PassengerState.MOVINGIN)
+                {
+                    passengerControllers[i]._passengerView.DisablePassenger();
+                }
+            }
+        }
         public int GetPassengerCount()
         {
             return passengerControllers.Count;
@@ -84,6 +95,11 @@ namespace ExpressElevator.Elevator
         public void SetCurrentFloor(int floorNumber)
         {
             currentFloor = floorNumber;
+        }
+
+        public int GetCurrentFloor()
+        {
+            return currentFloor;
         }
     }
 }

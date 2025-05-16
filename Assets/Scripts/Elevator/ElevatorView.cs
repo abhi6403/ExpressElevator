@@ -43,6 +43,10 @@ namespace ExpressElevator.Elevator
             }
         }
 
+        public void WaitTime(int floorNumber)
+        {
+            StartCoroutine(_elevtorController.WaitForArrival(floorNumber));
+        }
         private Vector3 GetOpenedDoorPosition()
         {
             return _openedDoor.transform.position;

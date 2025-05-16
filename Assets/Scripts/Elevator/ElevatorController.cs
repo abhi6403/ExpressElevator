@@ -1,3 +1,4 @@
+using System.Collections;
 using ExpressElevator.Event;
 using ExpressElevator.Level;
 using ExpressElevator.Passenger;
@@ -15,6 +16,8 @@ namespace ExpressElevator.Elevator
         private ElevatorSide _elevatorSide;
         private int _floorNumber;
         private int _currentFloornumber;
+        private float _floorTravelTime = 1.5f;
+        private float _waitTime;
         public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide,int floorNumber,ElevatorService elevatorService)
         {
             _eventService = eventService;
@@ -70,19 +73,34 @@ namespace ExpressElevator.Elevator
         {
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
             {
-                SetStateMachineState(ElevatorState.OPEN);
-                _elevatorService.SetCurrentFloor(floorNumber);
+                _elevatorView.WaitTime(floorNumber);
             }
             else
             {
                 SetStateMachineState(ElevatorState.CLOSE);
             }
         }
+
+        public IEnumerator WaitForArrival(int floorNumber)
+        {
+            _elevatorService.HidePassenger();
+            float waitTime = GetElevatorWaitTime(floorNumber);
+            yield return new WaitForSeconds(waitTime);
+            _elevatorService.SetCurrentFloor(floorNumber);
+            SetStateMachineState(ElevatorState.OPEN);
+            _eventService.OnControlPannelClicked.InvokeEvent();
+        }
+        private float GetElevatorWaitTime(int targetFloorNumber)
+        {
+            int distance = Mathf.Abs(_elevatorService.GetCurrentFloor() - targetFloorNumber);
+            float waitTime = distance * _floorTravelTime;
+            return waitTime;
+        }
         public void SetCurrentFloor(int currentFloorNumber)
         {
             _currentFloornumber = currentFloorNumber;
         }
-
+        
         public ElevatorSide GetElevatorSide()
         {
             return _elevatorSide;
