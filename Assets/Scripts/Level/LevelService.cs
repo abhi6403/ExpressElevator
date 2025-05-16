@@ -63,7 +63,7 @@ namespace ExpressElevator.Level
                 for (int j = 0; j < _currentLevel._numberOfPassengersPerFloor; j++)
                 {
                         _passengerService.SpawnPassenger(_currentLevel.spawnPoints[_currentFloorIndex] - new Vector3(_spawnDistance, 0f, 0f),_currentFloorIndex);
-                        _spawnDistance -= 0.5f;
+                        _spawnDistance -= 1f;
                 }
 
                 _spawnDistance = 1f;

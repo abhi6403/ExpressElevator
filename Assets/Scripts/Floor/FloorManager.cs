@@ -47,7 +47,7 @@ namespace ExpressElevator.Floor
             {
                 for (int j = 0; j < _levelService.GetCurrentLevel()._numberOfPassengersPerFloor; j++)
                 {
-                    waitingPoints.Add(_levelService.GetCurrentLevel().waitingArea[i] + new Vector3(0.1f, 0) * positionSize * j);
+                    waitingPoints.Add(_levelService.GetCurrentLevel().waitingArea[i] + new Vector3(0.15f, 0) * positionSize * j);
                 }
             }
         }

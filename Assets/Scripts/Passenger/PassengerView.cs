@@ -1,6 +1,7 @@
 using System;
 using ExpressElevator.Elevator;
 using ExpressElevator.Floor;
+using TMPro;
 using UnityEngine;
 
 namespace ExpressElevator.Passenger
@@ -11,6 +12,7 @@ namespace ExpressElevator.Passenger
         public PassengerState _passengerState;
         
         [SerializeField] private Animator _animator;
+        [SerializeField] private TextMeshProUGUI _passengerFlootText;
         public SpriteRenderer _spriteRenderer { get; private set; }
         
         public Vector3 TargetPosition {get; private set;}
@@ -21,6 +23,7 @@ namespace ExpressElevator.Passenger
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
+            _passengerFlootText.text = _passengerController.GetTargetFloor().ToString();
         }
         
         private void Update()
