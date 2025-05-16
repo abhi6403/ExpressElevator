@@ -10,13 +10,15 @@ namespace ExpressElevator.Passenger
     {
         private List<PassengerView> _passengersList;
         private PassengerController _passengerController;
+        
         private FloorManager _floorManager;
         private EventService _eventService;
         private LevelService _levelService;
+        
         private int _maxFloors = 4;
         private int _minFloors = 0;
         private int _targetFloor;
-
+        
         public PassengerService(List<PassengerView> passengersList)
         {
             _passengersList = passengersList;
@@ -28,10 +30,6 @@ namespace ExpressElevator.Passenger
             _eventService = eventService;
             _levelService = levelService;
         }
-        private PassengerView getRandomPassengers()
-        {
-            return _passengersList[Random.Range(0, _passengersList.Count)];
-        }
 
         public void SpawnPassenger(Vector3 spawnPosition,int currentFloor)
         {
@@ -41,6 +39,11 @@ namespace ExpressElevator.Passenger
 
         }
 
+        private PassengerView getRandomPassengers()
+        {
+            return _passengersList[Random.Range(0, _passengersList.Count)];
+        }
+        
         private int GetRandomTargetPosition(int currentFloor)
         {
             do

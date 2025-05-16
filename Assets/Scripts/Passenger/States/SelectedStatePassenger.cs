@@ -16,7 +16,8 @@ namespace ExpressElevator.Passenger
 
         public void OnStateEnter()
         {
-            Owner._passengerView.GetSpriteRenderer().color = new Color(1, 1, 1, 0.5f);
+            Owner._passengerView._passengerState = PassengerState.SELECTED;
+            Owner._passengerView._spriteRenderer.color = new Color(1, 1, 1, 0.5f);
         }
 
         public void Update()

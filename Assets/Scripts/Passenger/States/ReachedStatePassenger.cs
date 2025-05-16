@@ -8,7 +8,6 @@ namespace ExpressElevator.Passenger
     {
         public PassengerController Owner { get; set; }
         private PassengerStateMachine _passengerStateMachine;
-        private bool _isMoving = false;
         private float _stopThreshold = 0.5f;
 
         public ReachedStatePassenger(PassengerStateMachine passengerStateMachine)
@@ -18,6 +17,7 @@ namespace ExpressElevator.Passenger
 
         public void OnStateEnter()
         {
+            Owner._passengerView._passengerState = PassengerState.REACHED;
             Owner.MoveStraightToLift();
         }
 

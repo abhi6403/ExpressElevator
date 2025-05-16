@@ -10,21 +10,17 @@ namespace ExpressElevator.Passenger
         private PassengerController _passengerController;
         public PassengerState _passengerState;
         
-        
-        [SerializeField] 
-        private Animator _animator;
-        
-        public bool _isMoving {get; set;}
-        private float _stopThreshold = 0.5f;
+        [SerializeField] private Animator _animator;
+        public SpriteRenderer _spriteRenderer { get; private set; }
         
         public Vector3 TargetPosition {get; private set;}
-        private SpriteRenderer _spriteRenderer;
+        public bool _isMoving {get; set;}
+        private float _stopThreshold = 0.5f;
 
         private void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
-            _passengerState = PassengerState.NOT_SELECTED;
         }
         
         private void Update()
@@ -47,30 +43,11 @@ namespace ExpressElevator.Passenger
             if (_passengerState == PassengerState.NOT_SELECTED)
             {
                 _passengerController.SetStateMachineState(PassengerState.SELECTED);
-                _passengerState = PassengerState.SELECTED;
                 
             }else if (_passengerState == PassengerState.SELECTED)
             {
                 _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
-                _passengerState = PassengerState.NOT_SELECTED;
             }
-        }
-
-        public void SetController(PassengerController passengerController)
-        {
-            _passengerController = passengerController;
-        }
-
-        public void SetAnimatorValue(bool value)
-        {
-            _animator.SetBool("Reached", value);
-        }
-
-        public void SetTargetPosition(Vector3 targetPosition)
-        {
-            TargetPosition = targetPosition;
-            _isMoving = true;
-            SetAnimatorValue(false);
         }
 
         public void MoveToEntrance(Vector3 entrancePosition)
@@ -87,11 +64,17 @@ namespace ExpressElevator.Passenger
                     _passengerController.SetTargetPosition(liftPosition);
                     _passengerController.AddPassengerToList();
                     _passengerController.SetStateMachineState(PassengerState.MOVINGIN);
-                    _passengerState = PassengerState.MOVINGIN;
                 }
             }
         }
-
+        
+        public void SetTargetPosition(Vector3 targetPosition)
+        {
+            TargetPosition = targetPosition;
+            _isMoving = true;
+            SetAnimatorValue(false);
+        }
+        
         public void DisablePassenger()
         {
             gameObject.SetActive(false);
@@ -102,15 +85,15 @@ namespace ExpressElevator.Passenger
             gameObject.SetActive(true);
             SetAnimatorValue(true);
         }
-
-        public void MoveToFinal(Vector3 finalPosition)
+        
+        public void SetController(PassengerController passengerController)
         {
-            transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 2f * 5);
+            _passengerController = passengerController;
         }
 
-        public SpriteRenderer GetSpriteRenderer()
+        public void SetAnimatorValue(bool value)
         {
-            return _spriteRenderer;
+            _animator.SetBool("Reached", value);
         }
     }
 }
