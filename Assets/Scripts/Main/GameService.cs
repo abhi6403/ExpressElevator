@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ExpressElevator.Command;
 using ExpressElevator.Elevator;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
@@ -18,6 +19,7 @@ namespace ExpressElevator.Main
         public EventService EventService { get; private set; }
         public FloorManager FloorManager { get; private set; }
         public ElevatorService ElevatorService { get; private set; }
+        public CommandInvoker CommandInvoker { get; private set; }
         
         [SerializeField]private UIService _uiService;
         public UIService UIService => _uiService;
@@ -40,6 +42,7 @@ namespace ExpressElevator.Main
             LevelService = new LevelService(_levelSO);
             FloorManager = new FloorManager(_firstPosition);
             ElevatorService = new ElevatorService(_elevatorPrefab);
+            CommandInvoker = new CommandInvoker();
             _uiService.UIStart();
         }
 
@@ -50,6 +53,7 @@ namespace ExpressElevator.Main
             LevelService.InjectDependecies(EventService,PassengerService,ElevatorService);
             ElevatorService.InjectDependencies(LevelService,EventService);
             _uiService.InjectDependencies(EventService);
+            CommandInvoker.InjectDependencies(EventService);
         }
     }
 }

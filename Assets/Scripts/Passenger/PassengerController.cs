@@ -1,3 +1,4 @@
+using ExpressElevator.Command;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
 using ExpressElevator.Level;
@@ -15,9 +16,11 @@ namespace ExpressElevator.Passenger
         private FloorManager _floorManager;
         private LevelService _levelService;
         private PassengerStateMachine _passengerStateMachine;
+        private ICommand _addPassengerCommand;
         private Vector3 _targetPosition;
         private int _currentFloor;
         private int _targetFloor;
+        private Vector3 _previousPosition;
         private bool _entered = false;
 
         public PassengerController(PassengerView passengerView,Vector3 passengerPosition,FloorManager floorManager,EventService eventService,int currentFloor,int targetFloor,LevelService levelService)
@@ -34,6 +37,7 @@ namespace ExpressElevator.Passenger
             _currentFloor = currentFloor;
             _targetFloor = targetFloor;
             _targetPosition = passengerPosition;
+            _addPassengerCommand = new BoardedPassenger();
             AddPassenger();
             AddListeners();
         }
@@ -68,6 +72,16 @@ namespace ExpressElevator.Passenger
             _eventService.OnPassengerReached.InvokeEvent(this);
         }
 
+        public void SetQueuePosition(Vector3 position)
+        {
+            _previousPosition = position;
+        }
+
+        public void Reset()
+        {
+            _passengerView.SetTargetPosition(_previousPosition);
+            SetStateMachineState(PassengerState.NOT_SELECTED);
+        }
         public void SetTargetPosition(Vector3 targetPosition)
         {
             _targetPosition = targetPosition;
@@ -79,11 +93,13 @@ namespace ExpressElevator.Passenger
         private void AddListeners()
         {
             _eventService.MoveToLift.AddListener(_passengerView.MoveInsideLift);
+            _eventService.UndoClicked.AddListener(Undo);
+            //_eventService.Reset.AddListener(Reset);
         }
-
+        
         public void AddPassengerToList()
         {
-            _eventService.OnMovingInPassenger.InvokeEvent(this);
+            _eventService.AddPassenger.InvokeEvent(this,_addPassengerCommand);
         }
         public int GetPassengerFloor()
         {
@@ -103,6 +119,11 @@ namespace ExpressElevator.Passenger
             return _eventService;
         }
 
+        public void Undo()
+        {
+            _eventService.Undo.InvokeEvent(this);
+        }
+
         public void SetCurrentFloorPosition(Vector3 position)
         {
             _passengerView.transform.position = position;
@@ -111,6 +132,11 @@ namespace ExpressElevator.Passenger
         public int GetTargetFloor()
         {
             return _targetFloor;
+        }
+
+        public Vector3 GetTargetPosition()
+        {
+            return _targetPosition;
         }
     }
 }

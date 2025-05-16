@@ -16,7 +16,7 @@ namespace ExpressElevator.UI
             _elevatorControlPannelView = elevatorControlPannelView;
             _elevatorControlPannelView.SetController(this);
         }
-
+        
         public void InjectDependencies(EventService eventService)
         {
             _eventService = eventService;
@@ -45,6 +45,10 @@ namespace ExpressElevator.UI
             SetPassengerState();
         }
 
+        public void OnUndoClicked()
+        {
+            _eventService.UndoClicked.InvokeEvent();
+        }
         public void SetPassengerState()
         {
             _eventService.OnControlPannelClicked.InvokeEvent();

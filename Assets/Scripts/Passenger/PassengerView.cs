@@ -7,7 +7,7 @@ namespace ExpressElevator.Passenger
 {
     public class PassengerView : MonoBehaviour
     {
-        private PassengerController _passengerController;
+        public PassengerController _passengerController { get; private set; }
         public PassengerState _passengerState;
         
         
