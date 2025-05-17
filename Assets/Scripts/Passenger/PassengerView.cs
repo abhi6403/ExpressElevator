@@ -23,7 +23,7 @@ namespace ExpressElevator.Passenger
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _passengerController.SetStateMachineState(PassengerState.NOT_SELECTED);
-            _passengerFlootText.text = _passengerController.GetTargetFloor().ToString();
+            SetPassengerTargetFloorText();
         }
         
         private void Update()
@@ -77,7 +77,11 @@ namespace ExpressElevator.Passenger
             _isMoving = true;
             SetAnimatorValue(false);
         }
-        
+
+        public void SetPassengerTargetFloorText()
+        {
+            _passengerFlootText.text = _passengerController.GetTargetFloor().ToString();
+        }
         public void DisablePassenger()
         {
             gameObject.SetActive(false);
@@ -88,12 +92,25 @@ namespace ExpressElevator.Passenger
             gameObject.SetActive(true);
             SetAnimatorValue(true);
         }
-        
+
+        public void DisableTargetFloorText()
+        {
+            _passengerFlootText.gameObject.SetActive(false);
+        }
         public void SetController(PassengerController passengerController)
         {
             _passengerController = passengerController;
         }
 
+        public void SelectedAlphaValue()
+        {
+            _spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        }
+
+        public void NotSelectedAlphaValue()
+        {
+            _spriteRenderer.color = new Color(1, 1, 1, 1);
+        }
         public void SetAnimatorValue(bool value)
         {
             _animator.SetBool("Reached", value);

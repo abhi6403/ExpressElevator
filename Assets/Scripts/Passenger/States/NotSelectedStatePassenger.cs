@@ -16,7 +16,7 @@ namespace ExpressElevator.Passenger
         public void OnStateEnter()
         {
             Owner._passengerView._passengerState = PassengerState.NOT_SELECTED;
-            Owner._passengerView._spriteRenderer.color = new Color(1, 1, 1, 1);
+            Owner._passengerView.NotSelectedAlphaValue();
         }
 
         public void Update()

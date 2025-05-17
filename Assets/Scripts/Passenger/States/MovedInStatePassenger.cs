@@ -16,8 +16,9 @@ namespace ExpressElevator.Passenger
         public void OnStateEnter()
         {
             Owner._passengerView._passengerState = PassengerState.MOVINGIN;
-            Owner._passengerView._spriteRenderer.color = new Color(1, 1, 1, 1);
+            Owner._passengerView.NotSelectedAlphaValue();
             Owner.MoveStraightToLift();
+            Owner._passengerView.DisableTargetFloorText();
         }
 
         public void Update()
