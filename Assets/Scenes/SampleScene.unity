@@ -6104,6 +6104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseButton: {fileID: 1190593420}
+  _timerText: {fileID: 1068772712}
+  _remainingPassengersText: {fileID: 2014363168}
+  _currentPassengersInElevatorText: {fileID: 1018962991}
 --- !u!1001 &1899907279
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,23 @@ namespace ExpressElevator.UI
         public void OnPauseButtonClicked()
         {
             _uiService._pauseMenuUIView.EnableView();
+            _gamePlayUIView._pauseButton.gameObject.SetActive(false);
+        }
+
+        public void UpdateTimerText()
+        {
+            
+        }
+
+        public void UpdatePassengerInElevatorText()
+        {
+            _gamePlayUIView._currentPassengersInElevatorText.text = "Boarded = "+ _uiService._elevatorService.GetPassengerCount() + "/5";
+        }
+
+        public void UpdateRemainingPassengersText()
+        {
+            _gamePlayUIView._remainingPassengersText.text =
+                "Remaining = " + _uiService._passengerService.GetPassengersCount();
         }
     }
 }

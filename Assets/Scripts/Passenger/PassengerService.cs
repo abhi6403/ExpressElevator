@@ -9,6 +9,7 @@ namespace ExpressElevator.Passenger
     public class PassengerService
     {
         private List<PassengerView> _passengersList;
+        private List<PassengerController> _passengerControllerList = new List<PassengerController>();
         private PassengerController _passengerController;
         
         private FloorManager _floorManager;
@@ -35,8 +36,9 @@ namespace ExpressElevator.Passenger
         {
             PassengerModel passengerModel = new PassengerModel(currentFloor, GetRandomTargetPosition(currentFloor));
             _passengerController = new PassengerController(getRandomPassengers(),passengerModel, spawnPosition, _floorManager,
-                _eventService,_levelService);
-
+                _eventService,_levelService,this);
+            
+            _passengerControllerList.Add(_passengerController);
         }
 
         private PassengerView getRandomPassengers()
@@ -53,6 +55,16 @@ namespace ExpressElevator.Passenger
             while (_targetFloor == currentFloor);
             
             return _targetFloor;
+        }
+
+        public void RemovePassenger(PassengerController passenger)
+        {
+            _passengerControllerList.Remove(passenger);
+        }
+
+        public int GetPassengersCount()
+        {
+            return _passengerControllerList.Count;
         }
     }
 }

@@ -30,7 +30,8 @@ namespace ExpressElevator.Passenger
             
             if (Vector3.Distance(Owner._passengerView.transform.position, Owner._passengerView.TargetPosition) < _stopThreshold)
             {
-                Owner._passengerView.gameObject.SetActive(false);
+                Owner.RemovePassenger();
+                Owner._passengerView.DestroyPassenger();
             }
         }
 

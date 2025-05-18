@@ -18,6 +18,7 @@ namespace ExpressElevator.UI
         public void OnResumeClicked()
         {
             _pauseMenuUIView.DisableView();
+            _uiService._gamePlayUIView._pauseButton.gameObject.SetActive(true);
         }
 
         public void OnMainMenuClicked()

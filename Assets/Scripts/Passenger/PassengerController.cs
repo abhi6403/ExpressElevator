@@ -11,6 +11,7 @@ namespace ExpressElevator.Passenger
     {
         public  PassengerView _passengerView { get; private set; }
         private PassengerModel _passengerModel;
+        private PassengerService _passengerService;
         
         private EventService _eventService;
         private FloorManager _floorManager;
@@ -20,7 +21,7 @@ namespace ExpressElevator.Passenger
         private Vector3 _targetPosition;
         private bool _entered = false;
 
-        public PassengerController(PassengerView passengerView,PassengerModel passengerModel,Vector3 spawnPosition,FloorManager floorManager,EventService eventService,LevelService levelService)
+        public PassengerController(PassengerView passengerView,PassengerModel passengerModel,Vector3 spawnPosition,FloorManager floorManager,EventService eventService,LevelService levelService,PassengerService passengerService)
         {
             _passengerModel = passengerModel;
             _passengerView = GameObject.Instantiate(passengerView, spawnPosition, Quaternion.identity);
@@ -32,6 +33,7 @@ namespace ExpressElevator.Passenger
             _levelService = levelService;
             _floorManager = floorManager;
             _eventService = eventService;
+            _passengerService = passengerService;
             
             CreatePassengerStateMachine();
             AddPassenger();
@@ -108,6 +110,11 @@ namespace ExpressElevator.Passenger
         public int GetTargetFloor()
         {
             return _passengerModel._targetFloor;
+        }
+
+        public void RemovePassenger()
+        {
+            _passengerService.RemovePassenger(this);
         }
     }
 }

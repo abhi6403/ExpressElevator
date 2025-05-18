@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +9,20 @@ namespace ExpressElevator.UI
     {
         private GamePlayUIController _gamePlayUIController;
 
-        [SerializeField] private Button _pauseButton;
+        public Button _pauseButton;
+        public TextMeshProUGUI _timerText;
+        public TextMeshProUGUI _remainingPassengersText;
+        public TextMeshProUGUI _currentPassengersInElevatorText;
 
         public void SubscribeButtonClicks()
         {
             _pauseButton.onClick.AddListener(_gamePlayUIController.OnPauseButtonClicked);
+        }
+
+        public void Update()
+        {
+            _gamePlayUIController.UpdatePassengerInElevatorText();
+            _gamePlayUIController.UpdateRemainingPassengersText();
         }
 
         public void SetController(GamePlayUIController gamePlayUIController)

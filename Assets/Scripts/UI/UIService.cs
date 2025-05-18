@@ -1,4 +1,6 @@
+using ExpressElevator.Elevator;
 using ExpressElevator.Event;
+using ExpressElevator.Passenger;
 using UnityEngine;
 
 namespace ExpressElevator.UI
@@ -6,6 +8,8 @@ namespace ExpressElevator.UI
     public class UIService : MonoBehaviour
     {
         public EventService _eventService { get; private set; }
+        public ElevatorService _elevatorService { get; private set; }
+        public PassengerService _passengerService { get; private set; }
         
         private ElevatorControlPannelController _elevatorControlPannelController;
         private MainMenuUIController _mainMenuUIController;
@@ -28,10 +32,11 @@ namespace ExpressElevator.UI
             _gamePlayUIController = new GamePlayUIController(_gamePlayUIView, this);
         }
 
-        public void InjectDependencies(EventService eventService)
+        public void InjectDependencies(EventService eventService, ElevatorService elevatorService,PassengerService passengerService)
         {
             _eventService = eventService;
+            _elevatorService = elevatorService;
+            _passengerService = passengerService;
         }
-        
     }
 }

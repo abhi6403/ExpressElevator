@@ -115,5 +115,10 @@ namespace ExpressElevator.Passenger
         {
             _animator.SetBool("Reached", value);
         }
+
+        public void DestroyPassenger()
+        {
+            Destroy(gameObject);
+        }
     }
 }
