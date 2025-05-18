@@ -21,7 +21,7 @@ namespace ExpressElevator.Floor
             _firstPosition = firstPosition;
         }
 
-        private void Start()
+        public void Start()
         {
             passengerList = new List<PassengerView>();
             SetPoints();
@@ -30,7 +30,6 @@ namespace ExpressElevator.Floor
         public void InjectDependencies(LevelService levelService)
         {
             _levelService = levelService;
-            Start();
         }
         
         public void AddGuest(PassengerView passenger)

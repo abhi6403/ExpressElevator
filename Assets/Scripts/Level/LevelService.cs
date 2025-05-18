@@ -29,17 +29,16 @@ namespace ExpressElevator.Level
         public LevelService(LevelSO levels)
         {
             _levels = levels;
-            OpenLevel(1);
         }
 
-        public void InjectDependecies(EventService eventService, PassengerService passengerService,ElevatorService elevatorService)
+        public void InjectDependecies(EventService eventService, PassengerService passengerService,ElevatorService elevatorService,FloorManager floorManager)
         {
             _eventService = eventService;
             _passengerService = passengerService;
             _elevatorService = elevatorService;
-            CreateLevel();
-            SpawnPassengers();
+            _floorManager = floorManager;
             elevatorService.SetCurrentFloor();
+            subscribeToEvents();
         }
         
         private void subscribeToEvents()
@@ -49,11 +48,9 @@ namespace ExpressElevator.Level
         private void OpenLevel(int mapId)
         {
             _currentLevel = _levels.Levels.Find(level => level._levelID == mapId);
-        }
-
-        public Vector3 GetRandomSpawnPoint()
-        {
-            return _currentLevel.spawnPoints[Random.Range(0, _currentLevel.spawnPoints.Count)];
+            _floorManager.Start();
+            CreateLevel();
+            SpawnPassengers();
         }
 
         public void SpawnPassengers()

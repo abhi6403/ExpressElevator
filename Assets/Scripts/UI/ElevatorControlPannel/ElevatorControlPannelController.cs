@@ -1,53 +1,35 @@
-using ExpressElevator.Event;
-using ExpressElevator.Main;
-using ExpressElevator.Passenger;
-using UnityEngine;
-
-
 namespace ExpressElevator.UI
 {
     public class ElevatorControlPannelController : IUIController
     {
         private ElevatorControlPannelView _elevatorControlPannelView;
-        private EventService _eventService;
+        private UIService _uiService;
 
-        public ElevatorControlPannelController(ElevatorControlPannelView elevatorControlPannelView)
+        public ElevatorControlPannelController(ElevatorControlPannelView elevatorControlPannelView,UIService uiService)
         {
             _elevatorControlPannelView = elevatorControlPannelView;
             _elevatorControlPannelView.SetController(this);
+            _uiService = uiService;
         }
-
-        public void InjectDependencies(EventService eventService)
-        {
-            _eventService = eventService;
-        }
+        
         public void OnGroundFloorClicked()
         {
-            _eventService.ControlPannelClicked.InvokeEvent(0);
-            SetPassengerState();
+            _uiService._eventService.ControlPannelClicked.InvokeEvent(0);
         }
 
         public void OnFirstFloorClicked() 
         {
-            _eventService.ControlPannelClicked.InvokeEvent(1);
-            SetPassengerState();
+            _uiService._eventService.ControlPannelClicked.InvokeEvent(1);
         }
 
         public void OnSecondFloorClicked()
         {
-            _eventService.ControlPannelClicked.InvokeEvent(2);
-            SetPassengerState();
+            _uiService._eventService.ControlPannelClicked.InvokeEvent(2);
         }
 
         public void OnThirdFloorClicked()
         {
-            _eventService.ControlPannelClicked.InvokeEvent(3);
-            SetPassengerState();
-        }
-
-        public void SetPassengerState()
-        {
-            
+            _uiService._eventService.ControlPannelClicked.InvokeEvent(3);
         }
     }
 }
