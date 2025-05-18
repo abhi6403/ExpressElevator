@@ -1,3 +1,5 @@
+using ExpressElevator.Main;
+
 namespace ExpressElevator.UI
 {
     public class ChooseLevelUIController : IUIController
@@ -18,6 +20,7 @@ namespace ExpressElevator.UI
             _uiService._eventService.OnMapSelected.InvokeEvent(1);
             _chooseLevelUIView.DisableView();
             _uiService._gamePlayUIView.EnableView();
+            SetGamePlayUIView();
         }
 
         public void OnLevelTwoSelected()
@@ -25,6 +28,7 @@ namespace ExpressElevator.UI
             _uiService._eventService.OnMapSelected.InvokeEvent(2);
             _chooseLevelUIView.DisableView();
             _uiService._gamePlayUIView.EnableView();
+            SetGamePlayUIView();
         }
 
         public void OnLevelThreeSelected()
@@ -32,6 +36,12 @@ namespace ExpressElevator.UI
             _uiService._eventService.OnMapSelected.InvokeEvent(3);
             _chooseLevelUIView.DisableView();
             _uiService._gamePlayUIView.EnableView();
+            SetGamePlayUIView();
+        }
+
+        public void SetGamePlayUIView()
+        {
+            _uiService._gamePlayUIView.SetPlayingState(GameState.PLAYING);
         }
     }
 }
