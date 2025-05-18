@@ -15,6 +15,7 @@ namespace ExpressElevator.Level
             public int _levelID;
             public int  _numberOfPassengers;
             public int _numberOfPassengersPerFloor;
+            public int _numberOfWaitingArea;
             public List<Vector3> spawnPoints;
             public List<Vector3> liftEntry;
             public List<Vector3> exitPoints;

@@ -48,7 +48,9 @@ namespace ExpressElevator.Floor
                 {
                     waitingPoints.Add(_levelService.GetCurrentLevel().waitingArea[i] + new Vector3(0.15f, 0) * positionSize * j);
                 }
+                Debug.Log(i);
             }
+            Debug.Log(waitingPoints.Count);
         }
     }
 }

@@ -17,18 +17,21 @@ namespace ExpressElevator.UI
         {
             _uiService._eventService.OnMapSelected.InvokeEvent(1);
             _chooseLevelUIView.DisableView();
+            _uiService._gamePlayUIView.EnableView();
         }
 
         public void OnLevelTwoSelected()
         {
             _uiService._eventService.OnMapSelected.InvokeEvent(2);
             _chooseLevelUIView.DisableView();
+            _uiService._gamePlayUIView.EnableView();
         }
 
         public void OnLevelThreeSelected()
         {
             _uiService._eventService.OnMapSelected.InvokeEvent(3);
             _chooseLevelUIView.DisableView();
+            _uiService._gamePlayUIView.EnableView();
         }
     }
 }
