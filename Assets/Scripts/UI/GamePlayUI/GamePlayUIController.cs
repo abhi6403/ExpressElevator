@@ -21,7 +21,7 @@ namespace ExpressElevator.UI
         {
             SoundService.Instance.Play(Sound.Sound.BUTTONCLICK);
             _uiService._pauseMenuUIView.EnableView();
-            _gamePlayUIView._pauseButton.gameObject.SetActive(false);
+            _gamePlayUIView.DisableView();
         }
         public void UpdatePassengerInElevatorText()
         {
@@ -32,6 +32,12 @@ namespace ExpressElevator.UI
         {
             _gamePlayUIView._remainingPassengersText.text =
                 "Remaining = " + _uiService._passengerService.GetPassengersCount();
+
+            if (_uiService._passengerService.GetPassengersCount() <= 0)
+            {
+                _uiService._gameOverUIView.EnableView();
+                _gamePlayUIView.DisableView();
+            }
         }
 
         public void SetTimer()

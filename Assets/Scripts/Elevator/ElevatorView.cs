@@ -1,3 +1,4 @@
+using ExpressElevator.Sound;
 using UnityEngine;
 
 namespace ExpressElevator.Elevator
@@ -25,7 +26,11 @@ namespace ExpressElevator.Elevator
         {
             if (_elevatorState == ElevatorState.OPEN)
             {
+                SoundService.Instance.Play(Sound.Sound.LIFTSELECT);
                 _elevtorController.MoveToElevator();
+            }else if (_elevatorState != ElevatorState.OPEN)
+            {
+                SoundService.Instance.Play(Sound.Sound.LIFTNOTSELECTABLE);
             }
         }
         

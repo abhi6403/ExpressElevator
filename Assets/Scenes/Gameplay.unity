@@ -494,6 +494,14 @@ MonoBehaviour:
     soundClip: {fileID: 8300000, guid: 6180f74a3e6601a40acc22e75bd2a5e5, type: 3}
   - soundType: 5
     soundClip: {fileID: 8300000, guid: 13df6078a93431a45b889e2197c79cbc, type: 3}
+  - soundType: 7
+    soundClip: {fileID: 8300000, guid: 13df6078a93431a45b889e2197c79cbc, type: 3}
+  - soundType: 8
+    soundClip: {fileID: 8300000, guid: 46a0bfb1b22934e4a9720f211d496650, type: 3}
+  - soundType: 9
+    soundClip: {fileID: 8300000, guid: 5527190fbdd0836408b225199cbe46f4, type: 3}
+  - soundType: 10
+    soundClip: {fileID: 8300000, guid: 612106cc090166846a1b7ae259bb9aa2, type: 3}
   isMute: 0
 --- !u!81 &184437017
 AudioListener:

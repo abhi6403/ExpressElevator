@@ -29,7 +29,7 @@ namespace ExpressElevator.Main
         
         private GameState _gameState;
 
-        protected override void Awake()
+        protected void Awake()
         {
             InitializeServices();
             InjectDependencies();

@@ -17,7 +17,7 @@ MonoBehaviour:
     _numberOfPassengers: 12
     _numberOfPassengersPerFloor: 3
     _numberOfWaitingArea: 1
-    _totalTime: 60
+    _totalTime: 80
     spawnPoints:
     - {x: -8.4, y: -22.5, z: -0.036069196}
     - {x: -8.4, y: -14.92, z: -0.036069196}

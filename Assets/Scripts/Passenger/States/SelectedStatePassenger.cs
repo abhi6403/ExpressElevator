@@ -1,4 +1,5 @@
 using ExpressElevator.Passenger;
+using ExpressElevator.Sound;
 using ExpressElevator.StateMachine;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace ExpressElevator.Passenger
 
         public void OnStateEnter()
         {
+            SoundService.Instance.Play(Sound.Sound.SELECTED);
             Owner._passengerView._passengerState = PassengerState.SELECTED;
             Owner._passengerView.SelectedAlphaValue();
         }

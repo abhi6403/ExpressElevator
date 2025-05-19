@@ -83,5 +83,9 @@ namespace ExpressElevator.Sound
         REACHEDFLOOR,
         FLOORBUTTON,
         MUSIC,
+        SELECTED,
+        NOTSELECTED,
+        LIFTSELECT,
+        LIFTNOTSELECTABLE,
     }
 }
