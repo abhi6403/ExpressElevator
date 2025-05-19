@@ -1,3 +1,4 @@
+using ExpressElevator.Sound;
 using UnityEngine;
 
 namespace ExpressElevator.UI
@@ -17,19 +18,27 @@ namespace ExpressElevator.UI
 
         public void OnResumeClicked()
         {
+            ButtonClickedPlaySound();
             _pauseMenuUIView.DisableView();
             _uiService._gamePlayUIView._pauseButton.gameObject.SetActive(true);
         }
 
         public void OnMainMenuClicked()
         {
+            ButtonClickedPlaySound();
             _uiService._mainMenuUIView.EnableView();
             _pauseMenuUIView.DisableView();
         }
 
         public void OnQuitClicked()
         {
+            ButtonClickedPlaySound();
             Application.Quit();
+        }
+        
+        public void ButtonClickedPlaySound()
+        {
+            SoundService.Instance.Play(Sound.Sound.BUTTONCLICK);
         }
     }
 }

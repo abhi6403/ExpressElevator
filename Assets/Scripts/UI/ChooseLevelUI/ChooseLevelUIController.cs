@@ -1,4 +1,5 @@
 using ExpressElevator.Main;
+using ExpressElevator.Sound;
 
 namespace ExpressElevator.UI
 {
@@ -17,6 +18,7 @@ namespace ExpressElevator.UI
 
         public void OnLevelOneSelected()
         {
+            ButtonClickedPlaySound();
             _uiService._eventService.OnMapSelected.InvokeEvent(1);
             _chooseLevelUIView.DisableView();
             _uiService._gamePlayUIView.EnableView();
@@ -25,6 +27,7 @@ namespace ExpressElevator.UI
 
         public void OnLevelTwoSelected()
         {
+            ButtonClickedPlaySound();
             _uiService._eventService.OnMapSelected.InvokeEvent(2);
             _chooseLevelUIView.DisableView();
             _uiService._gamePlayUIView.EnableView();
@@ -33,6 +36,7 @@ namespace ExpressElevator.UI
 
         public void OnLevelThreeSelected()
         {
+            ButtonClickedPlaySound();
             _uiService._eventService.OnMapSelected.InvokeEvent(3);
             _chooseLevelUIView.DisableView();
             _uiService._gamePlayUIView.EnableView();
@@ -42,6 +46,11 @@ namespace ExpressElevator.UI
         public void SetGamePlayUIView()
         {
             _uiService._gamePlayUIView.SetPlayingState(GameState.PLAYING);
+        }
+
+        public void ButtonClickedPlaySound()
+        {
+            SoundService.Instance.Play(Sound.Sound.BUTTONCLICK);
         }
     }
 }

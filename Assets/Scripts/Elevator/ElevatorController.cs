@@ -2,6 +2,7 @@ using System.Collections;
 using ExpressElevator.Event;
 using ExpressElevator.Level;
 using ExpressElevator.Passenger;
+using ExpressElevator.Sound;
 using UnityEngine;
 
 namespace ExpressElevator.Elevator
@@ -90,7 +91,10 @@ namespace ExpressElevator.Elevator
         {
             _elevatorService.HidePassenger();
             float waitTime = GetElevatorWaitTime(floorNumber);
+            SoundService.Instance.Play(Sound.Sound.ELEVATORMOVING);
             yield return new WaitForSeconds(waitTime);
+            SoundService.Instance.StopSound(Sound.Sound.ELEVATORMOVING);
+            SoundService.Instance.Play(Sound.Sound.REACHEDFLOOR);
             _elevatorService.SetCurrentFloor(floorNumber);
             SetStateMachineState(ElevatorState.OPEN);
             _eventService.OnControlPannelClicked.InvokeEvent();
