@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lock1-Photoroom_0: -943623460958177748
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
