@@ -27,9 +27,14 @@ namespace ExpressElevator.UI
             _gamePlayUIController.UpdatePassengerInElevatorText();
             _gamePlayUIController.UpdateRemainingPassengersText();
 
-            if (_gameState == GameState.PLAYING)
+            if (_gameState == GameState.PLAYING && _timer > 0)
             {
                 UpdateTimerText();
+            }
+            else
+            {
+                _gamePlayUIController.GetUIService()._gameOverUIView.EnableView();
+                DisableView();
             }
         }
 

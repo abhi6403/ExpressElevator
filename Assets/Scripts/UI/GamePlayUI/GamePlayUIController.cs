@@ -21,9 +21,6 @@ namespace ExpressElevator.UI
             _uiService._pauseMenuUIView.EnableView();
             _gamePlayUIView._pauseButton.gameObject.SetActive(false);
         }
-
-        
-
         public void UpdatePassengerInElevatorText()
         {
             _gamePlayUIView._currentPassengersInElevatorText.text = "Boarded = "+ _uiService._elevatorService.GetPassengerCount() + "/5";
@@ -38,6 +35,11 @@ namespace ExpressElevator.UI
         public void SetTimer()
         {
             _gamePlayUIView.SetTimer(_uiService._levelService.GetCurrentLevel()._totalTime);
+        }
+
+        public UIService GetUIService()
+        {
+            return _uiService;
         }
     }
 }

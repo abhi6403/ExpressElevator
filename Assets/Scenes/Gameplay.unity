@@ -721,7 +721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -72}
+  m_AnchoredPosition: {x: 80, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243987948
@@ -2133,7 +2133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -129}
+  m_AnchoredPosition: {x: 80, y: -78.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746039302
@@ -5400,6 +5400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1549955765}
+  - component: {fileID: 1549955766}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -5431,6 +5432,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1549955766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549955764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c711d9caa43050440b483b7ce14d7b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameWon: {fileID: 686365986}
+  _gameLost: {fileID: 1905623903}
+  _restartButton: {fileID: 2056870793}
+  _mainMenuButton: {fileID: 243987948}
+  _quitButton: {fileID: 746039302}
 --- !u!1 &1552064754
 GameObject:
   m_ObjectHideFlags: 0
@@ -6103,6 +6121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2eb01fac4486714fba0819b72242e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timer: 0
+  _gameState: 0
   _pauseButton: {fileID: 1190593420}
   _timerText: {fileID: 1068772712}
   _remainingPassengersText: {fileID: 2014363168}
@@ -6895,7 +6915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2056870792
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7181,6 +7201,7 @@ MonoBehaviour:
   _chooseLevelUIView: {fileID: 877336539}
   _pauseMenuUIView: {fileID: 1430694740}
   _gamePlayUIView: {fileID: 1882167129}
+  _gameOverUIView: {fileID: 1549955766}
 --- !u!4 &2098238406
 Transform:
   m_ObjectHideFlags: 0

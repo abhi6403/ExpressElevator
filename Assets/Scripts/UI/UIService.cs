@@ -18,12 +18,14 @@ namespace ExpressElevator.UI
         private ChooseLevelUIController _chooseLevelUIController;
         private PauseMenuUIController _pauseMenuUIController;
         private GamePlayUIController _gamePlayUIController;
+        private GameOverUIController _gameOverUIController;
 
         public ElevatorControlPannelView _elevatorControlPannelView;
         public MainMenuUIView _mainMenuUIView;
         public ChooseLevelUIView _chooseLevelUIView;
         public PauseMenuUIView _pauseMenuUIView;
         public GamePlayUIView _gamePlayUIView;
+        public GameOverUIView _gameOverUIView;
         
         public void UIStart()
         {
@@ -32,6 +34,7 @@ namespace ExpressElevator.UI
             _chooseLevelUIController = new ChooseLevelUIController(_chooseLevelUIView, this);
             _pauseMenuUIController = new PauseMenuUIController(_pauseMenuUIView, this);
             _gamePlayUIController = new GamePlayUIController(_gamePlayUIView, this);
+            _gameOverUIController = new GameOverUIController(_gameOverUIView, this);
         }
 
         public void InjectDependencies(EventService eventService, ElevatorService elevatorService,PassengerService passengerService,LevelService levelService)

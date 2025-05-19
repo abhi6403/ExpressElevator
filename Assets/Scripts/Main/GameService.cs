@@ -26,6 +26,8 @@ namespace ExpressElevator.Main
         [SerializeField]private ElevatorView _elevatorPrefab;
         [SerializeField]private LevelSO _levelSO;
         [SerializeField] private Vector3 _firstPosition;
+        
+        private GameState _gameState;
 
         protected override void Awake()
         {
@@ -50,6 +52,16 @@ namespace ExpressElevator.Main
             LevelService.InjectDependecies(EventService,PassengerService,ElevatorService,FloorManager);
             ElevatorService.InjectDependencies(LevelService,EventService);
             _uiService.InjectDependencies(EventService,ElevatorService,PassengerService,LevelService);
+        }
+
+        public void SetGameState(GameState gameState)
+        {
+            _gameState = gameState;
+        }
+
+        public GameState GetGameState()
+        {
+            return _gameState;
         }
     }
 }
