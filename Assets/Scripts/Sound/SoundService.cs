@@ -11,7 +11,7 @@ namespace ExpressElevator.Sound
 
         public SoundType[] Sounds;
 
-        public bool isMute = false;
+        public bool isMute;
         private void Start()
         {
             PlayMusic(Sound.MUSIC);

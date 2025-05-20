@@ -1,7 +1,3 @@
-using System;
-using ExpressElevator.Elevator;
-using ExpressElevator.Floor;
-using ExpressElevator.Sound;
 using TMPro;
 using UnityEngine;
 
@@ -13,11 +9,11 @@ namespace ExpressElevator.Passenger
         public PassengerState _passengerState;
         
         [SerializeField] private Animator _animator;
-        [SerializeField] private TextMeshProUGUI _passengerFlootText;
-        public SpriteRenderer _spriteRenderer { get; private set; }
+        [SerializeField] private TextMeshProUGUI _passengerFloorText;
+        private SpriteRenderer _spriteRenderer;
         
         public Vector3 TargetPosition {get; private set;}
-        public bool _isMoving {get; set;}
+        public bool _isMoving {get; private set;}
         private float _stopThreshold = 0.5f;
 
         private void Start()
@@ -54,7 +50,7 @@ namespace ExpressElevator.Passenger
             }
         }
 
-        public void MoveToEntrance(Vector3 entrancePosition)
+        private void MoveToEntrance(Vector3 entrancePosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, TargetPosition, Time.deltaTime * 2f );
         }
@@ -79,9 +75,9 @@ namespace ExpressElevator.Passenger
             SetAnimatorValue(false);
         }
 
-        public void SetPassengerTargetFloorText()
+        private void SetPassengerTargetFloorText()
         {
-            _passengerFlootText.text = _passengerController.GetTargetFloor().ToString();
+            _passengerFloorText.text = _passengerController.GetTargetFloor().ToString();
         }
         public void DisablePassenger()
         {
@@ -96,7 +92,7 @@ namespace ExpressElevator.Passenger
 
         public void DisableTargetFloorText()
         {
-            _passengerFlootText.gameObject.SetActive(false);
+            _passengerFloorText.gameObject.SetActive(false);
         }
         public void SetController(PassengerController passengerController)
         {

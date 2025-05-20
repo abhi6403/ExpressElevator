@@ -1,6 +1,3 @@
-using ExpressElevator.StateMachine;
-using UnityEngine;
-
 namespace ExpressElevator.Passenger
 {
     public class MovedInStatePassenger : IStatePassenger

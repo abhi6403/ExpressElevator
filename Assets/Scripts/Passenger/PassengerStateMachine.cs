@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using ExpressElevator.StateMachine;
-using UnityEngine;
 
 namespace ExpressElevator.Passenger
 {

@@ -114,9 +114,9 @@ namespace ExpressElevator.Elevator
             _elevatorService.HidePassenger();
             float waitTime = GetElevatorWaitTime(floorNumber);
             SoundService.Instance.Play(Sound.Sound.ELEVATORMOVING);
-            _uiService._elevatorControlPannelView.DisableButtonClick();
+            _uiService.elevatorControlPanelView.DisableButtonClick();
             yield return new WaitForSeconds(waitTime);
-            _uiService._elevatorControlPannelView.EnableButtonClick();
+            _uiService.elevatorControlPanelView.EnableButtonClick();
             SoundService.Instance.StopSound(Sound.Sound.ELEVATORMOVING);
             SoundService.Instance.Play(Sound.Sound.REACHEDFLOOR);
             _elevatorService.SetCurrentFloor(floorNumber);

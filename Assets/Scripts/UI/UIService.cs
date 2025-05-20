@@ -3,6 +3,7 @@ using ExpressElevator.Event;
 using ExpressElevator.Level;
 using ExpressElevator.Passenger;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ExpressElevator.UI
 {
@@ -13,14 +14,14 @@ namespace ExpressElevator.UI
         public PassengerService _passengerService { get; private set; }
         public LevelService _levelService { get; private set; }
         
-        private ElevatorControlPannelController _elevatorControlPannelController;
+        private ElevatorControlPanelController _elevatorControlPanelController;
         private MainMenuUIController _mainMenuUIController;
         private ChooseLevelUIController _chooseLevelUIController;
         private PauseMenuUIController _pauseMenuUIController;
         private GamePlayUIController _gamePlayUIController;
         private GameOverUIController _gameOverUIController;
 
-        public ElevatorControlPannelView _elevatorControlPannelView;
+        [FormerlySerializedAs("_elevatorControlPannelView")] public ElevatorControlPanelView elevatorControlPanelView;
         public MainMenuUIView _mainMenuUIView;
         public ChooseLevelUIView _chooseLevelUIView;
         public PauseMenuUIView _pauseMenuUIView;
@@ -29,7 +30,7 @@ namespace ExpressElevator.UI
         
         public void UIStart()
         {
-            _elevatorControlPannelController = new ElevatorControlPannelController(_elevatorControlPannelView,this);
+            _elevatorControlPanelController = new ElevatorControlPanelController(elevatorControlPanelView,this);
             _mainMenuUIController = new MainMenuUIController(_mainMenuUIView,this);
             _chooseLevelUIController = new ChooseLevelUIController(_chooseLevelUIView, this);
             _pauseMenuUIController = new PauseMenuUIController(_pauseMenuUIView, this);

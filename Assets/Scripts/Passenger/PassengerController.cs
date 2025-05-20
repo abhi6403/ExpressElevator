@@ -1,9 +1,7 @@
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
 using ExpressElevator.Level;
-using ExpressElevator.Main;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace ExpressElevator.Passenger
 {

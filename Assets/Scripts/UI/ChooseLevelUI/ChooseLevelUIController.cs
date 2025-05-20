@@ -43,12 +43,12 @@ namespace ExpressElevator.UI
             SetGamePlayUIView();
         }
 
-        public void SetGamePlayUIView()
+        private void SetGamePlayUIView()
         {
             _uiService._gamePlayUIView.SetPlayingState(GameState.PLAYING);
         }
 
-        public void ButtonClickedPlaySound()
+        private void ButtonClickedPlaySound()
         {
             SoundService.Instance.Play(Sound.Sound.BUTTONCLICK);
         }

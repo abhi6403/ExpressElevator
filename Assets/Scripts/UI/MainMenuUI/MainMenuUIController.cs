@@ -1,4 +1,3 @@
-using ExpressElevator.Event;
 using ExpressElevator.Sound;
 using UnityEngine;
 
@@ -27,7 +26,7 @@ namespace ExpressElevator.UI
         public void OnInstructionsButtonClicked()
         {
             ButtonClickedPlaySound();
-            _mainMenuUIView.OnIntructionsButtonClicked();
+            _mainMenuUIView.OnInstructionsButtonClicked();
         }
 
         public void OnBackButtonClicked()
@@ -41,7 +40,7 @@ namespace ExpressElevator.UI
             Application.Quit();
         }
         
-        public void ButtonClickedPlaySound()
+        private void ButtonClickedPlaySound()
         {
             SoundService.Instance.Play(Sound.Sound.BUTTONCLICK);
         }

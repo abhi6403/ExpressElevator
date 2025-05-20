@@ -1,12 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ExpressElevator.UI
 {
-    public class ElevatorControlPannelView : MonoBehaviour,IUIView
+    public class ElevatorControlPanelView : MonoBehaviour,IUIView
     {
-       private ElevatorControlPannelController _controller;
+       private ElevatorControlPanelController _controller;
        
        [SerializeField] private Button _groundButton;
        [SerializeField] private Button _firstButton;
@@ -24,7 +23,7 @@ namespace ExpressElevator.UI
            _thirdButton.onClick.AddListener(_controller.OnThirdFloorClicked);
        }
        
-       public void SetController(ElevatorControlPannelController controller)
+       public void SetController(ElevatorControlPanelController controller)
        {
            _controller = controller;
        }

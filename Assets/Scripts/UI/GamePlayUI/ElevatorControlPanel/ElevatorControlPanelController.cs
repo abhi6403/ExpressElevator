@@ -2,15 +2,15 @@ using ExpressElevator.Sound;
 
 namespace ExpressElevator.UI
 {
-    public class ElevatorControlPannelController : IUIController
+    public class ElevatorControlPanelController : IUIController
     {
-        private ElevatorControlPannelView _elevatorControlPannelView;
+        private ElevatorControlPanelView _elevatorControlPanelView;
         private UIService _uiService;
 
-        public ElevatorControlPannelController(ElevatorControlPannelView elevatorControlPannelView,UIService uiService)
+        public ElevatorControlPanelController(ElevatorControlPanelView elevatorControlPanelView,UIService uiService)
         {
-            _elevatorControlPannelView = elevatorControlPannelView;
-            _elevatorControlPannelView.SetController(this);
+            _elevatorControlPanelView = elevatorControlPanelView;
+            _elevatorControlPanelView.SetController(this);
             _uiService = uiService;
         }
         
@@ -38,7 +38,7 @@ namespace ExpressElevator.UI
             _uiService._eventService.ControlPannelClicked.InvokeEvent(3);
         }
         
-        public void ButtonClickedPlaySound()
+        private void ButtonClickedPlaySound()
         {
             SoundService.Instance.Play(Sound.Sound.FLOORBUTTON);
         }

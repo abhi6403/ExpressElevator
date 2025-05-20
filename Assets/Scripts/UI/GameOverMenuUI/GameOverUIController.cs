@@ -45,7 +45,7 @@ namespace ExpressElevator.UI
             Application.Quit();
         }
         
-        public void ButtonClickedPlaySound()
+        private void ButtonClickedPlaySound()
         {
             SoundService.Instance.Play(Sound.Sound.BUTTONCLICK);
         }

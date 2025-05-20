@@ -1,6 +1,4 @@
 using ExpressElevator.Sound;
-using ExpressElevator.StateMachine;
-using UnityEngine;
 
 namespace ExpressElevator.Passenger
 {

@@ -1,7 +1,4 @@
-using ExpressElevator.Passenger;
-using UnityEngine;
-
-namespace ExpressElevator.StateMachine
+namespace ExpressElevator.Passenger
 {
     public interface IStatePassenger
     {

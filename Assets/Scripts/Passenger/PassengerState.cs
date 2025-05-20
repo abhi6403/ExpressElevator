@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace ExpressElevator.Passenger
 {
     public enum PassengerState

@@ -1,5 +1,3 @@
-using System;
-using ExpressElevator.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +28,7 @@ namespace ExpressElevator.UI
             _mainMenuUIController = controller;
         }
 
-        public void OnIntructionsButtonClicked()
+        public void OnInstructionsButtonClicked()
         {
             _title.gameObject.SetActive(false);
             _instructionsText.gameObject.SetActive(true);

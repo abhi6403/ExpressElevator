@@ -1,5 +1,3 @@
-using ExpressElevator.StateMachine;
-using UnityEditor;
 using UnityEngine;
 
 namespace ExpressElevator.Passenger
