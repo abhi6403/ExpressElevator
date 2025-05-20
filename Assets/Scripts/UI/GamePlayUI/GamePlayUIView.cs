@@ -65,10 +65,7 @@ namespace ExpressElevator.UI
             _gamePlayUIController.SetTimer();
         }
 
-        public void SetTimer(float timer)
-        {
-            _timer = timer;
-        }
+        public void SetTimer(float timer) => _timer = timer;
         public void DisableView() => gameObject.SetActive(false);
 
         public void EnableView() => gameObject.SetActive(true);
