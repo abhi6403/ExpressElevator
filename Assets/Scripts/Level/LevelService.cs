@@ -54,7 +54,7 @@ namespace ExpressElevator.Level
         {
             _currentLevel = _levels.Levels.Find(level => level._levelID == mapId);
             _floorManager.Start();
-            CreateLevel();
+            CreateElevators();
             SpawnPassengers();
         }
 
@@ -81,7 +81,7 @@ namespace ExpressElevator.Level
         }
 
         // Instantiates elevators for the current level
-        public void CreateLevel()
+        public void CreateElevators()
         {
             for (int i = 0; i < _currentLevel.LiftArea.Count; i++)
             {
@@ -143,22 +143,10 @@ namespace ExpressElevator.Level
                 }
             }
         }
-        public int GetCurrentLevelIndex()
-        {
-            return _currentLevelIndex;
-        }
-        public void SetLevelState(LevelStatus levelStatus)
-        {
-            _currentLevel._status = levelStatus;
-        }
         public LevelSO.Level GetCurrentLevel()
         {
             return _currentLevel;
         }
-
-        public LevelSO GetLevelSO()
-        {
-            return _levels;
-        }
+        
     }
 }

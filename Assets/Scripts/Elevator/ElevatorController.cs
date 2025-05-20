@@ -49,10 +49,7 @@ namespace ExpressElevator.Elevator
 
         private void CreateElevatorStateMachine() => _elevatorStateMachine = new ElevatorStateMachine(this);
         
-        public void Update()
-        {
-            _elevatorStateMachine.Update();
-        }
+        public void Update() => _elevatorStateMachine.Update();
 
         // Determines whether the elevator is working based on the level configuration
         public void SetWorkingLift()
@@ -135,14 +132,8 @@ namespace ExpressElevator.Elevator
             return waitTime;
         }
 
-        public void SetStateMachineState(ElevatorState elevatorState)
-        {
-            _elevatorStateMachine.ChangeState(elevatorState);
-        }
+        public void SetStateMachineState(ElevatorState elevatorState) => _elevatorStateMachine.ChangeState(elevatorState);
 
-        public void SetCurrentFloor(int currentFloorNumber)
-        {
-            _currentFloornumber = currentFloorNumber;
-        }
+        public void SetCurrentFloor(int currentFloorNumber) => _currentFloornumber = currentFloorNumber;
     }
 }

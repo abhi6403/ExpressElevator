@@ -6,14 +6,14 @@ namespace ExpressElevator.Passenger
     public class PassengerView : MonoBehaviour
     {
         private PassengerController _passengerController;
-        public PassengerState _passengerState;
+        private PassengerState _passengerState;
         
         [SerializeField] private Animator _animator;
         [SerializeField] private TextMeshProUGUI _passengerFloorText; // UI text displaying target floor
         private SpriteRenderer _spriteRenderer;
         
         public Vector3 TargetPosition {get; private set;} // Position the passenger moves towards
-        public bool _isMoving {get; private set;}
+        private bool _isMoving;
         private float _stopThreshold = 0.5f; // Minimum distance to stop movement
 
         private void Start()
@@ -81,47 +81,25 @@ namespace ExpressElevator.Passenger
         }
 
         // Updates the text showing the target floor
-        private void SetPassengerTargetFloorText()
-        {
-            _passengerFloorText.text = _passengerController.GetTargetFloor().ToString();
-        }
-        public void DisablePassenger()
-        {
-            gameObject.SetActive(false);
-        }
-
+        private void SetPassengerTargetFloorText() => _passengerFloorText.text = _passengerController.GetTargetFloor().ToString();
         public void EnablePassenger()
         {
             gameObject.SetActive(true);
             SetAnimatorValue(true);
         }
+        
+        public void DisablePassenger() => gameObject.SetActive(false);
+        public void DisableTargetFloorText() => _passengerFloorText.gameObject.SetActive(false);
+        public void SetController(PassengerController passengerController) => _passengerController = passengerController;
 
-        public void DisableTargetFloorText()
-        {
-            _passengerFloorText.gameObject.SetActive(false);
-        }
-        public void SetController(PassengerController passengerController)
-        {
-            _passengerController = passengerController;
-        }
-
-        public void SelectedAlphaValue()
-        {
-            _spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-        }
-
-        public void NotSelectedAlphaValue()
-        {
-            _spriteRenderer.color = new Color(1, 1, 1, 1);
-        }
-        public void SetAnimatorValue(bool value)
-        {
-            _animator.SetBool("Reached", value);
-        }
-
-        public void DestroyPassenger()
-        {
-            Destroy(gameObject);
-        }
+        public void SelectedAlphaValue() => _spriteRenderer.color = new Color(1, 1, 1, 0.5f); 
+        public void NotSelectedAlphaValue() => _spriteRenderer.color = new Color(1, 1, 1, 1); 
+        public void SetAnimatorValue(bool value) =>  _animator.SetBool("Reached", value);
+        public void SetPassengerState(PassengerState state) => _passengerState = state;
+        
+        public bool IsMoving() => _isMoving;
+        
+        public PassengerState GetPassengerState() => _passengerState;
+        public void DestroyPassenger() =>  Destroy(gameObject);
     }
 }

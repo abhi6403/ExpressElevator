@@ -84,25 +84,18 @@ namespace ExpressElevator.Passenger
             _passengerView.EnablePassenger();
         }
         
+        public bool IsPassengerMoving() => _passengerView.IsMoving();
         public void SetStateMachineState(PassengerState newState)
         {
             _passengerStateMachine.ChangeState(newState);
         }
         
-        public void SetTargetPosition(Vector3 targetPosition)
-        {
-            _targetPosition = targetPosition;
-        }
+        public void SetTargetPosition(Vector3 targetPosition) => _targetPosition = targetPosition;
         
-        public void SetCurrentFloorPosition(Vector3 position)
-        {
-            _passengerView.transform.position = position;
-        }
+        public void SetCurrentFloorPosition(Vector3 position) => _passengerView.transform.position = position;
 
-        public void SetCurrentFloor(int floor)
-        {
-            _passengerModel.SetCurrentFloor(floor);
-        }
+        public void SetCurrentFloor(int floor) => _passengerModel.SetCurrentFloor(floor);
+        public void RemovePassenger() => _passengerService.RemovePassenger(this);
         
         public int GetPassengerFloor()
         {
@@ -112,11 +105,6 @@ namespace ExpressElevator.Passenger
         public int GetTargetFloor()
         {
             return _passengerModel._targetFloor;
-        }
-
-        public void RemovePassenger()
-        {
-            _passengerService.RemovePassenger(this);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ExpressElevator.Passenger
         public void OnStateEnter()
         {
             SoundService.Instance.Play(Sound.Sound.NOTSELECTED);
-            Owner._passengerView._passengerState = PassengerState.NOT_SELECTED;
+            Owner._passengerView.SetPassengerState(PassengerState.SELECTED);
             Owner._passengerView.NotSelectedAlphaValue();
         }
 

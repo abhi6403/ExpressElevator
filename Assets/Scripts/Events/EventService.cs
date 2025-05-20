@@ -1,5 +1,4 @@
 using ExpressElevator.Passenger;
-using ExpressElevator.Utilities;
 using UnityEngine;
 
 namespace ExpressElevator.Event

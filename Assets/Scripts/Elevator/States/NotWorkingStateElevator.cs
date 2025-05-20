@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace ExpressElevator.Elevator
 {
     public class NotWorkingStateElevator : IStateElevator
