@@ -143,22 +143,10 @@ namespace ExpressElevator.Level
                 }
             }
         }
-        public int GetCurrentLevelIndex()
-        {
-            return _currentLevelIndex;
-        }
-        public void SetLevelState(LevelStatus levelStatus)
-        {
-            _currentLevel._status = levelStatus;
-        }
         public LevelSO.Level GetCurrentLevel()
         {
             return _currentLevel;
         }
-
-        public LevelSO GetLevelSO()
-        {
-            return _levels;
-        }
+        
     }
 }
