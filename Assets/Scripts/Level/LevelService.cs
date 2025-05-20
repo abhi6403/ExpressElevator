@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using ExpressElevator.Elevator;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
-using ExpressElevator.Main;
 using ExpressElevator.Passenger;
 using UnityEngine;
 
@@ -17,9 +15,11 @@ namespace ExpressElevator.Level
         private ElevatorSide _elevatorSide;
         private FloorManager _floorManager;
         
+        // ScriptableObject containing all level data
         private LevelSO _levels;
         private LevelSO.Level _currentLevel;
         
+        // Level and floor tracking
         private int _currentFloorIndex = 0;
         private const int MAX_FLOORS = 3;
         private float _spawnDistance = 1f;
@@ -48,6 +48,8 @@ namespace ExpressElevator.Level
         {
             _eventService.OnMapSelected.AddListener(OpenLevel);
         }
+        
+        // Triggered when a map is selected from UI
         private void OpenLevel(int mapId)
         {
             _currentLevel = _levels.Levels.Find(level => level._levelID == mapId);
@@ -56,6 +58,7 @@ namespace ExpressElevator.Level
             SpawnPassengers();
         }
 
+        // Spawns passengers on each floor as defined by the level
         public void SpawnPassengers()
         {
             for (int i = 0; i < _currentLevel._numberOfPassengers; i++)
@@ -77,6 +80,7 @@ namespace ExpressElevator.Level
             }
         }
 
+        // Instantiates elevators for the current level
         public void CreateLevel()
         {
             for (int i = 0; i < _currentLevel.LiftArea.Count; i++)
@@ -95,12 +99,14 @@ namespace ExpressElevator.Level
             }
         }
 
+        // Cycles through elevator sides (LEFT, MIDDLE, RIGHT)
         private ElevatorSide getElevatorSide()
         {
             _elevatorSide = (ElevatorSide)(((int)_elevatorSide + 1) % Enum.GetValues(typeof(ElevatorSide)).Length);
             return _elevatorSide;
         }
 
+        // Ensures the first elevator is LEFT, then cycles through sides
         private ElevatorSide SetElevator()
         {
             if (!isFirstElevatorSpawned)
@@ -112,6 +118,7 @@ namespace ExpressElevator.Level
             return _elevatorSide;
         }
 
+        // Unlock the next level if the current level is marked completed
         public void SetLevelStatus()
         {
             if (_levels.Levels[_currentLevelIndex]._status == LevelStatus.COMPLETED)
@@ -121,6 +128,7 @@ namespace ExpressElevator.Level
             }
         }
 
+        // Initialize the level status list at the start of the game
         public void StartLevelState()
         {
             for (int i = 0; i < _levels.Levels.Count; i++)
