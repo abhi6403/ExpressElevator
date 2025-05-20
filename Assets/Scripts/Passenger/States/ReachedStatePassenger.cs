@@ -21,11 +21,13 @@ namespace ExpressElevator.Passenger
 
         public void Update()
         {
+            // Once passenger finishes moving toward the lift entrance, begin moving to the exit point
             if (Owner._passengerView._isMoving == false)
             {
               Owner.MoveToExit();
             }
             
+            // Check if the passenger has reached their final position
             if (Vector3.Distance(Owner._passengerView.transform.position, Owner._passengerView.TargetPosition) < _stopThreshold)
             {
                 Owner.RemovePassenger();

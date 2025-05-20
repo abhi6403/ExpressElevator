@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _passengerState: 0
   _animator: {fileID: 4271946872930199088}
-  _passengerFlootText: {fileID: 5169105260192800849}
+  _passengerFloorText: {fileID: 5169105260192800849}
 --- !u!1001 &6952994582960652305
 PrefabInstance:
   m_ObjectHideFlags: 0

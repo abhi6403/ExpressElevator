@@ -20,11 +20,13 @@ namespace ExpressElevator.Passenger
 
         public void Update()
         {
+            // If the passenger has reached their target floor, switch to REACHED state
             if (Owner.GetPassengerFloor() == Owner.GetTargetFloor())
             {
                 Owner.SetStateMachineState(PassengerState.REACHED);
             }
             
+            // If passenger is no longer moving, initiate move inside the lift
             if (Owner._passengerView._isMoving == false)
             {
                 Owner.MoveInsideLift();

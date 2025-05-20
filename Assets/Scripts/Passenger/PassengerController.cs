@@ -28,11 +28,13 @@ namespace ExpressElevator.Passenger
             
             _passengerView.SetAnimatorValue(false);
             
+            // Assign external dependencies
             _levelService = levelService;
             _floorManager = floorManager;
             _eventService = eventService;
             _passengerService = passengerService;
             
+            // Initialize internal systems
             CreatePassengerStateMachine();
             AddPassenger();
             AddListeners();
@@ -48,6 +50,7 @@ namespace ExpressElevator.Passenger
         }
         private void CreatePassengerStateMachine() => _passengerStateMachine = new PassengerStateMachine(this);
 
+        // Informs EventService that passenger is entering the lift
         public void AddPassengerToList()
         {
             _eventService.OnMovingInPassenger.InvokeEvent(this);
@@ -70,6 +73,7 @@ namespace ExpressElevator.Passenger
             _eventService.OnPassengerReached.InvokeEvent(this);
         }
         
+        // Adds passenger to the current floor's guest list
         private void AddPassenger()
         {
             _floorManager.AddGuest(_passengerView);

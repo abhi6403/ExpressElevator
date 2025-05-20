@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace ExpressElevator.Sound
 {
+    // SoundService is a singleton class responsible for handling all sound-related functionality
     public class SoundService : GenericMonoSingleton<SoundService>
     {
-        public AudioSource soundEffect;
-        public AudioSource soundMusic;
+        public AudioSource soundEffect; // AudioSource for playing sound effects
+        public AudioSource soundMusic;  // AudioSource for playing background music
 
         public SoundType[] Sounds;
 
@@ -21,6 +22,8 @@ namespace ExpressElevator.Sound
         {
             isMute = status;
         }
+        
+        // Play a looping background music track
         public void PlayMusic(Sound sound)
         {
             if (isMute)
@@ -43,6 +46,8 @@ namespace ExpressElevator.Sound
         {
             soundEffect.Stop();
         }
+        
+        // Play a single-instance sound effect
         public void Play(Sound sound)
         {
             if (isMute)
@@ -67,6 +72,7 @@ namespace ExpressElevator.Sound
         }
     }
 
+    // Serializable class mapping a Sound enum to its associated AudioClip
     [Serializable]
     public class SoundType
     {
