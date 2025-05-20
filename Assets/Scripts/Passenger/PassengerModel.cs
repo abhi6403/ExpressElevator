@@ -8,8 +8,6 @@ namespace ExpressElevator.Passenger
         public int _currentFloor { get; private set; }
         public int _targetFloor { get; }
 
-        public Vector3 _passengerPosition;
-
         public PassengerModel(int currentFloor,int targetFloor)
         {
             _currentFloor = currentFloor;

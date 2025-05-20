@@ -5,7 +5,7 @@ namespace ExpressElevator.Elevator
 {
     public class ElevatorView : MonoBehaviour
     {
-        private ElevatorController _elevtorController;
+        private ElevatorController _elevatorController;
         private ElevatorState _elevatorState;
         
         [SerializeField] private GameObject _openedDoor;
@@ -19,7 +19,7 @@ namespace ExpressElevator.Elevator
 
         private void Update()
         {
-            _elevtorController.Update();
+            _elevatorController.Update();
         }
         
         // Called when the player clicks on the elevator
@@ -28,7 +28,7 @@ namespace ExpressElevator.Elevator
             if (_elevatorState == ElevatorState.OPEN)
             {
                 SoundService.Instance.Play(Sound.Sound.LIFTSELECT);
-                _elevtorController.MoveToElevator();
+                _elevatorController.MoveToElevator();
             }else if (_elevatorState != ElevatorState.OPEN)
             {
                 SoundService.Instance.Play(Sound.Sound.LIFTNOTSELECTABLE);
@@ -51,7 +51,7 @@ namespace ExpressElevator.Elevator
         // Wait for the elevator to arrive on a specific floor 
         public void WaitTime(int floorNumber)
         {
-            StartCoroutine(_elevtorController.WaitForArrival(floorNumber));
+            StartCoroutine(_elevatorController.WaitForArrival(floorNumber));
         }
         
         private void OnMouseExit()
@@ -61,7 +61,7 @@ namespace ExpressElevator.Elevator
         
         public void SetController(ElevatorController elevtorController)
         {
-            _elevtorController = elevtorController;
+            _elevatorController = elevtorController;
         }
         
         public void SetElelevatorState(ElevatorState state)
@@ -72,7 +72,7 @@ namespace ExpressElevator.Elevator
         public void EnableOpenDoor() => _openedDoor.SetActive(true);
         public void DisableOpenDoor() => _openedDoor.SetActive(false);
         public void EnableNotWorkingDoor() => _notWorkingDoor.SetActive(true);
-        public void EnableHighLighter() => _highLighter.SetActive(true);
-        public void DisableHighLighter() => _highLighter.SetActive(false);
+        private void EnableHighLighter() => _highLighter.SetActive(true);
+        private void DisableHighLighter() => _highLighter.SetActive(false);
     }
 }

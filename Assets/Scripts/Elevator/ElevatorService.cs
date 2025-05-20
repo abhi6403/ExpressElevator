@@ -58,16 +58,10 @@ namespace ExpressElevator.Elevator
         }
 
         // Method to add a passenger to the elevator service
-        public void AddPassenger(PassengerController passenger)
-        {
-                passengerControllers.Add(passenger);
-        }
+        public void AddPassenger(PassengerController passenger) =>  passengerControllers.Add(passenger);
 
         // Method to remove a passenger from the elevator service
-        public void RemovePassenger(PassengerController passenger)
-        {
-            passengerControllers.Remove(passenger);
-        }
+        public void RemovePassenger(PassengerController passenger) => passengerControllers.Remove(passenger);
         
         // Method to show passengers who are moving into the elevator
         public void ShowPassenger()
@@ -100,10 +94,7 @@ namespace ExpressElevator.Elevator
             return passengerControllers.Count;
         }
         
-        public void SetCurrentFloor(int floorNumber)
-        {
-            currentFloor = floorNumber;
-        }
+        public void SetCurrentFloor(int floorNumber) => currentFloor = floorNumber;
 
         public int GetCurrentFloor()
         {

@@ -135,14 +135,8 @@ namespace ExpressElevator.Elevator
             return waitTime;
         }
 
-        public void SetStateMachineState(ElevatorState elevatorState)
-        {
-            _elevatorStateMachine.ChangeState(elevatorState);
-        }
+        public void SetStateMachineState(ElevatorState elevatorState) => _elevatorStateMachine.ChangeState(elevatorState);
 
-        public void SetCurrentFloor(int currentFloorNumber)
-        {
-            _currentFloornumber = currentFloorNumber;
-        }
+        public void SetCurrentFloor(int currentFloorNumber) => _currentFloornumber = currentFloorNumber;
     }
 }
