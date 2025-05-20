@@ -58,16 +58,34 @@ namespace ExpressElevator.Elevator
 
         public void SetWorkingLift()
         {
-            if (_levelService.GetCurrentLevel()._levelID == 1)
+            int levelID = _levelService.GetCurrentLevel()._levelID;
+
+            switch (levelID)
             {
-                if (_elevatorSide == ElevatorSide.MIDDLE)
-                {
-                    SetStateMachineState(ElevatorState.OPEN);
-                }
-                else
-                {
+                case 1:
+                    SetWorkingLiftForLevel(ElevatorSide.MIDDLE);
+                    break;
+                case 2:
+                    SetWorkingLiftForLevel(ElevatorSide.MIDDLE);
+                    break;
+                case 3:
+                    SetWorkingLiftForLevel(ElevatorSide.MIDDLE);
+                    break;
+                default:
                     SetStateMachineState(ElevatorState.NOTWORKING);
-                }
+                    break;
+            }
+        }
+        
+        private void SetWorkingLiftForLevel(ElevatorSide workingSide)
+        {
+            if (_elevatorSide == workingSide)
+            {
+                SetStateMachineState(ElevatorState.OPEN);
+            }
+            else
+            {
+                SetStateMachineState(ElevatorState.NOTWORKING);
             }
         }
         

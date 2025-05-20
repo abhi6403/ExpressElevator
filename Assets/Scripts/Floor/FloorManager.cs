@@ -14,13 +14,6 @@ namespace ExpressElevator.Floor
         
         private float positionSize = 8f;
         private int count = 0;
-        private Vector3 _firstPosition;
-
-        public FloorManager(Vector3 firstPosition)
-        {
-            _firstPosition = firstPosition;
-        }
-
         public void Start()
         {
             passengerList = new List<PassengerView>();

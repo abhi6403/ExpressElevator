@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ExpressElevator.Elevator;
 using ExpressElevator.Event;
@@ -22,8 +23,9 @@ namespace ExpressElevator.Level
         private int _currentFloorIndex = 0;
         private const int MAX_FLOORS = 3;
         private float _spawnDistance = 1f;
-        private bool isFirstElevatorSpawned = false;
+        private bool isFirstElevatorSpawned;
         private int _currentFloor = 0;
+        private int _currentLevelIndex = 0;
         private int temp = 1;
         
         public LevelService(LevelSO levels)
@@ -39,6 +41,7 @@ namespace ExpressElevator.Level
             _floorManager = floorManager;
             elevatorService.SetCurrentFloor();
             subscribeToEvents();
+            StartLevelState();
         }
         
         private void subscribeToEvents()
@@ -94,17 +97,7 @@ namespace ExpressElevator.Level
 
         private ElevatorSide getElevatorSide()
         {
-            if ( _elevatorSide == ElevatorSide.RIGHT)
-            {
-                return _elevatorSide = ElevatorSide.LEFT;
-            }else if(_elevatorSide == ElevatorSide.LEFT)
-            {
-                return _elevatorSide = ElevatorSide.MIDDLE;
-            }else if (_elevatorSide == ElevatorSide.MIDDLE)
-            {
-               return _elevatorSide = ElevatorSide.RIGHT;
-            }
-
+            _elevatorSide = (ElevatorSide)(((int)_elevatorSide + 1) % Enum.GetValues(typeof(ElevatorSide)).Length);
             return _elevatorSide;
         }
 
@@ -118,9 +111,46 @@ namespace ExpressElevator.Level
             _elevatorSide = getElevatorSide();
             return _elevatorSide;
         }
+
+        public void SetLevelStatus()
+        {
+            if (_levels.Levels[_currentLevelIndex]._status == LevelStatus.COMPLETED)
+            {
+                _currentLevelIndex++;
+                _levels.Levels[_currentLevelIndex]._status = LevelStatus.UNLOCKED;
+            }
+        }
+
+        public void StartLevelState()
+        {
+            for (int i = 0; i < _levels.Levels.Count; i++)
+            {
+                if (_levels.Levels[0]._status == LevelStatus.COMPLETED)
+                {
+                    _levels.Levels[0]._status = LevelStatus.UNLOCKED;
+                }
+                else
+                {
+                    _levels.Levels[i]._status = LevelStatus.LOCKED;
+                }
+            }
+        }
+        public int GetCurrentLevelIndex()
+        {
+            return _currentLevelIndex;
+        }
+        public void SetLevelState(LevelStatus levelStatus)
+        {
+            _currentLevel._status = levelStatus;
+        }
         public LevelSO.Level GetCurrentLevel()
         {
             return _currentLevel;
+        }
+
+        public LevelSO GetLevelSO()
+        {
+            return _levels;
         }
     }
 }

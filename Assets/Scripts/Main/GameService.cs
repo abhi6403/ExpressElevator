@@ -25,7 +25,6 @@ namespace ExpressElevator.Main
         [SerializeField]private PassengersListSO _passengersListSO;
         [SerializeField]private ElevatorView _elevatorPrefab;
         [SerializeField]private LevelSO _levelSO;
-        [SerializeField] private Vector3 _firstPosition;
         
         private GameState _gameState;
 
@@ -40,7 +39,7 @@ namespace ExpressElevator.Main
             EventService = new EventService();
             PassengerService = new PassengerService(_passengersListSO.passengers);
             LevelService = new LevelService(_levelSO);
-            FloorManager = new FloorManager(_firstPosition);
+            FloorManager = new FloorManager();
             ElevatorService = new ElevatorService(_elevatorPrefab);
             _uiService.UIStart();
         }
