@@ -27,9 +27,14 @@ namespace ExpressElevator.UI
         public void OnInstructionsButtonClicked()
         {
             ButtonClickedPlaySound();
-            _mainMenuUIView.gameObject.SetActive(false);
+            _mainMenuUIView.OnIntructionsButtonClicked();
         }
 
+        public void OnBackButtonClicked()
+        {
+            ButtonClickedPlaySound();
+            _mainMenuUIView.OnBackButtonClicked();
+        }
         public void OnExitButtonClicked()
         {
             ButtonClickedPlaySound();
