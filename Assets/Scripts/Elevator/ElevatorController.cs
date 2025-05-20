@@ -1,31 +1,35 @@
 using System.Collections;
 using ExpressElevator.Event;
 using ExpressElevator.Level;
+using ExpressElevator.Main;
 using ExpressElevator.Passenger;
 using ExpressElevator.Sound;
+using ExpressElevator.UI;
 using UnityEngine;
 
 namespace ExpressElevator.Elevator
 {
     public class ElevatorController
     {
-        public ElevatorView _elevatorView { get; private set; } 
+        public ElevatorView _elevatorView;
         private ElevatorService _elevatorService;
         private ElevatorStateMachine _elevatorStateMachine;
         
         private EventService _eventService;
         private LevelService _levelService;
         private ElevatorSide _elevatorSide;
+        private UIService _uiService;
         
         private int _floorNumber;
         private int _currentFloornumber;
         private float _floorTravelTime = 1.5f;
         private float _waitTime;
-        public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide,int floorNumber,ElevatorService elevatorService)
+        public ElevatorController(ElevatorView elevatorView,Vector3 position,EventService eventService,LevelService levelService,ElevatorSide elevatorSide,int floorNumber,ElevatorService elevatorService, UIService uiService)
         {
             _eventService = eventService;
             _levelService = levelService;
             _elevatorService = elevatorService; 
+            _uiService = uiService;
             
             _elevatorSide = elevatorSide;
             _floorNumber = floorNumber;
@@ -92,7 +96,9 @@ namespace ExpressElevator.Elevator
             _elevatorService.HidePassenger();
             float waitTime = GetElevatorWaitTime(floorNumber);
             SoundService.Instance.Play(Sound.Sound.ELEVATORMOVING);
+            _uiService._elevatorControlPannelView.DisableButtonClick();
             yield return new WaitForSeconds(waitTime);
+            _uiService._elevatorControlPannelView.EnableButtonClick();
             SoundService.Instance.StopSound(Sound.Sound.ELEVATORMOVING);
             SoundService.Instance.Play(Sound.Sound.REACHEDFLOOR);
             _elevatorService.SetCurrentFloor(floorNumber);

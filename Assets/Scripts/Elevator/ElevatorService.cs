@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ExpressElevator.Event;
 using ExpressElevator.Level;
 using ExpressElevator.Passenger;
+using ExpressElevator.UI;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace ExpressElevator.Elevator
     {
         private ElevatorController _elevtorController;
         private LevelService _levelService;
+        private UIService _uiService;
         private ElevatorView _elevatorView;
         private EventService _eventService;
         
@@ -26,10 +28,11 @@ namespace ExpressElevator.Elevator
             _elevatorView = elevatorView;
         }
         
-        public void InjectDependencies(LevelService levelService,EventService eventService)
+        public void InjectDependencies(LevelService levelService,EventService eventService,UIService uiService)
         {
             _levelService = levelService;
             _eventService = eventService;
+            _uiService = uiService;
             AddListener();
         }
         
@@ -42,7 +45,7 @@ namespace ExpressElevator.Elevator
         
         public void CreateElevator(Vector3 position,EventService eventService,LevelService levelService,ElevatorSide side,int floorNumber)
         {
-            _elevtorController = new ElevatorController(_elevatorView,position,eventService,levelService,side,floorNumber,this);
+            _elevtorController = new ElevatorController(_elevatorView,position,eventService,levelService,side,floorNumber,this,_uiService);
             elevatorControllers.Add(_elevtorController);
         }
 
