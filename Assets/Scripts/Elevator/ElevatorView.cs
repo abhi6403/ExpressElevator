@@ -22,6 +22,7 @@ namespace ExpressElevator.Elevator
             _elevtorController.Update();
         }
         
+        // Called when the player clicks on the elevator
         private void OnMouseDown()
         {
             if (_elevatorState == ElevatorState.OPEN)
@@ -34,6 +35,7 @@ namespace ExpressElevator.Elevator
             }
         }
         
+        // Called when the player hovers over the elevator
         private void OnMouseOver()
         {
             if (_elevatorState == ElevatorState.CLOSE)
@@ -46,6 +48,7 @@ namespace ExpressElevator.Elevator
             }
         }
         
+        // Wait for the elevator to arrive on a specific floor 
         public void WaitTime(int floorNumber)
         {
             StartCoroutine(_elevtorController.WaitForArrival(floorNumber));

@@ -1,8 +1,6 @@
 using System.Collections;
 using ExpressElevator.Event;
 using ExpressElevator.Level;
-using ExpressElevator.Main;
-using ExpressElevator.Passenger;
 using ExpressElevator.Sound;
 using ExpressElevator.UI;
 using UnityEngine;
@@ -56,6 +54,7 @@ namespace ExpressElevator.Elevator
             _elevatorStateMachine.Update();
         }
 
+        // Determines whether the elevator is working based on the level configuration
         public void SetWorkingLift()
         {
             int levelID = _levelService.GetCurrentLevel()._levelID;
@@ -77,6 +76,7 @@ namespace ExpressElevator.Elevator
             }
         }
         
+        // Sets the lift's state based on the current level configuration
         private void SetWorkingLiftForLevel(ElevatorSide workingSide)
         {
             if (_elevatorSide == workingSide)
@@ -89,6 +89,7 @@ namespace ExpressElevator.Elevator
             }
         }
         
+        // Method to handle when a passenger moves to the elevator
         public void MoveToElevator()
         {
             if (_elevatorService.GetPassengerCount() < 5)
@@ -97,6 +98,7 @@ namespace ExpressElevator.Elevator
             }
         }
         
+        // Method that determines the current floor and opens the elevator doors if conditions are met
         public void SetCurrentFloorLiftToOpen(int floorNumber)
         {
             if (_floorNumber == floorNumber && _elevatorSide == ElevatorSide.MIDDLE)
@@ -109,12 +111,13 @@ namespace ExpressElevator.Elevator
             }
         }
         
+        // Coroutine that simulates the elevator's wait time during travel to a floor
         public IEnumerator WaitForArrival(int floorNumber)
         {
             _elevatorService.HidePassenger();
             float waitTime = GetElevatorWaitTime(floorNumber);
             SoundService.Instance.Play(Sound.Sound.ELEVATORMOVING);
-            _uiService.elevatorControlPanelView.DisableButtonClick();
+            _uiService.elevatorControlPanelView.DisableButtonClick(); 
             yield return new WaitForSeconds(waitTime);
             _uiService.elevatorControlPanelView.EnableButtonClick();
             SoundService.Instance.StopSound(Sound.Sound.ELEVATORMOVING);
@@ -124,6 +127,7 @@ namespace ExpressElevator.Elevator
             _eventService.OnControlPannelClicked.InvokeEvent();
         }
         
+        // Calculates the elevator's wait time based on the target floor distance
         private float GetElevatorWaitTime(int targetFloorNumber)
         {
             int distance = Mathf.Abs(_elevatorService.GetCurrentFloor() - targetFloorNumber);
