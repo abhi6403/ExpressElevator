@@ -15,14 +15,14 @@ namespace ExpressElevator.Passenger
 
         public void OnStateEnter()
         {
-            Owner._passengerView.SetPassengerState(PassengerState.SELECTED);
+            Owner._passengerView._passengerState = PassengerState.REACHED;
             Owner.MoveStraightToLift();
         }
 
         public void Update()
         {
             // Once passenger finishes moving toward the lift entrance, begin moving to the exit point
-            if (Owner.IsPassengerMoving() == false)
+            if (Owner._passengerView._isMoving == false)
             {
               Owner.MoveToExit();
             }

@@ -63,7 +63,10 @@ namespace ExpressElevator.Passenger
         }
 
         // Removes a passenger from the active list
-        public void RemovePassenger(PassengerController passenger) => _passengerControllerList.Remove(passenger);
+        public void RemovePassenger(PassengerController passenger)
+        {
+            _passengerControllerList.Remove(passenger);
+        }
 
         // Returns the current number of active passengers
         public int GetPassengersCount()

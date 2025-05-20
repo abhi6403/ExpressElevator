@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using ExpressElevator.Elevator;
 using ExpressElevator.Event;
 using ExpressElevator.Floor;
@@ -49,6 +51,16 @@ namespace ExpressElevator.Main
             LevelService.InjectDependecies(EventService,PassengerService,ElevatorService,FloorManager);
             ElevatorService.InjectDependencies(LevelService,EventService,UIService);
             _uiService.InjectDependencies(EventService,ElevatorService,PassengerService,LevelService);
+        }
+
+        public void SetGameState(GameState gameState)
+        {
+            _gameState = gameState;
+        }
+
+        public GameState GetGameState()
+        {
+            return _gameState;
         }
     }
 }

@@ -74,7 +74,7 @@ namespace ExpressElevator.Elevator
         {
             for (int i = 0; i < passengerControllers.Count; i++)
             {
-                if (passengerControllers[i]._passengerView.GetPassengerState() == PassengerState.MOVINGIN)
+                if (passengerControllers[i]._passengerView._passengerState == PassengerState.MOVINGIN)
                 {
                     passengerControllers[i].ShowPassenger();
                     passengerControllers[i].SetCurrentFloor(currentFloor);
@@ -89,7 +89,7 @@ namespace ExpressElevator.Elevator
         {
             for (int i = 0; i < passengerControllers.Count; i++)
             {
-                if (passengerControllers[i]._passengerView.GetPassengerState()== PassengerState.MOVINGIN)
+                if (passengerControllers[i]._passengerView._passengerState == PassengerState.MOVINGIN)
                 {
                     passengerControllers[i]._passengerView.DisablePassenger();
                 }
@@ -100,7 +100,10 @@ namespace ExpressElevator.Elevator
             return passengerControllers.Count;
         }
         
-        public void SetCurrentFloor(int floorNumber) => currentFloor = floorNumber;
+        public void SetCurrentFloor(int floorNumber)
+        {
+            currentFloor = floorNumber;
+        }
 
         public int GetCurrentFloor()
         {

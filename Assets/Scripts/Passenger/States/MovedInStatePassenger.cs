@@ -12,7 +12,7 @@ namespace ExpressElevator.Passenger
 
         public void OnStateEnter()
         {
-            Owner._passengerView.SetPassengerState(PassengerState.SELECTED);
+            Owner._passengerView._passengerState = PassengerState.MOVINGIN;
             Owner._passengerView.NotSelectedAlphaValue();
             Owner.MoveStraightToLift();
             Owner._passengerView.DisableTargetFloorText();
@@ -27,7 +27,7 @@ namespace ExpressElevator.Passenger
             }
             
             // If passenger is no longer moving, initiate move inside the lift
-            if (Owner.IsPassengerMoving() == false)
+            if (Owner._passengerView._isMoving == false)
             {
                 Owner.MoveInsideLift();
             }

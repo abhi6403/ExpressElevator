@@ -12,9 +12,15 @@ namespace ExpressElevator.Elevator
         [SerializeField] private GameObject _notWorkingDoor;
         [SerializeField] private GameObject _highLighter;
 
-        private void Start() => DisableHighLighter();
+        private void Start()
+        {
+            DisableHighLighter();
+        }
 
-        private void Update() => _elevtorController.Update();
+        private void Update()
+        {
+            _elevtorController.Update();
+        }
         
         // Called when the player clicks on the elevator
         private void OnMouseDown()
@@ -43,13 +49,25 @@ namespace ExpressElevator.Elevator
         }
         
         // Wait for the elevator to arrive on a specific floor 
-        public void WaitTime(int floorNumber) => StartCoroutine(_elevtorController.WaitForArrival(floorNumber));
+        public void WaitTime(int floorNumber)
+        {
+            StartCoroutine(_elevtorController.WaitForArrival(floorNumber));
+        }
         
-        private void OnMouseExit() => _highLighter.SetActive(false);
+        private void OnMouseExit()
+        {
+            _highLighter.SetActive(false);
+        }
         
-        public void SetController(ElevatorController elevtorController) => _elevtorController = elevtorController;
+        public void SetController(ElevatorController elevtorController)
+        {
+            _elevtorController = elevtorController;
+        }
         
-        public void SetElelevatorState(ElevatorState state) => _elevatorState = state;
+        public void SetElelevatorState(ElevatorState state)
+        {
+            _elevatorState = state;
+        }
 
         public void EnableOpenDoor() => _openedDoor.SetActive(true);
         public void DisableOpenDoor() => _openedDoor.SetActive(false);
