@@ -8,9 +8,10 @@ namespace ExpressElevator.UI
     public class GamePlayUIView : MonoBehaviour, IUIView
     {
         private GamePlayUIController _gamePlayUIController;
-        public float _timer;
+        public float _timer; // Timer for the gameplay
         public GameState _gameState;
 
+        // UI elements for displaying gameplay stats
         public Button _pauseButton;
         public TextMeshProUGUI _timerText;
         public TextMeshProUGUI _remainingPassengersText;
@@ -23,15 +24,18 @@ namespace ExpressElevator.UI
 
         public void Update()
         {
+            // Update passenger-related UI elements
             _gamePlayUIController.UpdatePassengerInElevatorText();
             _gamePlayUIController.UpdateRemainingPassengersText();
 
+            // Update timer if the game is in the PLAYING state and time remains
             if (_gameState == GameState.PLAYING && _timer > 0)
             {
                 UpdateTimerText();
             }
             else
             {
+                // If time is over or game is not playing, show Game Over UI and disable current view
                 _gamePlayUIController.GetUIService()._gameOverUIView.EnableView();
                 DisableView();
             }
@@ -42,6 +46,7 @@ namespace ExpressElevator.UI
             _gamePlayUIController = gamePlayUIController;
         }
 
+        // Updates the timer text display
         public void UpdateTimerText()
         {
             _timer -= Time.deltaTime;

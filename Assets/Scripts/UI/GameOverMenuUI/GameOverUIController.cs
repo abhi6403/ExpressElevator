@@ -17,6 +17,7 @@ namespace ExpressElevator.UI
             _gameOverUIView.SubscribeButtonClicks();
         }
 
+        // Checks the game state to determine whether the game was won or lost and updates the UI
         public void CheckForGameState()
         {
             if (_uiService._passengerService.GetPassengersCount() > 0)

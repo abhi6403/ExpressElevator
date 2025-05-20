@@ -22,11 +22,14 @@ namespace ExpressElevator.UI
             _uiService._pauseMenuUIView.EnableView();
             _gamePlayUIView.DisableView();
         }
+        
+        // Updates the text displaying the current number of passengers inside the elevator
         public void UpdatePassengerInElevatorText()
         {
             _gamePlayUIView._currentPassengersInElevatorText.text = "Boarded = "+ _uiService._elevatorService.GetPassengerCount() + "/5";
         }
 
+        // Updates the text displaying the remaining passengers to board
         public void UpdateRemainingPassengersText()
         {
             _gamePlayUIView._remainingPassengersText.text =
@@ -39,6 +42,7 @@ namespace ExpressElevator.UI
             }
         }
 
+        // Sets the initial timer for the game based on the current level's time limit
         public void SetTimer()
         {
             _gamePlayUIView.SetTimer(_uiService._levelService.GetCurrentLevel()._totalTime);
