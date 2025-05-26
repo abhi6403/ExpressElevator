@@ -1,6 +1,8 @@
 Express Elevator is a time-based puzzle and management game where the player takes control of one or more elevators in a multi-story building. 
 The challenge lies in efficiently managing the flow of passengers by navigating elevators, making quick decisions, and ensuring everyone reaches their desired floor as quickly and accurately as possible.
 
+>Gameplay Video - https://drive.google.com/file/d/1fDjCLMzeTZgD0XXdBAGp73VVR7toGTbV/view?usp=drive_link
+
 > Core Gameplay Loop:
 - Passengers spawn on random floors with a visible destination below them.
 - Players click to select a passenger, then click on an elevator to board them.
